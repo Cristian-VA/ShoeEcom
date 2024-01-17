@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  color: #1f2937;
+  background-color: white;
+}
+
+body{
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  @apply flex flex-col flex-1    max-w-[1440px]  w-full ;
+}
+
+.container-navigation {
+  @apply flex flex-col   h-[60px] justify-center   max-w-[1440px] w-full  ;
+}
+

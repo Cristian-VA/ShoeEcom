@@ -19,7 +19,7 @@ export function AdultNav({category}:{category:string}) {
         <div className="flex justify-center space-x-4 w-full gap-20  max-w-[1440px] border-b-2 pb-4 px-5">
           
         <div className="flex  flex-col">
-            <h1 className="mb-4 text-[18px]">SHOES</h1>
+            <h1 className="mb-4 text-[18px] font-semibold">SHOES</h1>
             <ul className="font-normal text-[14px] flex flex-col gap-2">
                 <li>Product 1</li>
                 <li>Product 2</li>

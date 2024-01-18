@@ -5,9 +5,12 @@ import { KidsNav } from "./Navigation/KidsNav"
 import { useState } from "react"
 import MobileNav from "./Navigation/MobileNav"
 import {AnimatePresence} from "framer-motion"
+
+
 const Header = () => {
+  
   const [isOpen, setOpen] = useState(false)
-  console.log(isOpen)
+ 
 
   return (
     <>

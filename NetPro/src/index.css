@@ -20,3 +20,6 @@ body{
   @apply flex flex-col   h-[60px] justify-center   max-w-[1440px] w-full  ;
 }
 
+.mobile-link {
+  @apply bg-gray-50 hover:underline
+}

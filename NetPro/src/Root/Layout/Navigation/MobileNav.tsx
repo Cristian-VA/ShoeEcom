@@ -3,7 +3,7 @@ import {motion} from "framer-motion"
 import MenAccordion from './MobileAccordion/MenAccordion';
 import WomenAccordion from "./MobileAccordion/WomenAccordion";
 import KidsAccordion from "./MobileAccordion/KidsAccordion";
-const MobileNav = () => {
+const MobileNav = ({toggleIsOpen}:{toggleIsOpen:() => void}) => {
   return (
     
    
@@ -18,7 +18,7 @@ const MobileNav = () => {
      
     >
      <div className="flex flex-col w-full bg-opactity-0">
-      <MenAccordion/>
+      <MenAccordion toggleIsOpen={toggleIsOpen}/>
       <WomenAccordion/>
       <KidsAccordion/>
 

@@ -10,6 +10,10 @@ import {AnimatePresence} from "framer-motion"
 const Header = () => {
   
   const [isOpen, setOpen] = useState(false)
+  
+  const toggleOpen = () => {
+    setOpen((prevValue) => !prevValue);
+  };
  
 
   return (
@@ -51,7 +55,7 @@ const Header = () => {
     </div>
     
     <AnimatePresence>
-    {isOpen && <MobileNav/>}
+    {isOpen && <MobileNav toggleIsOpen={toggleOpen}/>}
    </AnimatePresence>
    
     </>

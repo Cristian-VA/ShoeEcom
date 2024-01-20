@@ -23,6 +23,30 @@ export const MenShoesLinks = [
       },
   ];
 
+  export const MenAccesoriesLinks = [
+   
+    {
+      route: "collections/men-belts",
+      label: "Belts",
+    },
+    {
+      route: "/collections/men-briefcases",
+      label: "Briefcases",
+    },
+    {
+      route: "/collections/men-wallets",
+      label: "Wallets",
+    },
+    {
+      route: "/collections/men-accesories",
+      label: "View All",
+    },
+  ];
+
+  
+
+
+
   export const WomenShoesLinks = [
    
     {
@@ -52,9 +76,41 @@ export const MenShoesLinks = [
       },
   ];
 
-  //<Route path="/collections/women" element={<Women/>}/>
-  //<Route path="/collections/women-sneakers" element={<WomenSneakers/>}/>
- // <Route path="/collections/women-active-shoes" element={<WomenActiveShoes/>}/>
- // <Route path="/collections/women-slip-ons" element={<WomenSlipOns/>}/>
- // <Route path="/collections/women-hiking" element={<WomenHiking/>}/>
- // <Route path="/collections/women-flats" element={<WomenFlats/>}/>
+  export const WomenAccesoriesLinks = [
+   
+    {
+        route: "/collections/women-belts",
+        label: "Belts",
+      },
+      {
+        route: "/collections/women-bags",
+        label: "Bags",
+      },
+      {
+        route: "/collections/women-wallets",
+        label: "Wallets",
+      },
+      {
+        route: "/collections/women-accesories",
+        label: "View All",
+      },
+  ];
+
+  export const KidsLinks = [
+   
+      {
+        route: "/collections/kids-sneakers",
+        label: "Sneakers",
+      },
+      {
+        route: "/collections/kids-slip-ons",
+        label: "Slip Ons",
+      },
+      {
+        route: "/collections/kids",
+        label: "View All",
+      },
+  ];
+
+
+ 

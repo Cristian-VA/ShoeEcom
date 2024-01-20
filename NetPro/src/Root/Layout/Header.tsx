@@ -6,7 +6,6 @@ import { useState } from "react"
 import MobileNav from "./Navigation/MobileNav"
 import {AnimatePresence} from "framer-motion"
 
-
 const Header = () => {
   
   const [isOpen, setOpen] = useState(false)
@@ -35,7 +34,7 @@ const Header = () => {
 
         <div className="flex gap-4 md:w-[200px] justify-end">
 
-          <img src="assets/icons/user.svg" alt="Log in" className="w-[26px] h-[26px] relative items-end my-auto"/>
+          <img src="/assets/icons/user.svg" alt="Log in" className="w-[26px] h-[26px] relative items-end my-auto"/>
 
           <div className="relative h-[30px] w-8  flex my-auto  ">
             <img

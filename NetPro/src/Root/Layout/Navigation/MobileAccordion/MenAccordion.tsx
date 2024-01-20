@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { MenShoesLinks } from "@/constants";
+import { MenShoesLinks, MenAccesoriesLinks } from "@/constants";
 import { Link } from "react-router-dom";
 const MenAccordion = ({toggleIsOpen}:{toggleIsOpen:() => void}) => {
   return (
@@ -37,10 +37,11 @@ const MenAccordion = ({toggleIsOpen}:{toggleIsOpen:() => void}) => {
 
             <h1 className="font-semibold text-[16px] bg-gray-50">ACCESORIES</h1>
             <ul className="flex flex-col w-full gap-3 bg-gray-50">
-              <li className="bg-gray-50"> link 1</li>
-              <li className="bg-gray-50"> link 2</li>
-              <li className="bg-gray-50"> link 3</li>
-              <li className="bg-gray-50"> link 4</li>
+            {MenAccesoriesLinks.map((link, index) => (
+                <li key={index} className="mobile-link" onClick={toggleIsOpen}>
+                  <Link to={link.route} className="bg-gray-50">{link.label}</Link>
+                </li>
+              ))}
             </ul>
 
             <h1 className="font-semibold text-[16px] bg-gray-50">FEATURED</h1>

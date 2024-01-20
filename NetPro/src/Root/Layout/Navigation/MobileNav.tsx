@@ -19,8 +19,8 @@ const MobileNav = ({toggleIsOpen}:{toggleIsOpen:() => void}) => {
     >
      <div className="flex flex-col w-full bg-opactity-0">
       <MenAccordion toggleIsOpen={toggleIsOpen}/>
-      <WomenAccordion/>
-      <KidsAccordion/>
+      <WomenAccordion toggleIsOpen={toggleIsOpen}/>
+      <KidsAccordion toggleIsOpen={toggleIsOpen}/>
 
      </div>
     </motion.div>

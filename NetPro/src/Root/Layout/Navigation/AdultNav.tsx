@@ -21,8 +21,8 @@ export function AdultNav({ category }: { category: string }) {
         </Button>
       </HoverCardTrigger>
 
-      <HoverCardContent className="  mx-auto w-screen  shadow-none flex justify-center border-none">
-        <div className="flex justify-center space-x-4 w-full gap-20  max-w-[1440px] border-b-2 pb-4 px-5">
+      <HoverCardContent className="  mx-auto w-screen  shadow-none flex justify-center border-none ">
+        <div className="flex justify-center space-x-4 w-full gap-20  max-w-[1440px] border-b-2 pb-4 px-5 ">
           <div className=" flex justify-between  w-[800px]">
             <div className="flex  flex-col">
               <h1 className="mb-4 text-[18px] font-semibold">SHOES</h1>

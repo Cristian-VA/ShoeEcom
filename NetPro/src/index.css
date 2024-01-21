@@ -13,11 +13,11 @@ body{
 }
 
 .container {
-  @apply flex flex-col flex-1    max-w-[1440px]  w-full ;
+  @apply flex flex-col flex-1    max-w-[1440px]  w-full  px-5 ;
 }
 
 .container-navigation {
-  @apply flex flex-col   h-[60px] justify-center   max-w-[1440px] w-full  ;
+  @apply flex flex-col   h-[60px] justify-center   max-w-[1440px] w-full px-3 md:px-5  ;
 }
 
 .mobile-link {

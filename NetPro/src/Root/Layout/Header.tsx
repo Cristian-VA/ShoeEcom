@@ -17,8 +17,8 @@ const Header = () => {
 
   return (
     <>
-    <div className="container-navigation">
-      <div className=" flex w-full justify-between py-3   ">
+    <div className="container-navigation sticky top-0 z-50 border-none shadow-md">
+      <div className=" flex w-full justify-between    ">
         <div className="md:flex gap-2 font-semibold my-auto hidden w-[200px]">
         <AdultNav category="men"/>
         <AdultNav category="women"/>

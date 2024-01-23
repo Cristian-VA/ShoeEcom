@@ -113,4 +113,18 @@ export const MenShoesLinks = [
   ];
 
 
+  export const Banner1 = {
+    BannerImg: "/assets/Home/Banner2.png",
+    MobileImg: "/assets/Home/MobileBanner2.png",
+    Heading: "NEW YEAR, NEW SHOES",
+    message: "Step into the New Year with Fresh Beginnings! Elevate your journey with style and comfort."
+  }
+
+  export const Banner2 = {
+    BannerImg: "/assets/Home/Banner3.png",
+    MobileImg: "/assets/Home/MobileBanner3.png",
+    Heading: "Frosty Feat: Cozy Winter Kicks",
+    message: "Navigate the snowy landscapes in trendsetting winter footwear."
+  }
+
  

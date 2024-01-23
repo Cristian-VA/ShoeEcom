@@ -1,6 +1,7 @@
 import React from "react";
 import Homebanner from "../components/Home/Homebanner";
 import Homebanner2 from "../components/Home/Homebanner2";
+import Contact from "../components/Home/Contact";
 import { Banner1, Banner2 } from "@/constants";
 
 
@@ -14,6 +15,7 @@ const Home = () => {
       </div>
       <Homebanner2 Banner={Banner1}/>
       <Homebanner2 Banner={Banner2}/>
+      <Contact/>
     </div>
     
     

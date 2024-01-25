@@ -7,9 +7,10 @@ import { Input } from "@/components/ui/input"
 import { SignUpSchema } from "@/lib/validation"
 import { Link, useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
-
+import Loader from "@/Root/components/Loader"
 import { useUserContext } from "@/context/AuthContext"
 import { useCreateUserAccountMutation, useSignInAccountMutation } from "@/lib/queries/queries&mutations"
+import { appwriteConfig } from "@/lib/appwrite/config"
 const SignUpForm = () => {
 
  const { toast } = useToast()
@@ -68,15 +69,17 @@ const {
     }
   }
 
+  
 
 
+  console.log(appwriteConfig.databaseId)
 
  
 
   return (
    <div>
     {isUserLoading? (
-     "") : (
+     <Loader/>) : (
     
       <Form {...form}>
         <div className=" flex justify-center items-center flex-col max-w-[450px] w-full px-5">

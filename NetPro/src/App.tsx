@@ -3,7 +3,7 @@ import Layout from "./Root/Layout/Layout";
 
 import LogInSignUp from "./Auth/Pages/LogInSignUp";
 import { Men, Cart, Home, MenSneakers, MenActiveShoes, MenHiking, MenSlipOns, Women, WomenSneakers, WomenActiveShoes, WomenSlipOns, WomenFlats, WomenHiking, Kids, KidsSlipOns, KidsSneakers, MenAccesories, MenBelts, MenBriefcase, MenWallets, WomenAccesories, WomenBags, WomenBelts, WomenWallets  } from "./Root/Pages/index";
-
+import { Toaster } from "@/components/ui/toaster"
 
 function App() {
   return (
@@ -45,6 +45,7 @@ function App() {
 
         </Route>
       </Routes>
+      <Toaster />
     </main>
   );
 }

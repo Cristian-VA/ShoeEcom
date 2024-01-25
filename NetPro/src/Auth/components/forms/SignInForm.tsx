@@ -5,12 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import {  SignInSchema } from "@/lib/Validation"
-import Loader from "@/components/Reusable/Loader"
+import { SignInSchema } from "@/lib/validation"
+import Loader from "@/Root/components/Loader"
 import { Link, useNavigate } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
 
-import {  useSignInAccountMutation } from "@/lib/react-query/queriesAndMutations"
+import { useSignInAccountMutation } from "@/lib/queries/queries&mutations"
 import { useUserContext } from "@/context/AuthContext"
 
 const SignInForm = () => {
@@ -64,31 +64,13 @@ const {
   return (
     <>
     {isLoading? (
-      <div className="w-full h-full flex justify-center items-center flex-col gap-4">
-      <Loader
-               color= "white"
-               shape= "spiner"
-               width= "w-[90px] my-auto"
-               />
-                <p>Log in successfull, Redirecting...</p>
-
-   </div>
-
+      ""
     ):(
       <Form {...form}>
-        <div className=" flex justify-center items-center flex-col w-[300px]">
-          <div className="flex gap-4">
-                <img 
-              src="/assets/Logo.png" 
-              alt=" Logo"
-              className='w-[51.4px] h-[44.9px] block xl:hidden my-auto'
-              />
-              <h1 className="h1 font-bold text-center  "> GrooveGram</h1>
-          </div>
-  
-           <h1 className="h2 pt-3"> Log in to your account</h1>
-           <h1 className="text-slate-500 base text-center pt-5"> Welcome back! Please enter your details</h1>
+        <div className=" flex justify-center items-center flex-col max-w-[450px] w-full px-5">
           
+  
+         
         
 
           <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full mt-4  ">     
@@ -122,9 +104,7 @@ const {
               />
               <Button type="submit" className="h-12 bg-blue-500 px-5 text-white flex gap-2 rounded-[8px] mt-2 hover:bg-blue-400 transition">
                 {isSigningIn? (
-                  <Loader
-                  color="white"
-                  shape = "circle"/>
+                  ""
                 ): "Log in"}
               </Button>
               <div className="flex gap-2 mx-auto">

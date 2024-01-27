@@ -7,9 +7,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { SignInSchema } from "@/lib/validation"
 import { Link } from "react-router-dom"
+import { useAuth } from "../utils/AuthContext"
 
 const SignInForm = () => {
-
+  const {loginUser} = useAuth()
 
 
   // 1. Define your form.
@@ -24,6 +25,12 @@ const SignInForm = () => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignInSchema>) {
    console.log(values)
+   const email = values.email
+    const password = values.password
+    
+    const userInfo = {email, password}
+
+    loginUser(userInfo)
   }
 
  

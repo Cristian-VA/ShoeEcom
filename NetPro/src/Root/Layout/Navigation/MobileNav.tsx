@@ -13,7 +13,7 @@ const MobileNav = ({toggleIsOpen}:{toggleIsOpen:() => void}) => {
       exit={{ x: '-100%' }}      
       transition={{ duration: 0.3 }}
 
-      className="absolute  z-50  w-screen top-[60px] px-7 py-5 md:hidden  overflow-scroll bg-gray-50 " 
+      className="fixed  z-50  w-screen top-[60px] px-7 py-5 md:hidden  overflow-scroll bg-gray-50 " 
       style={{ height: 'calc(100vh - 60px)' }}
      
     >

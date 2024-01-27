@@ -5,10 +5,11 @@ import { useState } from "react";
 import MobileNav from "./Navigation/MobileNav";
 import { AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import { useAuth } from "@/Auth/components/utils/AuthContext";
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
+  const {user} = useAuth()
 
 
   const toggleOpen = () => {
@@ -48,13 +49,17 @@ const Header = () => {
           <div className="flex gap-4 md:w-[200px] justify-end">
                
              
-            <Link to={"/account/login"} className="my-auto">
+            {user?  (
+              <Link to={"/account"} className="my-auto">
+              <h1> Hello, <span className="capitalize font-semibold">{user?.name}</span></h1>
+              </Link>
+            ) :(<Link to={"/account/login"} className="my-auto">
               <img
                 src="/assets/icons/user.svg"
                 alt="Log in"
                 className="w-[26px] h-[26px] relative items-end my-auto"
               />
-            </Link>
+            </Link>)}
           
             <div className="relative h-[30px] w-8  flex my-auto  ">
               <img

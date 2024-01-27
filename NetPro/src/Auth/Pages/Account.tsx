@@ -3,19 +3,17 @@ import { useSignOutAccountMutation } from '@/lib/queries/queries&mutations'
 import Loader from '@/Root/components/Loader'
 import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
+import {  useAuth } from '../components/utils/AuthContext'
 const Account = () => {
-    const { mutate: signOut,  isSuccess, isPending } = useSignOutAccountMutation()
     const navigate = useNavigate()
-
-    async function signOutAccount() {
-      signOut()
-      navigate("/")
-    }
+    const {logoutUser} = useAuth()
+    
+  
 
    
   return (
     <div className='container'>
-        <Button onClick={() => signOutAccount()} >logout</Button>
+        <Button onClick={() => logoutUser()} >logout</Button>
         
     </div>
   )

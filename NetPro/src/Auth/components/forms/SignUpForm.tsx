@@ -5,28 +5,9 @@ import { useForm } from "react-hook-form"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { SignUpSchema } from "@/lib/validation"
-import { Link, useNavigate } from "react-router-dom"
-import { useToast } from "@/components/ui/use-toast"
-import Loader from "@/Root/components/Loader"
-import { useUserContext } from "@/context/AuthContext"
-import { useCreateUserAccountMutation, useSignInAccountMutation } from "@/lib/queries/queries&mutations"
-import { appwriteConfig } from "@/lib/appwrite/config"
+import { Link } from "react-router-dom"
+
 const SignUpForm = () => {
-
- const { toast } = useToast()
- const { checkAuthUser, isLoading: isUserLoading} = useUserContext()
-
- const navigate= useNavigate()
-
-
- const { 
-  mutateAsync: createUserAccount , 
-  isPending: isCreatingUser 
-} = useCreateUserAccountMutation()
-
-const { 
-  mutateAsync: signInAccount 
-} = useSignInAccountMutation()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignUpSchema>>({
@@ -41,45 +22,18 @@ const {
  
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignUpSchema>) {
-   const newUser = await createUserAccount(values)
-   
-   if (!newUser){
-    return toast({
-      title: "Sign up failed. Please try again.",
-      
-    })
-   }
-
-  const session = await signInAccount({
-    email: values.email,
-    password: values.password
-  })
-
-  if (!session){
-    return toast ({title: "Sign In failed. Please try Again"})
-  }
-    const isLoggedIn = await checkAuthUser()
-
-    if (isLoggedIn){
-      form.reset()
-
-      navigate("/")
-    } else {
-     return toast({title: "Sign up failed. Please try again"})
-    }
+   console.log(values)
   }
 
   
 
 
-  console.log(appwriteConfig.databaseId)
 
  
 
   return (
    <div>
-    {isUserLoading? (
-     <Loader/>) : (
+    
     
       <Form {...form}>
         <div className=" flex justify-center items-center flex-col max-w-[450px] w-full px-5">
@@ -149,9 +103,7 @@ const {
                 )}
               />
               <Button type="submit" className="h-12 bg-blue-500 px-5 text-white flex gap-2 rounded-[8px] mt-2 hover:bg-blue-400 transition">
-                {isCreatingUser? (
-                 ""
-                ): "Sign Up"}
+                Sign Up
               </Button>
               <div className="flex gap-2 mx-auto">
                 <p className="small text-slate-500 "> Already have an account?</p>
@@ -160,7 +112,7 @@ const {
          </form>
       </div>
     </Form>
-    )}
+  
     </div>
   )
 }

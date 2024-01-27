@@ -1,4 +1,3 @@
-import React from "react";
 import Homebanner from "../components/Home/Homebanner";
 import Homebanner2 from "../components/Home/Homebanner2";
 import Contact from "../components/Home/Contact";

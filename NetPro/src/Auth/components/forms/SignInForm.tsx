@@ -6,66 +6,31 @@ import { useForm } from "react-hook-form"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { SignInSchema } from "@/lib/validation"
-import Loader from "@/Root/components/Loader"
-import { Link, useNavigate } from "react-router-dom"
-import { useToast } from "@/components/ui/use-toast"
-
-import { useSignInAccountMutation } from "@/lib/queries/queries&mutations"
-import { useUserContext } from "@/context/AuthContext"
+import { Link } from "react-router-dom"
 
 const SignInForm = () => {
 
- const { toast } = useToast()
- const { checkAuthUser, isLoading } = useUserContext()
- 
- const navigate= useNavigate()
-  
 
-
-const { 
-  mutateAsync: signInAccount , 
-  isPending: isSigningIn
-} = useSignInAccountMutation()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignInSchema>>({
     resolver: zodResolver(SignInSchema),
     defaultValues: {
       email: "test9@gmail.com",
-      password: "test1234",
+      password: "chit55vega",
     },
   })
  
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignInSchema>) {
-   
-
-  const session = await signInAccount({
-    email: values.email,
-    password: values.password
-  })
-
-  if (!session){
-    return toast ({title: "Log in failed. Please try Again"})
-  }
-    const isLoggedIn = await checkAuthUser()
-
-    if (isLoggedIn){
-      form.reset()
-
-      navigate("/")
-    } else {
-     return toast({title: "Log in failed. Please try again"})
-    }
+   console.log(values)
   }
 
  
 
   return (
     <>
-    {isLoading? (
-      ""
-    ):(
+   
       <Form {...form}>
         <div className=" flex justify-center items-center flex-col max-w-[450px] w-full px-5">
           
@@ -103,9 +68,7 @@ const {
                 )}
               />
               <Button type="submit" className="h-12 bg-blue-500 px-5 text-white flex gap-2 rounded-[8px] mt-2 hover:bg-blue-400 transition">
-                {isSigningIn? (
-                  ""
-                ): "Log in"}
+                Sign In
               </Button>
               <div className="flex gap-2 mx-auto">
                 <p className="small text-slate-500 "> Don't have an account</p>
@@ -114,7 +77,7 @@ const {
          </form>
       </div>
     </Form>
-    )}
+    
     
   </>
   )

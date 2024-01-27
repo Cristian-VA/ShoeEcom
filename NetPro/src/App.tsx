@@ -1,9 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Root/Layout/Layout";
-
+import Account from "./Auth/Pages/Account";
 import LogInSignUp from "./Auth/Pages/LogInSignUp";
 import { Men, Cart, Home, MenSneakers, MenActiveShoes, MenHiking, MenSlipOns, Women, WomenSneakers, WomenActiveShoes, WomenSlipOns, WomenFlats, WomenHiking, Kids, KidsSlipOns, KidsSneakers, MenAccesories, MenBelts, MenBriefcase, MenWallets, WomenAccesories, WomenBags, WomenBelts, WomenWallets  } from "./Root/Pages/index";
 import { Toaster } from "@/components/ui/toaster"
+import PrivateRoutes from "./Auth/components/utils/PrivateRoutes";
+
 
 function App() {
   return (
@@ -12,6 +14,11 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/account/login" element={<LogInSignUp/>}/>
+
+          <Route element={<PrivateRoutes/>}>
+          <Route path="/account" element={<Account/>}/>
+          </Route>
+
           <Route path="/cart" element={<Cart/>}/>
 
           <Route path="/collections/men" element={<Men/>}/>

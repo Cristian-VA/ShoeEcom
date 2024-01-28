@@ -24,11 +24,11 @@ const Homebanner2 = ({ Banner }: { Banner: BannerType }) => {
           {Banner.message}
         </p>
         <div className=" flex gap-8">
-          <Button className="bg-gray-900 transition text-white hover:bg-white text-[16px] py-5 px-7 font-semibold drop-shadow-sm border-2 border-gray-800 hover:text-gray-800 ">
+          <Button className="btn-black ">
             {" "}
             SHOP MEN
           </Button>
-          <Button className="bg-gray-900 transition text-white hover:bg-white text-[16px] py-5 px-7 font-semibold drop-shadow-sm border-2 border-gray-800  hover:text-gray-800 ">
+          <Button className="btn-black ">
             {" "}
             SHOP WOMEN
           </Button>

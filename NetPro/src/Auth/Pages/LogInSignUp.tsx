@@ -16,9 +16,9 @@ const LogInSignUp = () => {
   }, [])
 
   return (
-    <div className=' flex gap-20  justify-center  w-screen py-6 bg-gray-50 lg:flex-row flex-col items-center'>
+    <div className=' flex gap-20  justify-center  w-screen py-6 bg-gray-50 lg:flex-row flex-col items-center '>
 
-
+      
       <SignInForm/>
       <SignUpForm/>
     </div>

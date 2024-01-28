@@ -39,22 +39,22 @@ const SignInForm = () => {
     <>
    
       <Form {...form}>
-        <div className=" flex justify-center items-center flex-col max-w-[450px] w-full px-5">
+        <div className=" flex justify-center items-center flex-col max-w-[450px] w-full px-5 bg-transparent mb-auto mt-4">
           
   
-         
+         <h1 className="mr-auto text-[28px] font-bold bg-inherit">LOGIN</h1>
         
 
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full mt-4  ">     
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full mt-4 bg-inherit ">     
 
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
+                  <FormItem className="bg-inherit">
+                    <FormLabel className="bg-inherit">Email</FormLabel>
                     <FormControl>
-                      <Input type = "text" placeholder="Vibey@gmail.com" className="text-slate-800 h-12 bg-blue-50 border-none rounded-[8px] placeholder:text-slate-500 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-slate-100" {...field} />
+                      <Input type = "text" placeholder="Vibey@gmail.com" className="input-white" {...field} />
                     </FormControl>
                     <FormMessage className="text-rose-500" />
                   </FormItem>
@@ -65,21 +65,21 @@ const SignInForm = () => {
                 control={form.control}
                 name="password"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
+                  <FormItem className="bg-inherit">
+                    <FormLabel className="bg-inherit">Password</FormLabel>
                     <FormControl>
-                      <Input type = "password" placeholder="••••••••" className="text-slate-800 h-12 bg-blue-50 border-none rounded-[8px] placeholder:text-slate-500 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-slate-100" {...field} />
+                      <Input type = "password" placeholder="••••••••" className="input-white" {...field} />
                     </FormControl>
                     <FormMessage className="text-rose-500" />
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="h-12 bg-blue-500 px-5 text-white flex gap-2 rounded-[8px] mt-2 hover:bg-blue-400 transition">
-                Sign In
+              <Button type="submit" className="btn-black uppercase  h-12">
+                Log In
               </Button>
-              <div className="flex gap-2 mx-auto">
-                <p className="small text-slate-500 "> Don't have an account</p>
-                <Link to="/sign-up" className="small text-blue-500"> Sign up now!</Link>
+
+              <div className="flex gap-2 mx-auto bg-inherit">
+                <p className="font-semibold  bg-inherit cursor-pointer hover:underline"> FORGOT YOUR PASSWORD?</p>
               </div>
          </form>
       </div>

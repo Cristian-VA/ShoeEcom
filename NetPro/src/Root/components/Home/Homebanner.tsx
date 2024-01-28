@@ -11,8 +11,8 @@ const Homebanner = () => {
                   <h1 className="bg-transparent font-bold text-[28px]  drop-shadow-sm text-white ">Timeless Comfort, Leather Luxury</h1>
                   <p className="bg-transparent font-semibold text-[16px]  drop-shadow-sm text-white">Discover the next level of comfort. Check out our leather Shoes</p>
                   <div className="flex bg-transparent mt-6 justify-end gap-4">
-                      <Button className="hover:bg-gray-900 transition hover:text-white bg-white text-[16px] py-5 px-7 font-semibold drop-shadow-sm  "> SHOP MEN</Button>
-                      <Button className="hover:bg-gray-900 transition hover:text-white bg-white text-[16px] py-5 px-7 font-semibold drop-shadow-sm "> SHOP WOMEN</Button>
+                      <Button className="btn-inverted hover:bg-gray-900 border-none"> SHOP MEN</Button>
+                      <Button className="btn-inverted hover:bg-gray-900 border-none "> SHOP WOMEN</Button>
                   </div>
               </div>
           </div>
@@ -29,8 +29,8 @@ const Homebanner = () => {
                   <h1 className="bg-transparent font-bold text-[46px]  drop-shadow-sm text-white ">Timeless Comfort, Leather Luxury</h1>
                   <p className="bg-transparent font-semibold text-[28px]  drop-shadow-sm text-white">Discover the next level of comfort. Check out our leather Shoes</p>
                   <div className="flex bg-transparent mt-6 justify-end gap-4">
-                      <Button className="hover:bg-gray-900 transition hover:text-white bg-white text-[16px] py-5 px-7 font-semibold "> SHOP MEN</Button>
-                      <Button className="hover:bg-gray-900 transition hover:text-white bg-white text-[16px] py-5 px-7 font-semibold "> SHOP WOMEN</Button>
+                      <Button className="btn-inverted hover:bg-gray-900 border-none "> SHOP MEN</Button>
+                      <Button className="btn-inverted hover:bg-gray-900 border-none"> SHOP WOMEN</Button>
                   </div>
               </div>
           </div>

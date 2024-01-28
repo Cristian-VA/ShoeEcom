@@ -23,3 +23,16 @@ body{
 .mobile-link {
   @apply bg-gray-50 hover:underline
 }
+
+
+.input-white {
+  @apply text-gray-800 h-12 bg-white  border-none  placeholder:text-gray-500 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-gray-100
+}
+
+.btn-inverted {
+  @apply hover:bg-gray-900 transition hover:text-white bg-white text-[16px] py-5 px-7 font-semibold border-2 border-gray-900
+}
+
+.btn-black {
+  @apply bg-gray-900  transition text-white hover:bg-white hover:text-gray-900 text-[16px] py-5 px-7 font-semibold border-2 border-gray-900
+}

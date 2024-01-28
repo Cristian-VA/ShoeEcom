@@ -26,6 +26,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "src/Auth/components/forms/SignInForm.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

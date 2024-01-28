@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { SignUpSchema } from "@/lib/validation"
-import { Link } from "react-router-dom"
 import { useAuth } from "../utils/AuthContext"
 
 const SignUpForm = () => {
@@ -49,7 +48,7 @@ const SignUpForm = () => {
     
     
       <Form {...form}>
-        <div className=" flex justify-center items-center flex-col max-w-[450px] w-full px-5 bg-inherit">
+        <div className=" flex justify-center items-center flex-col max-w-[450px] w-full px-5 bg-inherit  mb-auto mt-4">
           <div className="flex gap-4">
                 
           </div>
@@ -76,7 +75,7 @@ const SignUpForm = () => {
 
               <FormField
                 control={form.control}
-                name="username" // using the parameters of the sign up schema in the validation index
+                name="username" 
                 render={({ field }) => (
                   <FormItem className="bg-inherit">
                     <FormLabel className="bg-inherit">Username</FormLabel>

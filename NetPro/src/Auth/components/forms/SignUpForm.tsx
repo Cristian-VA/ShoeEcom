@@ -6,8 +6,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { SignUpSchema } from "@/lib/validation"
 import { Link } from "react-router-dom"
+import { useAuth } from "../utils/AuthContext"
 
 const SignUpForm = () => {
+
+  const {registerUser} = useAuth()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignUpSchema>>({
@@ -23,7 +26,17 @@ const SignUpForm = () => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignUpSchema>) {
    console.log(values)
+
+   const name = values.name
+   const username = values.username
+   const email = values.email
+   const password = values.password
+
+   const userInfo = {name, username, email, password}
+   registerUser(userInfo)
   }
+
+  
 
   
 

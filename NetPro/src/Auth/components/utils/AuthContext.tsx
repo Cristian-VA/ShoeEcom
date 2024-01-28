@@ -5,6 +5,8 @@ import { IContextType } from '@/types';
 import Loader from '@/Root/components/Loader';
 import { account } from '@/lib/appwrite/config';
 import { INewUser } from '@/types';
+import { ID } from 'appwrite';
+import { saveUserToDB } from '@/lib/appwrite/api';
 
 export const INITIAL_STATE = {
     user: null,
@@ -24,10 +26,10 @@ export const AuthProvider = ({children}:{children:ReactNode}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [user, setUser] = useState(null)
 
-    useEffect(() =>{
-        checkUserStatus()
+    useEffect(() => {
         
-    }, [])
+        checkUserStatus()
+      }, [])
 
     const loginUser = async (userInfo:INewUser) => {
         setIsLoading(true)
@@ -35,9 +37,11 @@ export const AuthProvider = ({children}:{children:ReactNode}) => {
         console.log('userInfo',userInfo)
 
         try{
-            let response = await account.createEmailSession(userInfo.email, userInfo.password)
+            let NewSesion = await account.createEmailSession(userInfo.email, userInfo.password)
             let accountDetails = await account.get();
             setUser(accountDetails)
+
+            
             
         }catch(error){
             console.error(error)
@@ -52,9 +56,30 @@ export const AuthProvider = ({children}:{children:ReactNode}) => {
 
     }
 
-    const registerUser = (userInfo) => {
+    const registerUser = async (userInfo:any) => {
+        setIsLoading(true)
 
-    }
+        try{
+            
+            let response = await account.create(ID.unique(), userInfo.email, userInfo.password, userInfo.name);
+    
+            await account.createEmailSession(userInfo.email, userInfo.password)
+            let accountDetails = await account.get();
+            setUser(accountDetails)
+            const newUser = await saveUserToDB({
+                accountId: accountDetails.$id,
+                email: accountDetails.email,
+                name: accountDetails.name,  
+                username: userInfo.username              
+              });
+            
+            
+        }catch(error){
+            console.error(error)
+        }
+    
+        setIsLoading(false)
+     }
 
     const checkUserStatus = async () => {
 
@@ -86,3 +111,46 @@ export const AuthProvider = ({children}:{children:ReactNode}) => {
 }
 
 export const useAuth = () => {return useContext(AuthContext)}
+
+//$createdAt
+//: 
+//"2024-01-28T04:01:25.575+00:00"
+//$id
+//: 
+//"65b5d1958aa5ee37b8c9"
+//$updatedAt
+//: 
+//"2024-01-28T04:01:25.575+00:00"
+//accessedAt
+//: 
+//"2024-01-28T04:01:25.567+00:00"
+//email
+//: 
+//"test@gmail.com"
+//emailVerification
+//: 
+//false
+//labels
+//: 
+//[]
+//name
+//: 
+//"swegino"
+//passwordUpdate
+//: 
+//"2024-01-28T04:01:25.567+00:00"
+//phone
+//: 
+//""
+//phoneVerification
+//: 
+//f//alse
+//prefs
+//: 
+//{}
+//registration
+//: 
+//"2024-01-28T04:01:25.567+00:00"
+//status
+//: 
+//true

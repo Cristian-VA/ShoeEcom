@@ -36,3 +36,12 @@ body{
 .btn-black {
   @apply bg-gray-900  transition text-white hover:bg-white hover:text-gray-900 text-[16px] py-5 px-7 font-semibold border-2 border-gray-900
 }
+
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar on Webkit browsers (e.g., Chrome, Safari) */
+}
+
+.custom-scrollbar {
+  scrollbar-width: none; /* Hide the scrollbar on Firefox */
+}

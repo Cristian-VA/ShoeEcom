@@ -65,3 +65,19 @@ export async function getCurrentUser() {
     console.log(error);
   }
 }
+
+export async function getMenCollection(category: string) {
+  const queries: any[] = [Query.equal("category", category)];
+
+  try {
+    const menProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.menCollectionId,
+      queries
+    );
+
+    return menProducts;
+  } catch (error) {
+    console.log(error);
+  }
+}

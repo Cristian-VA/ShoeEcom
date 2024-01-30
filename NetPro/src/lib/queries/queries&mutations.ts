@@ -2,14 +2,10 @@
 
 import { INewUser } from "@/types"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { createUserAccount, signInAccount, signOutAccount, getCurrentUser} from "../appwrite/api"
+import {  signInAccount, signOutAccount, getMenCollection } from "../appwrite/api"
 import { QUERY_KEYS } from "./Keys"
 
-export const useCreateUserAccountMutation = () => {
-    return useMutation({
-        mutationFn: (user:INewUser) => createUserAccount(user)
-    })
-}
+
 
 export const useSignInAccountMutation = () => {
     return useMutation({
@@ -26,9 +22,14 @@ export const useSignOutAccountMutation = () => {
     })
 }
 
-export const useGetCurrentUserMutation = () => {
+
+
+
+
+export const useGetMenCollectionBycategory = (category:string) =>{
     return useQuery({
-      queryKey: [QUERY_KEYS.GET_CURRENT_USER],
-      queryFn: getCurrentUser,
+    queryKey:[QUERY_KEYS.GET_MEN_COLLECTION], 
+    queryFn: () => getMenCollection(category),  
+    
     })
-  }
+}

@@ -7,7 +7,7 @@ import { account } from '@/lib/appwrite/config';
 import { INewUser } from '@/types';
 import { ID } from 'appwrite';
 import { saveUserToDB } from '@/lib/appwrite/api';
-
+import { useNavigate } from 'react-router-dom';
 export const INITIAL_STATE = {
     user: null,
     loginUser: () => {},
@@ -22,11 +22,16 @@ export const INITIAL_STATE = {
 const AuthContext = createContext<IContextType>(INITIAL_STATE)
 
 export const AuthProvider = ({children}:{children:ReactNode}) => {
-
+    const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const [user, setUser] = useState(null)
 
     useEffect(() => {
+        if (
+            localStorage.getItem("cookieFallback") === "[]" ||
+            localStorage.getItem("cookieFallback") === null 
+          ) navigate("")
+
         
         checkUserStatus()
       }, [])

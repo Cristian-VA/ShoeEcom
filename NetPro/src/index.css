@@ -45,3 +45,7 @@ body{
 .custom-scrollbar {
   scrollbar-width: none; /* Hide the scrollbar on Firefox */
 }
+
+.minus-64px {
+  width: calc(100% - 100px);
+}

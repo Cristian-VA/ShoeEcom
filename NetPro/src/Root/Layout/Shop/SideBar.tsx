@@ -14,7 +14,7 @@ import { convertToTitleCase } from "@/utils";
 const SideBar = ({ category }: { category: string }) => {
   const location = useLocation();
   return (
-    <div className="w-[300px] px-7 py-7 hidden md:flex flex-col">
+    <div className="w-[270px] px-7 py-7 hidden md:flex flex-col">
       <h1 className="font-semibold">Home /</h1>
       <p className="capitalize text-[28px] font-bold my-5">
         {convertToTitleCase(location.pathname)}

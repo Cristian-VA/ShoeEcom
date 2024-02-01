@@ -34,7 +34,7 @@ export const useGetMenCollectionBycategory = (category:string) =>{
     })
 }
 
-export const useGetPostByIdMutation = (productId:string) =>{
+export const useGetMenProductId = (productId:string) =>{
     return useQuery({
     queryKey:[QUERY_KEYS.GET_MEN_COLLECTION_PRODUCTID, productId], //when postIdchanges it triggers a refetch
     queryFn: () => getMenProductById(productId),  

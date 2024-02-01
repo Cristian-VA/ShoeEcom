@@ -12,3 +12,6 @@ export function convertToTitleCase(str: string): string {
 
     return titleCaseStr;
 }
+
+
+  

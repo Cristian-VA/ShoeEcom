@@ -3,7 +3,7 @@ import { useGetMenCollectionBycategory } from '@/lib/queries/queries&mutations'
 import Loader from '@/Root/components/Loader'
 import ProductGrid from '@/Root/components/shop/ProductGrid'
 const MenSneakers = () => {
-  const {  data, isPending} = useGetMenCollectionBycategory("sneakers")
+  const {  data, isPending, isLoading} = useGetMenCollectionBycategory("sneakers")
   console.log(data)
   
 
@@ -11,7 +11,7 @@ const MenSneakers = () => {
     <>
     {isPending? <Loader/> : (
     <div className='container  py-6'>
-      <ProductGrid data={data}/>
+      <ProductGrid  data={data}/>
     </div>
     )}
     </>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 
-const ProductGrid = ({ data }: { data: any }) => {
+const ProductGrid = ({ data }: { data: any,  }) => {
   return (
     <div className="flex flex-wrap  ">
       {data?.documents?.map((product: any, index: number) => (

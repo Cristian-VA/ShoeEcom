@@ -31,3 +31,5 @@ export {default as WomenWallets} from "./Shop/Women/WomenWallets"
 export { default as Kids} from "./Shop/Kids/Kids"
 export { default as KidsSlipOns} from "./Shop/Kids/KidsSlipOns"
 export { default as KidsSneakers} from "./Shop/Kids/KidsSneakers"
+
+export {default as ProductPage} from "./Shop/ProductPage"

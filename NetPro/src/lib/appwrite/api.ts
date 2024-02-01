@@ -1,8 +1,7 @@
-import { INewUser } from '@/types';
 
 import { ID, Query } from "appwrite"
 
-import { account, appwriteConfig, avatars, databases, storage } from "./config";
+import { account, appwriteConfig,  databases,  } from "./config";
 
 
 export async function saveUserToDB(user: {
@@ -77,6 +76,20 @@ export async function getMenCollection(category: string) {
     );
 
     return menProducts;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getMenProductById(productId: string) {
+  try {
+    const product = await databases.getDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.menCollectionId,
+      productId
+    );
+
+    return product;
   } catch (error) {
     console.log(error);
   }

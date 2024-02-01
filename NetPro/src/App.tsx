@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./Root/Layout/Layout";
 import Account from "./Auth/Pages/Account";
 import LogInSignUp from "./Auth/Pages/LogInSignUp";
-import { Men, Cart, Home, MenSneakers, MenActiveShoes, MenHiking, MenSlipOns, Women, WomenSneakers, WomenActiveShoes, WomenSlipOns, WomenFlats, WomenHiking, Kids, KidsSlipOns, KidsSneakers, MenAccesories, MenBelts, MenBriefcase, MenWallets, WomenAccesories, WomenBags, WomenBelts, WomenWallets  } from "./Root/Pages/index";
+import { Men, Cart, Home, MenSneakers, MenActiveShoes, MenHiking, MenSlipOns, Women, WomenSneakers, WomenActiveShoes, WomenSlipOns, WomenFlats, WomenHiking, Kids, KidsSlipOns, KidsSneakers, MenAccesories, MenBelts, MenBriefcase, MenWallets, WomenAccesories, WomenBags, WomenBelts, WomenWallets, ProductPage  } from "./Root/Pages/index";
 import { Toaster } from "@/components/ui/toaster"
 import PrivateRoutes from "./Auth/components/utils/PrivateRoutes";
 import RootLayout from "./Root/Pages/RootLayout";
@@ -28,6 +28,7 @@ function App() {
           <Route path="/collections/men-slip-ons" element={<MenSlipOns/>}/>
           <Route path="/collections/men-hiking" element={<MenHiking/>}/>
           </Route>
+          <Route path="/collections/men-sneakers/:id" element={<ProductPage/>}/>
 
           <Route element={<RootLayout category="menAc"/>}>
           <Route path="/collections/men-accesories" element={<MenAccesories/>}/>

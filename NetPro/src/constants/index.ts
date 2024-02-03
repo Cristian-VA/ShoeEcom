@@ -127,4 +127,6 @@ export const MenShoesLinks = [
     message: "Navigate the snowy landscapes in trendsetting winter footwear."
   }
 
+  export const shoeSizes = [ 8 , 8.5, 9 , 9.5, 10 ,10.5, 11, 11.5, 12, 12.5, 13, 13.5 , 14]
+
  

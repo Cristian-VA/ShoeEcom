@@ -6,7 +6,7 @@ import { Men, Cart, Home, MenSneakers, MenActiveShoes, MenHiking, MenSlipOns, Wo
 import { Toaster } from "@/components/ui/toaster"
 import PrivateRoutes from "./Auth/components/utils/PrivateRoutes";
 import RootLayout from "./Root/Pages/RootLayout";
-
+import ProductPageSkeleton from "./Root/components/shop/ProductPageSkeleton";
 function App() {
   return (
     <main className="flex min-h-screen flex-col justify-between items-center">

@@ -12,7 +12,7 @@ import { useState } from 'react'
 
  
 
-const ProductCard = ({product }:{product:any }) => {
+const ProductCard = ({product, simple=false }:{product:any, simple:boolean }) => {
   const [currentImage, setCurrentImage] = useState(0)
   
   const mapImages= product?.imagesColor1?.map((image:string, index:number) => (
@@ -27,32 +27,27 @@ const ProductCard = ({product }:{product:any }) => {
 
   return (
    
-    <div className='  flex flex-col w-1/2 lg:w-1/3 md:p-4 p-2  '>
+    <div className={simple? "flex flex-col w-1/2   ": '  flex flex-col w-1/2 lg:w-1/3 md:p-4 p-2  '}>
     <Link to={`/collections/men-sneakers/${product?.$id}`}  >
 
           <div className=' relative'>
           <img src={product.imagesColor1[currentImage]} alt={product.productName} className=' object-cover ' />
-          <p className='absolute bottom-0 left-0 m-3 px-4 py-1 bg-white bg-opacity-40 font-medium italic'>{product.tag}</p>
+          {!simple && product?.tag && <p className='absolute bottom-0 left-0 m-3 px-4 py-1 bg-white bg-opacity-40 font-medium italic'>{product.tag}</p>}
           </div>
           <h1 className='font-semibold my-1  '>{product.productName}</h1>
-          <p className='font-medium my-1 text-gray-600'>${product.price}</p>
+          {!simple && <p className='font-medium my-1 text-gray-600'>${product.price}</p>}
 
          
           
         </Link>
-         <Carousel className='lg:block mx-auto w-full minus-64px hidden ' >
+         { !simple && <Carousel className='lg:block mx-auto w-full minus-64px hidden ' >
          <CarouselContent>
            {mapImages}
          </CarouselContent>
          <CarouselPrevious />
          <CarouselNext />
-       </Carousel>
-      <div className='flex'>
-
-
-        
-    
-      </div>
+       </Carousel>}
+      
        
        </div>
       

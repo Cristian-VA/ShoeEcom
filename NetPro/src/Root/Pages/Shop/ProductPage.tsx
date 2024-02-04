@@ -1,13 +1,21 @@
 import {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom"
-import { useGetMenProductId } from '@/lib/queries/queries&mutations';
+import { useGetMenProductId, useGetMenrelatedProducts } from '@/lib/queries/queries&mutations';
 import { shoeSizes } from '@/constants';
 import { Button } from '@/components/ui/button';
+import ProductCard from '@/Root/components/shop/ProductCard';
 import ProductPageSkeleton from '@/Root/components/shop/ProductPageSkeleton';
 import Loader from '@/Root/components/Loader';
 const ProductPage = () => {
   const { id } = useParams();
   const { data: product, isLoading } = useGetMenProductId(id || "");
+  const { data: relatedProducts } = useGetMenrelatedProducts(id || "");
+
+  console.log(relatedProducts)
+
+  
+  
+
   const [currentImage, setCurrentImage] = useState(0);
   const [currentColor, setCurrentColor] = useState(0);
   const [currentSize, setCurrentSize] = useState(0)
@@ -64,7 +72,7 @@ const ProductPage = () => {
   ));
   image = product?.imagesColor5[currentImage]
   }
-  if (isLoading) return <Loader/>
+ 
   if (!product?.productName) return <ProductPageSkeleton/>
 
 
@@ -72,7 +80,7 @@ const ProductPage = () => {
   return (
     <>
       <div className='container my-6 flex flex-col lg:flex-row  md:gap-8 gap-4 '>
-        <div className='flex md:gap-8 gap-4 sm:flex-row flex-col max-h-[550px] max-w-[750px] w-full border-2 '>
+        <div className='flex md:gap-8 gap-4 sm:flex-row flex-col max-h-[550px] max-w-[750px] w-full  '>
           <div className='flex sm:flex-col gap-2 min-w-[50px] '>
               {mapImages}
           </div>
@@ -123,12 +131,24 @@ const ProductPage = () => {
 
             </div>
 
-            <div className=' flex flex-col gap-2'>
+            <div className=' flex flex-col gap-2 '>
 
             <Button disabled={isDisabled} className='btn-black w-full'>
                 {isDisabled? "PLEASE SELECT A SIZE" : "ADD TO CART"}
             </Button>
                     <p className='text-center text-medium text-[14px]'>Free shipping on orders over $70. Returns are free of charge.</p>
+            </div>
+
+            <div className='flex flex-col my-6'>
+                <h1 className='capitalize md:text-[24px] font-bold text-[18px] my-2'> Related Products</h1>
+            <div className='flex gap-4  max-w-[600px]  '>
+
+              
+              <ProductCard simple={true} product={relatedProducts?.documents[0]}/>
+              <ProductCard simple={true} product={relatedProducts?.documents[1]}/> 
+              
+            </div>
+
             </div>
 
 

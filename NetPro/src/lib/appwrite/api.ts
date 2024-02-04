@@ -94,3 +94,17 @@ export async function getMenProductById(productId: string) {
     console.log(error);
   }
 }
+
+export async function getMenRelatedProducts(productId: string){
+  const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2)]
+  try {
+    const relatedProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.menCollectionId,
+      queries
+    )
+    return relatedProducts
+  } catch (error) {
+    console.log(error)
+  }
+}

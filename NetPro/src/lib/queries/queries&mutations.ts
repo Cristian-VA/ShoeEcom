@@ -2,7 +2,8 @@
 
 import { INewUser } from "@/types"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import {  signInAccount, signOutAccount, getMenCollection, getMenProductById } from "../appwrite/api"
+import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts } from "../appwrite/api"
+
 import { QUERY_KEYS } from "./Keys"
 
 
@@ -30,6 +31,14 @@ export const useGetMenCollectionBycategory = (category:string) =>{
     return useQuery({
     queryKey:[QUERY_KEYS.GET_MEN_COLLECTION], 
     queryFn: () => getMenCollection(category),  
+    
+    })
+}
+
+export const useGetMenrelatedProducts = (productId:string) =>{
+    return useQuery({
+    queryKey:[QUERY_KEYS.GET_MEN_COLLECTION], 
+    queryFn: () => getMenRelatedProducts(productId),  
     
     })
 }

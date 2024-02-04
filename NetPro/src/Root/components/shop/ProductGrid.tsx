@@ -6,7 +6,7 @@ const ProductGrid = ({ data }: { data: any,  }) => {
     <div className="flex flex-wrap  ">
       {data?.documents?.map((product: any, index: number) => (
         // Added a unique key for each link
-       <ProductCard product={product} key={index}/>
+       <ProductCard product={product} key={index} simple={false}/>
       ))}
     </div>
   );

@@ -31,11 +31,11 @@ const ProductCard = ({product, simple=false }:{product:any, simple:boolean }) =>
     <Link to={`/collections/men-sneakers/${product?.$id}`}  >
 
           <div className=' relative'>
-          <img src={product.imagesColor1[currentImage]} alt={product.productName} className=' object-cover ' />
+          <img src={product?.imagesColor1[currentImage]} alt={product?.productName} className=' object-cover ' />
           {!simple && product?.tag && <p className='absolute bottom-0 left-0 m-3 px-4 py-1 bg-white bg-opacity-40 font-medium italic'>{product.tag}</p>}
           </div>
-          <h1 className='font-semibold my-1  '>{product.productName}</h1>
-          {!simple && <p className='font-medium my-1 text-gray-600'>${product.price}</p>}
+          <h1 className='font-semibold my-1  '>{product?.productName}</h1>
+          {!simple && <p className='font-medium my-1 text-gray-600'>${product?.price}</p>}
 
          
           

@@ -2,8 +2,10 @@ import React from 'react'
 import { useGetMenCollectionBycategory } from '@/lib/queries/queries&mutations'
 import Loader from '@/Root/components/Loader'
 import ProductGrid from '@/Root/components/shop/ProductGrid'
+
+
 const MenSneakers = () => {
-  const {  data, isPending, isLoading} = useGetMenCollectionBycategory("sneakers")
+  const {  data, isPending } = useGetMenCollectionBycategory("men-sneakers")
   console.log(data)
   
 

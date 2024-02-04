@@ -5,13 +5,14 @@ import { shoeSizes } from '@/constants';
 import { Button } from '@/components/ui/button';
 import ProductCard from '@/Root/components/shop/ProductCard';
 import ProductPageSkeleton from '@/Root/components/shop/ProductPageSkeleton';
-import Loader from '@/Root/components/Loader';
+import DetailsAccordeon from '@/Root/components/shop/detailsAccordeon';
+
 const ProductPage = () => {
   const { id } = useParams();
   const { data: product, isLoading } = useGetMenProductId(id || "");
   const { data: relatedProducts } = useGetMenrelatedProducts(id || "");
 
-  console.log(relatedProducts)
+
 
   
   
@@ -30,7 +31,13 @@ const ProductPage = () => {
       setIsDisabled(true); 
     }
   }, [currentSize])
-  
+
+  useEffect(() => {
+    setCurrentColor(0)
+    setCurrentImage(0)
+  }, [id])
+
+
 
   let mapImages = null;
   let image = product?.imagesColor1[currentImage]
@@ -84,12 +91,19 @@ const ProductPage = () => {
           <div className='flex sm:flex-col gap-2 min-w-[50px] '>
               {mapImages}
           </div>
+          <div className='w-full'>
           <img src={image} alt="product" className='object-cover h-full w-full overflow-hidden' />
+
+          <div className='w-full lg:flex flex-col hidden'>
+              <DetailsAccordeon info={product?.description} imgUrl={product?.imagesColor1[3]} type="description"/>
+              <DetailsAccordeon info={product?.details}  type="details"/>
+          </div>
+          </div>
           </div>
 
           <div className='  '>
-            <p className='capitalize font-medium'>Home/Collections/{product?.users}'s {product?.category}</p>
-            <h1 className='capitalize md:text-[36px] font-bold text-[28px] my-2'>{product?.users}'s {product?.productName}</h1>
+            <p className='capitalize font-medium'>Home/Collections/{product?.category}</p>
+            <h1 className='capitalize md:text-[36px] font-bold text-[28px] my-2'>{product?.productName}</h1>
             <div className='flex gap-6'>
               <p className='text-[20px]'>${product?.price}</p>
              {product?.price >= 70 && <p className='bg-gray-100 my-auto font-medium px-2 italic'> Free Shipping</p> }
@@ -138,6 +152,11 @@ const ProductPage = () => {
             </Button>
                     <p className='text-center text-medium text-[14px]'>Free shipping on orders over $70. Returns are free of charge.</p>
             </div>
+
+            <div className='w-full flex flex-col lg:hidden my-3'>
+              <DetailsAccordeon info={product?.description} imgUrl={product?.imagesColor1[3]} type="description"/>
+              <DetailsAccordeon info={product?.details}  type="details"/>
+          </div>
 
             <div className='flex flex-col my-6'>
                 <h1 className='capitalize md:text-[24px] font-bold text-[18px] my-2'> Related Products</h1>

@@ -25,7 +25,7 @@ const DetailsAccordeon = ({info, imgUrl, type= "details" || "description"}:{info
       </div>): (
         <ul className="flex flex-wrap flex-col gap-4">
             {info?.map((detail) => (
-                <li className="md:text-[18px] text-[16] font-medium">{detail}</li>
+                <li className=" text-[16] font-medium">- {detail}</li>
             ))}
         </ul>
       )}

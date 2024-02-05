@@ -1,9 +1,7 @@
-import MenCategory from '@/Root/components/shop/men/menCategory'
+import MenCategory from "@/Root/components/shop/men/menCategory"
 
 const MenSneakers = () => {
   
-  
-
   return (
     <>
     <MenCategory category={"men-sneakers"}/>

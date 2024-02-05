@@ -24,11 +24,11 @@ function App() {
           <Route element={<RootLayout category="men"/>}>
           <Route path="/collections/men" element={<Men/>}/>
           <Route path="/collections/men-sneakers" element={<MenSneakers/>}/>
-          <Route path="/collections/men-active-shoes" element={<MenActiveShoes/>}/>
+          <Route path="/collections/men-active" element={<MenActiveShoes/>}/>
           <Route path="/collections/men-slip-ons" element={<MenSlipOns/>}/>
           <Route path="/collections/men-hiking" element={<MenHiking/>}/>
           </Route>
-          <Route path="/collections/men-sneakers/:id" element={<ProductPage/>}/>
+          <Route path="/collections/:category/:id" element={<ProductPage/>}/>
 
           <Route element={<RootLayout category="menAc"/>}>
           <Route path="/collections/men-accesories" element={<MenAccesories/>}/>

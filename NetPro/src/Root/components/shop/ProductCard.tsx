@@ -12,7 +12,7 @@ import { useState } from 'react'
 
  
 
-const ProductCard = ({product, simple=false }:{product:any, simple:boolean }) => {
+const ProductCard = ({product, simple=false,  }:{product:any, simple:boolean }) => {
   const [currentImage, setCurrentImage] = useState(0)
   
   const mapImages= product?.imagesColor1?.map((image:string, index:number) => (
@@ -28,7 +28,7 @@ const ProductCard = ({product, simple=false }:{product:any, simple:boolean }) =>
   return (
    
     <div className={simple? "flex flex-col w-1/2   ": '  flex flex-col w-1/2 lg:w-1/3 md:p-4 p-2  '}>
-    <Link to={`/collections/men-sneakers/${product?.$id}`}  >
+    <Link to={`/collections/${product?.category}/${product?.$id}`}  >
 
           <div className=' relative'>
           <img src={product?.imagesColor1[currentImage]} alt={product?.productName} className=' object-cover ' />

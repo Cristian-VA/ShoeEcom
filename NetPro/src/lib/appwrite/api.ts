@@ -95,8 +95,8 @@ export async function getMenProductById(productId: string) {
   }
 }
 
-export async function getMenRelatedProducts(productId: string){
-  const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2)]
+export async function getMenRelatedProducts(productId: string, category:string){
+  const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2), Query.equal("category", [category])]
   try {
     const relatedProducts = await databases.listDocuments(
       appwriteConfig.databaseId,

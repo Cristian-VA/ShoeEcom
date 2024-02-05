@@ -2,7 +2,7 @@
 import ProductCard from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 
-const ProductGrid = ({ data, isRefetching }: { data: any, isRefetching:boolean }) => {
+const ProductGrid = ({ data, isRefetching,  }: { data: any, isRefetching:boolean,  }) => {
   return (
     <>
 
@@ -21,7 +21,7 @@ const ProductGrid = ({ data, isRefetching }: { data: any, isRefetching:boolean }
       
       {data?.documents?.map((product: any, index: number) => (
         // Added a unique key for each link
-       <ProductCard product={product} key={index} simple={false}/>
+       <ProductCard product={product} key={index} simple={false} />
       ))}
     </div>
       )}

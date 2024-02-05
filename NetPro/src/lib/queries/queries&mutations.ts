@@ -35,10 +35,10 @@ export const useGetMenCollectionBycategory = (category:string) =>{
     })
 }
 
-export const useGetMenrelatedProducts = (productId: string | undefined) => {
+export const useGetMenrelatedProducts = (productId: string | undefined, category:string) => {
     return useQuery({
       queryKey: [QUERY_KEYS.GET_MEN_COLLECTION, productId],
-      queryFn: () => getMenRelatedProducts(productId ||  ""),
+      queryFn: () => getMenRelatedProducts(productId ||  "", category),
       enabled: !!productId,
     });
   };

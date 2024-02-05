@@ -12,7 +12,7 @@ const MenCategory = ({category}:{category:string}) => {
     <>
     {isPending? <Loader/> : (
     <div className='container  py-6'>
-      <ProductGrid  data={data} isRefetching={isRefetching}/>
+      <ProductGrid  data={data} isRefetching={isRefetching} />
     </div>
     )}
     </>

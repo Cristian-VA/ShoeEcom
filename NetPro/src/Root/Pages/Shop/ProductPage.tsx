@@ -6,12 +6,15 @@ import { Button } from '@/components/ui/button';
 import ProductCard from '@/Root/components/shop/ProductCard';
 import ProductPageSkeleton from '@/Root/components/shop/ProductPageSkeleton';
 import DetailsAccordeon from '@/Root/components/shop/DetailsAccordeon';
+import ProductCardSkeleton from '@/Root/components/shop/ProductCardSkeleton';
+
 
 const ProductPage = () => {
-  const { id } = useParams();
-  const { data: product, isLoading } = useGetMenProductId(id || "");
-  const { data: relatedProducts } = useGetMenrelatedProducts(id || "");
+  const { id, category } = useParams();
+  const { data: product, isLoading, isFetched } = useGetMenProductId(id || "");
+  const { data: relatedProducts } = useGetMenrelatedProducts(id || "", category || "");
 
+  
 
 
   
@@ -158,17 +161,17 @@ const ProductPage = () => {
               <DetailsAccordeon info={product?.details}  type="details"/>
           </div>
 
-            <div className='flex flex-col my-6'>
+           { isFetched && ( <div className='flex flex-col my-6'>
                 <h1 className='uppercase md:text-[22px] font-semibold text-[18px] my-2'> Related Products</h1>
-            <div className='flex gap-4  max-w-[600px]  '>
+            <div className='flex gap-4  max-w-[600px]   '>
 
               
-              <ProductCard simple={true} product={relatedProducts?.documents[0]}/>
-              <ProductCard simple={true} product={relatedProducts?.documents[1]}/> 
+             <ProductCard simple={true} product={relatedProducts?.documents[0]}/>
+             <ProductCard simple={true} product={relatedProducts?.documents[1]}/>
               
             </div>
 
-            </div>
+            </div>)}
 
 
 

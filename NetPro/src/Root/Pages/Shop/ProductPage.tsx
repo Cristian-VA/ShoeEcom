@@ -5,7 +5,7 @@ import { shoeSizes } from '@/constants';
 import { Button } from '@/components/ui/button';
 import ProductCard from '@/Root/components/shop/ProductCard';
 import ProductPageSkeleton from '@/Root/components/shop/ProductPageSkeleton';
-import DetailsAccordeon from '@/Root/components/shop/detailsAccordeon';
+import DetailsAccordeon from '@/Root/components/shop/DetailsAccordeon';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -80,7 +80,7 @@ const ProductPage = () => {
   image = product?.imagesColor5[currentImage]
   }
  
-  if (!product?.productName) return <ProductPageSkeleton/>
+  if (isLoading) return <ProductPageSkeleton/>
 
 
 
@@ -159,7 +159,7 @@ const ProductPage = () => {
           </div>
 
             <div className='flex flex-col my-6'>
-                <h1 className='capitalize md:text-[24px] font-bold text-[18px] my-2'> Related Products</h1>
+                <h1 className='uppercase md:text-[22px] font-semibold text-[18px] my-2'> Related Products</h1>
             <div className='flex gap-4  max-w-[600px]  '>
 
               

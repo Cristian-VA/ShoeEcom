@@ -1,21 +1,12 @@
-import React from 'react'
-import { useGetMenCollectionBycategory } from '@/lib/queries/queries&mutations'
-import Loader from '@/Root/components/Loader'
-import ProductGrid from '@/Root/components/shop/ProductGrid'
-
+import MenCategory from '@/Root/components/shop/men/menCategory'
 
 const MenSneakers = () => {
-  const {  data, isPending } = useGetMenCollectionBycategory("men-sneakers")
-  console.log(data)
+  
   
 
   return (
     <>
-    {isPending? <Loader/> : (
-    <div className='container  py-6'>
-      <ProductGrid  data={data}/>
-    </div>
-    )}
+    <MenCategory category={"men-sneakers"}/>
     </>
   )
 }

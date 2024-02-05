@@ -1,8 +1,10 @@
-import React from 'react'
+import MenCategory from "@/Root/components/shop/men/menCategory"
 
 const MenSlipOns = () => {
   return (
-    <div>MenSlipOns</div>
+    <>
+    <MenCategory category={"men-slip-ons"}/>
+    </>
   )
 }
 

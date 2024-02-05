@@ -1,8 +1,7 @@
-import React from 'react'
-
+import MenCategory from "@/Root/components/shop/men/menCategory"
 const MenHiking = () => {
   return (
-    <div>MenHiking</div>
+    <MenCategory category={"men-hiking"}/>
   )
 }
 

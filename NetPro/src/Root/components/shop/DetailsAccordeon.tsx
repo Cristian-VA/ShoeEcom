@@ -11,7 +11,7 @@ const DetailsAccordeon = ({info, imgUrl, type= "details" || "description"}:{info
   return (
     <Accordion type="single" collapsible>
   <AccordionItem value="item-1">
-    <AccordionTrigger className="font-semibold my-1 uppercase text-[20px]">{type}</AccordionTrigger>
+    <AccordionTrigger className="font-semibold my-1 uppercase text-[16px]">{type}</AccordionTrigger>
     <AccordionContent>
       {type === "description"? (<div className="flex w-full gap-6">
             <div className="text-justify" >

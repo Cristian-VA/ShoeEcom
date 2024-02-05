@@ -38,7 +38,7 @@ export const useGetMenCollectionBycategory = (category:string) =>{
 export const useGetMenrelatedProducts = (productId: string | undefined) => {
     return useQuery({
       queryKey: [QUERY_KEYS.GET_MEN_COLLECTION, productId],
-      queryFn: () => getMenRelatedProducts(productId),
+      queryFn: () => getMenRelatedProducts(productId ||  ""),
       enabled: !!productId,
     });
   };

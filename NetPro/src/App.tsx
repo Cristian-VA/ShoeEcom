@@ -22,17 +22,11 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
 
           <Route element={<RootLayout category="men"/>}>
-          <Route path="/collections/:category" element={<MenCollection/>}/>
-
+            <Route path="/collections/:category" element={<MenCollection/>}/>
           </Route>
           <Route path="/collections/:category/:id" element={<ProductPage/>}/>
 
-          <Route element={<RootLayout category="menAc"/>}>
-          <Route path="/collections/men-accesories" element={<MenAccesories/>}/>
-          <Route path="/collections/men-belts" element={<MenBelts/>}/>
-          <Route path="/collections/men-briefcases" element={<MenBriefcase/>}/>
-          <Route path="/collections/men-wallets" element={<MenWallets/>}/>
-          </Route>
+          
 
           <Route element={<RootLayout category="women"/>}>
           <Route path="/collections/women" element={<Women/>}/>

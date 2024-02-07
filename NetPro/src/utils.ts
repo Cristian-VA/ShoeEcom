@@ -13,5 +13,12 @@ export function convertToTitleCase(str: string): string {
     return titleCaseStr;
 }
 
+export function extractCategoryFromUrl(url: string): string {
+    // Split the URL string by '/'
+    const parts: string[] = url.split('/');
+    // Get the last part of the split string
+    const category: string = parts[parts.length - 1];
+    return category;
+}
 
   

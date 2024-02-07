@@ -2,10 +2,7 @@ export {default as Home} from "./Home"
 export {default as Cart} from "./Cart"
 
 export {default as Men }from "./Shop/Men/Men"
-export { default as MenSneakers} from "./Shop/Men/MenSneakers"
-export { default as MenHiking} from "./Shop/Men/MenHiking"
-export { default as MenSlipOns} from "./Shop/Men/MenSlipOns"
-export { default as MenActiveShoes} from "./Shop/Men/MenActiveShoes"
+export  {default as MenCollection} from "./Shop/Men/MenCollection"
 
 export { default as MenAccesories} from "./Shop/Men/MenAccesories"
 export { default as MenWallets} from "./Shop/Men/MenWallets"

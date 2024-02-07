@@ -29,8 +29,9 @@ export const useSignOutAccountMutation = () => {
 
 export const useGetMenCollectionBycategory = (category:string) =>{
     return useQuery({
-    queryKey:[QUERY_KEYS.GET_MEN_COLLECTION], 
+    queryKey:[QUERY_KEYS.GET_MEN_COLLECTION, category], 
     queryFn: () => getMenCollection(category),  
+    enabled: !!category,
     
     })
 }

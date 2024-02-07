@@ -5,7 +5,7 @@ export const MenShoesLinks = [
       label: "Sneakers",
     },
     {
-      route: "/collections/men-active-shoes",
+      route: "/collections/men-active",
       label: "Active Shoes",
     },
     {
@@ -54,7 +54,7 @@ export const MenShoesLinks = [
       label: "Sneakers",
     },
     {
-      route: "/collections/women-active-shoes",
+      route: "/collections/women-active",
       label: "Active Shoes",
     },
     {
@@ -129,4 +129,53 @@ export const MenShoesLinks = [
 
   export const shoeSizes = [ 8 , 8.5, 9 , 9.5, 10 ,10.5, 11, 11.5, 12, 12.5, 13, 13.5 , 14]
 
- 
+  export const helpInfo = ["+1 (555) 123-4567", "+1 (555) 987-6543 (Text-Only)", "support@quillstride.com", "Returns/Exchanges", "FAQ/Contact Us"];
+
+  export const shopInfo = [
+   
+    {
+      route: "/collections/men-sneakers",
+      label: "Men's shoes",
+    },
+    {
+      route: "/collections/women-sneakers",
+      label: "women's shoes",
+    },
+    {
+      route: "/collections/kids",
+      label: "Men's accesories",
+    },
+    {
+      route: "/collections/kids",
+      label: "Women's accesories",
+    },
+    {
+      route: "/collections/kids",
+      label: "Kids shoes",
+    },
+    {
+      route: "/",
+      label: "Gift cards",
+    },
+    {
+      route: "/",
+      label: "Refer a friend",
+    },
+
+];
+export const companyInfo = ["Our Stores", "Our Story", "Our Materials", "Sustainability", "Shoe Care", "Partnerships", "Affiliates", "Community Offers", "Product Testing"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

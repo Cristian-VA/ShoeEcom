@@ -169,7 +169,30 @@ export const companyInfo = ["Our Stores", "Our Story", "Our Materials", "Sustain
 
 
 
-
+export const categoryLinksMap: Record<string, any[]> = {
+  "men-sneakers": MenShoesLinks,
+  "men-active": MenShoesLinks,
+  "men-hiking": MenShoesLinks,
+  "men-slip-ons": MenShoesLinks,
+  "men": MenShoesLinks,
+  "men-accesories": MenAccesoriesLinks,
+  "men-belts": MenAccesoriesLinks,
+  "men-briefcases": MenAccesoriesLinks,
+  "men-wallets": MenAccesoriesLinks,
+  "women": WomenShoesLinks,
+  "women-sneakers": WomenShoesLinks,
+  "women-active": WomenShoesLinks,
+  "women-slip-ons": WomenShoesLinks,
+  "women-hiking": WomenShoesLinks,
+  "women-flats": WomenShoesLinks,
+  "women-accesories": WomenAccesoriesLinks,
+  "women-belts": WomenAccesoriesLinks,
+  "women-bags": WomenAccesoriesLinks,
+  "women-wallets": WomenAccesoriesLinks,
+  "kids": KidsLinks,
+  "kids-sneakers": KidsLinks,
+  "kids-slip-ons": KidsLinks
+};
 
 
 

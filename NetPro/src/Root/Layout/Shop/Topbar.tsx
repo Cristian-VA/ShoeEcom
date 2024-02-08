@@ -9,9 +9,21 @@ import {
   KidsLinks,
 } from "@/constants";
 import { Link } from 'react-router-dom';
+import { extractCategoryFromUrl } from '@/utils';
+import { categoryLinksMap } from "@/constants";
 
-const Topbar = ({ category }: { category: string }) => {
+
+const Topbar = () => {
   const location = useLocation();
+  const currentCategory = extractCategoryFromUrl(location.pathname);
+
+  const getCategoryLinks = (categoryLinks: any[]) => {
+    return categoryLinks.map((link, index) => (
+      <li key={index} className="hover:underline bg-transparent">
+        <Link className="bg-transparent" to={link.route}>{link.label}</Link>
+      </li>
+    ));
+  };
   return (
     <>
     <div className='md:hidden w-screen px-5 pt-6 pb-3'>
@@ -20,37 +32,8 @@ const Topbar = ({ category }: { category: string }) => {
 
     <div className='md:hidden w-screen bg-gray-50   py-4 overflow-x-auto whitespace-nowrap custom-scrollbar'>
     <ul className="inline-flex bg-gray-50  gap-5 font-medium px-5  min-w-screen">
-        {category === "men"
-          ? MenShoesLinks.map((link, index) => (
-              <li key={index} className="hover:underline bg-gray-50 ">
-                <Link className='bg-gray-50' to={link.route}>{link.label}</Link>
-              </li>
-            ))
-          : category === "menAc"
-          ? MenAccesoriesLinks.map((link, index) => (
-              <li key={index} className="hover:underline bg-gray-50 ">
-                <Link className='bg-gray-50' to={link.route}>{link.label}</Link>
-              </li>
-            ))
-          : category === "women"
-          ? WomenShoesLinks.map((link, index) => (
-              <li key={index} className="hover:underline bg-gray-50 ">
-                <Link className='bg-gray-50' to={link.route}>{link.label}</Link>
-              </li>
-            ))
-          : category === "womenAc"
-          ? WomenAccesoriesLinks.map((link, index) => (
-              <li key={index} className="hover:underline bg-gray-50 ">
-                <Link to={link.route}>{link.label}</Link>
-              </li>
-            ))
-          : category === "kids"
-          ? KidsLinks.map((link, index) => (
-              <li key={index} className="hover:underline bg-gray-50 ">
-                <Link className='bg-gray-50' to={link.route}>{link.label}</Link>
-              </li>
-            ))
-          : ""}
+    {currentCategory && categoryLinksMap[currentCategory] && getCategoryLinks(categoryLinksMap[currentCategory])}
+           
       </ul>
     </div>
 

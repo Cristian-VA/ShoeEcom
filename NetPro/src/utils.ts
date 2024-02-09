@@ -21,4 +21,14 @@ export function extractCategoryFromUrl(url: string): string {
     return category;
 }
 
+export function extractCategoryFromProductPage(url:string) {
+    const regex = /\/collections\/(men|women|kid)-([^/]+)/;
+    const match = url.match(regex);
+    if (match) {
+        return match[1] + '-' + match[2];
+    } else {
+        return null; // Return null if no match found
+    }
+}
+
   

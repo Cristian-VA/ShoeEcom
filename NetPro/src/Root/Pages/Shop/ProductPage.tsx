@@ -1,22 +1,65 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import {
   useGetMenProductId,
   useGetMenrelatedProducts,
+  useGetKidsProductId,
+  useGetKidsrelatedProducts,
+  useGetWomenProductId,
+  useGetWomenrelatedProducts
 } from "@/lib/queries/queries&mutations";
 import { shoeSizes } from "@/constants";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/Root/components/shop/ProductCard";
 import ProductPageSkeleton from "@/Root/components/shop/ProductPageSkeleton";
 import DetailsAccordeon from "@/Root/components/shop/DetailsAccordeon";
+import { Link } from "react-router-dom";
+import { extractCategoryFromProductPage } from "@/utils";
 
 const ProductPage = () => {
   const { id, category } = useParams();
-  const { data: product, isLoading, isFetched } = useGetMenProductId(id || "");
-  const { data: relatedProducts } = useGetMenrelatedProducts(
-    id || "",
-    category || ""
-  );
+  const location = useLocation()
+  const currentCategory:any = extractCategoryFromProductPage(location.pathname)
+  const { data: productMen, isLoading: isLoadingMen, isFetched:isFetchMen } = useGetMenProductId(id || "");
+  const { data: productWomen, isLoading: isLoadingWomen, isFetched:isFetchWomen } = useGetWomenProductId(id || "");
+  const { data: productKids, isLoading: isLoadingKids, isFetched:isFetchKids } = useGetKidsProductId(id || "");
+
+
+  const { data: relatedProductsMen } = useGetMenrelatedProducts(  id || "",   category || "" );
+  const { data: relatedProductsWomen } = useGetWomenrelatedProducts(  id || "",   category || "" );
+  const { data: relatedProductsKids } = useGetKidsrelatedProducts(  id || "",   category || "" );
+
+
+  const isWomenCategory = currentCategory.startsWith("women")
+  const isKidsCategory = currentCategory.startsWith("kids")
+
+  console.log(isWomenCategory)
+
+  let product:any = null
+  let isLoading = null
+  let isFetched = null
+  let relatedProducts = null
+  
+  if (isWomenCategory) {
+    product = productWomen
+    isLoading = isLoadingWomen
+    isFetched = isFetchWomen
+    relatedProducts =  relatedProductsWomen
+  } else if (isKidsCategory) {
+    product = productKids
+    isLoading = isLoadingKids
+    isFetched = isFetchKids
+    relatedProducts =  relatedProductsKids
+  } else {
+    product = productMen
+    isLoading = isLoadingMen
+    isFetched = isFetchMen
+    relatedProducts =  relatedProductsMen
+
+  }
+
+
+
 
   const [currentImage, setCurrentImage] = useState(0);
   const [currentColor, setCurrentColor] = useState(0);
@@ -146,15 +189,18 @@ const ProductPage = () => {
 
               />
               
+              
             </div>
             
           </div>
         </div>
 
         <div className="  ">
-          <p className="capitalize font-medium">
+          <Link to={`/collections/${product?.category} ` }>
+          <p className="capitalize font-medium hover:underline">
             Home/Collections/{product?.category}
           </p>
+          </Link>
           <h1 className="capitalize md:text-[36px] font-bold text-[28px] my-2">
             {product?.productName}
           </h1>
@@ -278,6 +324,8 @@ const ProductPage = () => {
           )}
         </div>
       </div>
+
+      
 
      
     </>

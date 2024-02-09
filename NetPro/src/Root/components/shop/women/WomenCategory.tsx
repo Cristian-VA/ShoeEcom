@@ -3,6 +3,7 @@ import Loader from '@/Root/components/Loader'
 import ProductGrid from '@/Root/components/shop/ProductGrid'
 
 
+
 const WomenCategory = ({category}:{category:string}) => {
   const {  data, isPending, isRefetching  } = useGetMenCollectionBycategory(category)
   

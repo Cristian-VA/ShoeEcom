@@ -65,6 +65,8 @@ export async function getCurrentUser() {
   }
 }
 
+// Fetch Products
+
 export async function getMenCollection(category: string) {
   const queries: any[] = [Query.equal("category", category)];
 
@@ -81,6 +83,42 @@ export async function getMenCollection(category: string) {
   }
 }
 
+
+export async function getWomenCollection(category: string) {
+  const queries: any[] = [Query.equal("category", category)];
+
+  try {
+    const womenProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.womenCollectionId,
+      queries
+    );
+
+    return womenProducts;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getKidsCollection(category: string) {
+  const queries: any[] = [Query.equal("category", category)];
+
+  try {
+    const kidsProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.kidsCollectionId,
+      queries
+    );
+
+    return kidsProducts;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+//Fetch by Id
+
 export async function getMenProductById(productId: string) {
   try {
     const product = await databases.getDocument(
@@ -95,12 +133,71 @@ export async function getMenProductById(productId: string) {
   }
 }
 
+export async function getWomenProductById(productId: string) {
+  try {
+    const product = await databases.getDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.womenCollectionId,
+      productId
+    );
+
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getKidsProductById(productId: string) {
+  try {
+    const product = await databases.getDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.kidsCollectionId,
+      productId
+    );
+
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+//Fetch related Products
+
 export async function getMenRelatedProducts(productId: string, category:string){
   const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2), Query.equal("category", [category])]
   try {
     const relatedProducts = await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.menCollectionId,
+      queries
+    )
+    return relatedProducts
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getWomenRelatedProducts(productId: string, category:string){
+  const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2), Query.equal("category", [category])]
+  try {
+    const relatedProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.womenCollectionId,
+      queries
+    )
+    return relatedProducts
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getKidsRelatedProducts(productId: string, category:string){
+  const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2), Query.equal("category", [category])]
+  try {
+    const relatedProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.kidsCollectionId,
       queries
     )
     return relatedProducts

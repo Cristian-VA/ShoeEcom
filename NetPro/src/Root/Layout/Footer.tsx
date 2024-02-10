@@ -15,8 +15,8 @@ const Footer = () => {
               {" "}
               Help
             </h1>
-            {helpInfo.map((info) => (
-              <p className="bg-transparent font-medium text-white text-[14px]">
+            {helpInfo.map((info, index) => (
+              <p key={index} className="bg-transparent font-medium text-white text-[14px]">
                 {info}
               </p>
             ))}
@@ -27,8 +27,8 @@ const Footer = () => {
               {" "}
               shop
             </h1>
-            {shopInfo.map((info) => (
-              <Link to={info.route} className="bg-transparent">
+            {shopInfo.map((info, index) => (
+              <Link to={info.route} className="bg-transparent" key={index}>
                 <p className="bg-transparent font-medium text-white text-[14px]">
                   {info.label}
                 </p>
@@ -41,8 +41,8 @@ const Footer = () => {
               {" "}
               company
             </h1>
-            {companyInfo.map((info) => (
-              <p className="bg-transparent font-medium text-white text-[14px]">
+            {companyInfo.map((info, index) => (
+              <p key={index} className="bg-transparent font-medium text-white text-[14px]">
                 {info}
               </p>
             ))}

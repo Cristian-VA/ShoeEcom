@@ -29,8 +29,8 @@ const DetailsAccordeon = ({description, imgUrl, details}:{description:any[], img
         <AccordionTrigger className="font-semibold my-1 uppercase text-[16px]">Details</AccordionTrigger>
         <AccordionContent>
         <ul className="flex flex-wrap flex-col gap-4">
-            {details?.map((detail) => (
-                <li className=" text-[16] font-medium">- {detail}</li>
+            {details?.map((detail, index) => (
+                <li key={index} className=" text-[16] font-medium">- {detail}</li>
             ))}
         </ul>
         </AccordionContent>

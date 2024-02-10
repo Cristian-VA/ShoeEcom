@@ -127,7 +127,11 @@ export const MenShoesLinks = [
     message: "Navigate the snowy landscapes in trendsetting winter footwear."
   }
 
-  export const shoeSizes = [ 8 , 8.5, 9 , 9.5, 10 ,10.5, 11, 11.5, 12, 12.5, 13, 13.5 , 14]
+  export const menShoeSizes = [ "8" , "8.5", "9" , "9.5", "10" ,"10.5", "11", "11.5", "12", "12.5", "13", "13.5" , "14"]
+
+  export const womenShoeSizes = [ "5", "5.5", "6", "6.5", "7", "7.5", "8" , "8.5", "9" , "9.5", "10" ,"10.5", "11"]
+
+  export const kidsShoeSizes = [ "11T", "12T", "13T", "1Y", "2Y", "3Y" ]
 
   export const helpInfo = ["+1 (555) 123-4567", "+1 (555) 987-6543 (Text-Only)", "support@quillstride.com", "Returns/Exchanges", "FAQ/Contact Us"];
 
@@ -192,6 +196,31 @@ export const categoryLinksMap: Record<string, any[]> = {
   "kids": KidsLinks,
   "kids-sneakers": KidsLinks,
   "kids-slip-ons": KidsLinks
+};
+
+export const categorySizeMap: Record<string, any[]> = {
+  "men-sneakers": menShoeSizes,
+  "men-active": menShoeSizes,
+  "men-hiking": menShoeSizes,
+  "men-slip-ons": menShoeSizes,
+  "men": menShoeSizes,
+  "men-accesories": MenAccesoriesLinks,
+  "men-belts": MenAccesoriesLinks,
+  "men-briefcases": MenAccesoriesLinks,
+  "men-wallets": MenAccesoriesLinks,
+  "women": womenShoeSizes,
+  "women-sneakers": womenShoeSizes,
+  "women-active": womenShoeSizes,
+  "women-slip-ons": womenShoeSizes,
+  "women-hiking": womenShoeSizes,
+  "women-flats": womenShoeSizes,
+  "women-accesories": WomenAccesoriesLinks,
+  "women-belts": WomenAccesoriesLinks,
+  "women-bags": WomenAccesoriesLinks,
+  "women-wallets": WomenAccesoriesLinks,
+  "kids": kidsShoeSizes,
+  "kids-sneakers": kidsShoeSizes,
+  "kids-slip-ons": kidsShoeSizes
 };
 
 

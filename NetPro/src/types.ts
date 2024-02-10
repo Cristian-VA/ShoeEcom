@@ -24,3 +24,10 @@ export type IContextType = {
     
 }
 
+export type CustomHookResult = {
+    product: any | null;
+    isLoading: boolean | null;
+    isFetched: boolean | null;
+    relatedProducts: any | null;
+  }
+

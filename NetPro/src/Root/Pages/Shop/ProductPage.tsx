@@ -1,66 +1,20 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import {
-  useGetMenProductId,
-  useGetMenrelatedProducts,
-  useGetKidsProductId,
-  useGetKidsrelatedProducts,
-  useGetWomenProductId,
-  useGetWomenrelatedProducts
-} from "@/lib/queries/queries&mutations";
-import { shoeSizes } from "@/constants";
+import { categorySizeMap } from "@/constants";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/Root/components/shop/ProductCard";
 import ProductPageSkeleton from "@/Root/components/shop/ProductPageSkeleton";
 import DetailsAccordeon from "@/Root/components/shop/DetailsAccordeon";
 import { Link } from "react-router-dom";
 import { extractCategoryFromProductPage } from "@/utils";
+import { useDynamicProductFetching } from "@/utils";
 
 const ProductPage = () => {
   const { id, category } = useParams();
   const location = useLocation()
   const currentCategory:any = extractCategoryFromProductPage(location.pathname)
-  const { data: productMen, isLoading: isLoadingMen, isFetched:isFetchMen } = useGetMenProductId(id || "");
-  const { data: productWomen, isLoading: isLoadingWomen, isFetched:isFetchWomen } = useGetWomenProductId(id || "");
-  const { data: productKids, isLoading: isLoadingKids, isFetched:isFetchKids } = useGetKidsProductId(id || "");
-
-
-  const { data: relatedProductsMen } = useGetMenrelatedProducts(  id || "",   category || "" );
-  const { data: relatedProductsWomen } = useGetWomenrelatedProducts(  id || "",   category || "" );
-  const { data: relatedProductsKids } = useGetKidsrelatedProducts(  id || "",   category || "" );
-
-
-  const isWomenCategory = currentCategory.startsWith("women")
-  const isKidsCategory = currentCategory.startsWith("kids")
-
-  console.log(isWomenCategory)
-
-  let product:any = null
-  let isLoading = null
-  let isFetched = null
-  let relatedProducts = null
   
-  if (isWomenCategory) {
-    product = productWomen
-    isLoading = isLoadingWomen
-    isFetched = isFetchWomen
-    relatedProducts =  relatedProductsWomen
-  } else if (isKidsCategory) {
-    product = productKids
-    isLoading = isLoadingKids
-    isFetched = isFetchKids
-    relatedProducts =  relatedProductsKids
-  } else {
-    product = productMen
-    isLoading = isLoadingMen
-    isFetched = isFetchMen
-    relatedProducts =  relatedProductsMen
-
-  }
-
-
-
-
+  const { product, isLoading, isFetched, relatedProducts } = useDynamicProductFetching(id || "", category || "");
   const [currentImage, setCurrentImage] = useState(0);
   const [currentColor, setCurrentColor] = useState(0);
   const [currentSize, setCurrentSize] = useState(0);
@@ -165,6 +119,42 @@ const ProductPage = () => {
     image = product?.imagesColor5[currentImage];
   }
 
+  const getCategorySizes = (categorySizes: any) => {
+   
+    return categorySizes.map((number:any, index:number) =>{ 
+      const isAvailable = product?.availableSizes.includes(number);
+     
+    console.log(isAvailable)
+     
+      return (
+      <div
+      onClick={isAvailable? () => setCurrentSize(number) : () => {}  }
+      className={
+        number === currentSize
+          ? "flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] bg-gray-800"
+          : isAvailable? "flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer hover:bg-gray-100 transition " :
+          "line-through flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] opacity-20 hover:bg-gray-100 transition" 
+      }
+      key={index}
+    >
+      <p
+        className={
+          number === currentSize
+            ? "text-[12px] sm:text-[16px] bg-transparent text-white"
+            : "text-[12px] sm:text-[16px] bg-transparent "
+        }
+      >
+        {" "}
+        {number}{" "}
+      </p>
+    </div>
+  )});
+  };
+
+  
+
+
+
   if (isLoading) return <ProductPageSkeleton />;
 
   return (
@@ -235,8 +225,7 @@ const ProductPage = () => {
                         : index === 2
                         ? product?.imagesColor3[0]
                         : index === 3
-                        ? product?.imagesColor4[0]
-                        : product?.imagesColor5[0]
+                        
                     }
                     alt={color}
                     className={
@@ -261,28 +250,7 @@ const ProductPage = () => {
             </h1>
 
             <div className="flex gap-2 flex-wrap   ">
-              {shoeSizes.map((number: number, index: number) => (
-                <div
-                  onClick={() => setCurrentSize(number)}
-                  className={
-                    number === currentSize
-                      ? "flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] bg-gray-800"
-                      : "flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer hover:bg-gray-100 transition "
-                  }
-                  key={index}
-                >
-                  <p
-                    className={
-                      number === currentSize
-                        ? "text-[12px] sm:text-[16px] bg-transparent text-white"
-                        : "text-[12px] sm:text-[16px] bg-transparent "
-                    }
-                  >
-                    {" "}
-                    {number}{" "}
-                  </p>
-                </div>
-              ))}
+            {currentCategory && categorySizeMap[currentCategory] && getCategorySizes(categorySizeMap[currentCategory])}
             </div>
           </div>
 

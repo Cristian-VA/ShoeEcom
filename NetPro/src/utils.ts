@@ -1,3 +1,7 @@
+import { CustomHookResult } from './types';
+import { useGetMenProductId, useGetWomenProductId, useGetKidsProductId, useGetMenrelatedProducts, useGetWomenrelatedProducts, useGetKidsrelatedProducts } from './lib/queries/queries&mutations';
+
+
 export function convertToTitleCase(str: string): string {
     // Remove leading "/" and split string into an array of words
     const words: string[] = str.split('/').pop()?.split('-') ?? [];
@@ -30,5 +34,25 @@ export function extractCategoryFromProductPage(url:string) {
         return null; // Return null if no match found
     }
 }
+
+export const useDynamicProductFetching = (id: string | null, category: string | null): CustomHookResult => {
+    let productHook, relatedProductsHook;
+  
+    if (category?.startsWith("women")) {
+      productHook = useGetWomenProductId(id || "");
+      relatedProductsHook = useGetWomenrelatedProducts(id || "", category || "");
+    } else if (category?.startsWith("kids")) {
+      productHook = useGetKidsProductId(id || "");
+      relatedProductsHook = useGetKidsrelatedProducts(id || "", category || "");
+    } else {
+      productHook = useGetMenProductId(id || "");
+      relatedProductsHook = useGetMenrelatedProducts(id || "", category || "");
+    }
+  
+    const { data: product, isLoading: isLoadingProduct, isFetched: isFetchedProduct } = productHook;
+    const { data: relatedProducts } = relatedProductsHook;
+  
+    return { product, isLoading: isLoadingProduct, isFetched: isFetchedProduct, relatedProducts };
+  };
 
   

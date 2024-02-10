@@ -1,5 +1,5 @@
 
-import { shoeSizes } from '@/constants';
+import { menShoeSizes } from '@/constants';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const ProductPageSkeleton = () => {
@@ -72,7 +72,7 @@ const ProductPageSkeleton = () => {
               
             <div className='flex gap-2 flex-wrap   '>
               
-                {shoeSizes.map(( index:number) => (
+                {menShoeSizes.map(( index:string) => (
                   <div key={index}>
                     <Skeleton className=" w-[40px] h-[40px] sm:w-[60px] sm:h-[60px]  bg-gray-200" />
 

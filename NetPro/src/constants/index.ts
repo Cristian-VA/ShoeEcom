@@ -204,23 +204,148 @@ export const categorySizeMap: Record<string, any[]> = {
   "men-hiking": menShoeSizes,
   "men-slip-ons": menShoeSizes,
   "men": menShoeSizes,
-  "men-accesories": MenAccesoriesLinks,
-  "men-belts": MenAccesoriesLinks,
-  "men-briefcases": MenAccesoriesLinks,
-  "men-wallets": MenAccesoriesLinks,
+  "men-accesories": menShoeSizes,
+  "men-belts": menShoeSizes,
+  "men-briefcases": menShoeSizes,
+  "men-wallets": menShoeSizes,
   "women": womenShoeSizes,
   "women-sneakers": womenShoeSizes,
   "women-active": womenShoeSizes,
   "women-slip-ons": womenShoeSizes,
   "women-hiking": womenShoeSizes,
   "women-flats": womenShoeSizes,
-  "women-accesories": WomenAccesoriesLinks,
-  "women-belts": WomenAccesoriesLinks,
-  "women-bags": WomenAccesoriesLinks,
-  "women-wallets": WomenAccesoriesLinks,
+  "women-accesories": menShoeSizes,
+  "women-belts": menShoeSizes,
+  "women-bags": menShoeSizes,
+  "women-wallets": menShoeSizes,
   "kids": kidsShoeSizes,
   "kids-sneakers": kidsShoeSizes,
   "kids-slip-ons": kidsShoeSizes
+};
+
+export const bestForSneakers = [
+   
+  {
+    bestFor: "active",
+    label: "active",
+  },
+  {
+    bestFor: "everyday",
+    label: "everyday",
+  },
+  {
+    bestFor: "warm-weather",
+    label: "warm weather",
+  },
+  {
+    bestFor: "cold-weather",
+    label: "cold weather",
+  },
+];
+
+export const bestForActive = [
+   
+  {
+    bestFor: "running",
+    label: "running",
+  },
+  {
+    bestFor: "gym-workouts",
+    label: "gym workouts",
+  },
+  {
+    bestFor: "court-sports",
+    label: "court sports",
+  },
+  {
+    bestFor: "team-sports",
+    label: "team sports",
+  },
+];
+
+export const bestForSlipOns = [
+   
+  {
+    bestFor: "for-home-comfort",
+    label: "for home comfort",
+  },
+  {
+    bestFor: "beach-or-poolside",
+    label: "beach or poolside",
+  },
+  {
+    bestFor: "traveling",
+    label: "traveling",
+  },
+  {
+    bestFor: "casual-outings",
+    label: "casual outings",
+  },
+];
+
+export const bestForHiking = [
+   
+  {
+    bestFor: "trail-running",
+    label: "trail running",
+  },
+  {
+    bestFor: "outdoor-adventures",
+    label: "outdoor adventures",
+  },
+  {
+    bestFor: "hiking-trails",
+    label: "hiking trails",
+  },
+  {
+    bestFor: "day-hikes",
+    label: "day hikes",
+  },
+];
+
+export const sortBy = [
+   
+  {
+   
+    label: "Price (highest to lowest)",
+  },
+  {
+    
+    label: "Price (lowest to highest)",
+  },
+  {
+  
+    label: "newest to oldest",
+  },
+  {
+   
+    label: "Oldest to Newest",
+  },
+];
+
+export const categoryBestForMap: Record<string, any[]> = {
+  "men-sneakers": bestForSneakers,
+  "men-active": bestForActive,
+  "men-hiking": bestForHiking,
+  "men-slip-ons": bestForSlipOns,
+  "men": menShoeSizes,
+  "men-accesories": menShoeSizes,
+  "men-belts": menShoeSizes,
+  "men-briefcases": menShoeSizes,
+  "men-wallets": menShoeSizes,
+  "women": bestForSneakers,
+  "women-sneakers": bestForSneakers,
+  "women-active": bestForActive,
+  "women-slip-ons": bestForSlipOns,
+  "women-hiking": bestForHiking,
+  "women-flats": bestForHiking,
+  "women-accesories": menShoeSizes,
+  "women-belts": menShoeSizes,
+  "women-bags": menShoeSizes,
+  "women-wallets": menShoeSizes,
+  "kids": bestForSneakers,
+  "kids-sneakers": bestForSneakers,
+  "kids-slip-ons": bestForSlipOns
 };
 
 

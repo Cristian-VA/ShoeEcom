@@ -36,7 +36,7 @@ const MenCategory = ({category}:{category:string}) => {
   return (
     <>
     {isPending? <Loader/> : (
-    <div className='container  py-6'>
+    <div className='container  pb-6 pt-2'>
       <ProductGrid  data={data} isRefetching={isRefetching} />
     </div>
     )}

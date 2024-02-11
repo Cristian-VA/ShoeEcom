@@ -6,10 +6,12 @@ import { Cart, MenCollection, Home,  ProductPage  } from "./Root/Pages/index";
 import { Toaster } from "@/components/ui/toaster"
 import PrivateRoutes from "./Auth/components/utils/PrivateRoutes";
 import RootLayout from "./Root/Pages/RootLayout";
-
+import { FilterProvider } from "./Context/FilterContext";
 function App() {
   return (
+    <FilterProvider>
     <main className="flex min-h-screen flex-col justify-between items-center">
+      
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
@@ -29,7 +31,9 @@ function App() {
         </Route>
       </Routes>
       <Toaster />
+      
     </main>
+    </FilterProvider>
   );
 }
 

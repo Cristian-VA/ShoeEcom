@@ -1,43 +1,33 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import { useLocation, Link } from "react-router-dom";
-import { convertToTitleCase, extractCategoryFromUrl } from "@/utils";
+import { useLocation,  } from "react-router-dom";
+import {  extractCategoryFromUrl } from "@/utils";
 import {
-  categoryLinksMap,
   categorySizeMap,
   categoryBestForMap,
   sortBy,
 } from "@/constants";
+import { useFilterContext } from "@/Context/FilterContext";
 
 const FilterUi = () => {
   const location = useLocation();
   const currentCategory = extractCategoryFromUrl(location.pathname);
-  const [currentSize, setCurrentSize] = useState(null);
-  const [bestFor, setBestFor] = useState(null);
-  const [currentSort, setCurrentSort] = useState(null);
-  useEffect(() => {
-    setBestFor(null);
-    setCurrentSize(null);
-  }, [location]);
+  const { filters, setFilters } = useFilterContext();
 
-  const filters = {
-    size: currentSize,
-    bestFor: bestFor,
-    sort: currentSort,
-  };
+  
 
-  console.log(filters)
+  
 
   const getCategoryBestFor = (categoryBestFor: any) => {
     return categoryBestFor.map((category: any, index: number) => (
       <div key={index} className="flex gap-2">
         <div
           className={
-            category.bestFor === bestFor
+            category.bestFor === filters.bestFor
               ? "bg-gray-800 h-[24px] w-[24px] border-[1.5px] items-center rounded-[4px] justify-center border-gray-700 border-opacity-80 "
               : "h-[24px] w-[24px] border-[1.5px] items-center rounded-[4px] justify-center border-gray-700 border-opacity-80 transition hover:bg-gray-100 cursor-pointer "
           }
-          onClick={() => setBestFor(category.bestFor)}
+          onClick={() =>  setFilters((prevFilters) => ({ ...prevFilters, bestFor:category.bestFor }))}
         ></div>
         <h1 className="capitalize my-auto font-medium">{category.label}</h1>
       </div>
@@ -48,11 +38,11 @@ const FilterUi = () => {
       <div key={index} className="flex gap-2 ">
         <div
           className={
-            sort.label === currentSort
+            sort.label === filters.currentSort
               ? "bg-gray-800 h-[24px] w-[24px] border-[1.5px] items-center rounded-[4px] justify-center border-gray-700 border-opacity-80 "
               : "h-[24px] w-[24px] border-[1.5px] items-center rounded-[4px] justify-center border-gray-700 border-opacity-80 transition hover:bg-gray-100 cursor-pointer "
           }
-          onClick={() => setCurrentSort(sort.label)}
+          onClick={() => setFilters((prevFilters) => ({ ...prevFilters, currentSort: sort.label }))}
         ></div>
         <h1 className="capitalize my-auto font-medium ">{sort.label}</h1>
       </div>
@@ -62,9 +52,9 @@ const FilterUi = () => {
   const getCategorySizes = (categorySizes: any) => {
     return categorySizes.map((number: any, index: number) => (
       <div
-        onClick={() => setCurrentSize(number)}
+        onClick={() => setFilters((prevFilters) => ({ ...prevFilters, currentSize: number }))}
         className={
-          number === currentSize
+          number === filters.currentSize
             ? "flex flex-col  font-medium  border-[1.5px] items-center rounded-sm justify-center border-gray-700 border-opacity-80  w-1/5 h-[40px] m-1 bg-gray-800"
             : "flex flex-col  font-medium  border-[1.5px] items-center rounded-sm justify-center border-gray-700 border-opacity-80   w-1/5 m-1  h-[40px] cursor-pointer hover:bg-gray-100 transition  "
         }
@@ -72,7 +62,7 @@ const FilterUi = () => {
       >
         <p
           className={
-            number === currentSize
+            number === filters.currentSize
               ? "text-[12px]  bg-transparent text-white"
               : "text-[12px] bg-transparent "
           }
@@ -95,25 +85,25 @@ const FilterUi = () => {
       <div className="flex flex-col my-6 text-[18px] font-semibold">
         <h1>FILTER BY:</h1>
         <div className="flex flex-wrap gap-2 mt-4">
-          {bestFor && (
+          {filters.bestFor && (
             <div
-              onClick={() => setBestFor(null)}
+              onClick={() => setFilters((prevFilters) => ({...prevFilters, bestFor:null }) )}
               className="  bg-gray-700 text-[14px]  flex justify-end pl-2 pr-2 py-1 rounded-[4px] hover:opacity-70 transition cursor-pointer "
             >
               <h1 className="text-white bg-transparent capitalize my-auto">
-                {bestFor}{" "}
+                {filters.bestFor}{" "}
               </h1>
               <p className="ml-4 bg-transparent text-white my-auto">x</p>
             </div>
           )}
 
-          {currentSize && (
+          {filters.currentSize && (
             <div
-              onClick={() => setCurrentSize(null)}
+              onClick={() =>  setFilters((prevFilters) => ({...prevFilters, currentSize:null }) )}
               className="  bg-gray-700 text-[14px]  rounded-[4px] flex justify-end pl-2 pr-2 py-1  hover:opacity-70 transition cursor-pointer "
             >
               <h1 className="text-white bg-transparent capitalize my-auto">
-                {currentSize}{" "}
+                {filters.currentSize}{" "}
               </h1>
               <p className="ml-4 bg-transparent text-white my-auto">x</p>
             </div>

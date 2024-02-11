@@ -67,7 +67,7 @@ const Topbar = () => {
                 transition={{ duration: 0.3 }}
                 
               >
-                <Button onClick={() => setOpen(false)} variant="ghost" className=" w-full border-opacity-55  border-b-[1.5px] border-gray-500 hover:bg-gray-100 bg-white transition  "> 
+                <Button onClick={() => setOpen(false)} variant="ghost" className=" w-full  border-opacity-55  border-b-[1.5px] border-gray-500 hover:bg-gray-100 bg-white transition  "> 
                 <img
             src="/assets/icons/close.svg"
             alt="close filters"

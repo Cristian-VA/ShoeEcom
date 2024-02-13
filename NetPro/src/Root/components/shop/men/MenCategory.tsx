@@ -3,12 +3,21 @@ import Loader from '@/Root/components/Loader'
 import ProductGrid from '@/Root/components/shop/ProductGrid'
 import { useLocation } from 'react-router-dom'
 import { extractCategoryFromUrl } from '@/utils'
+import { useFilterContext } from '@/Context/FilterContext'
+
 
 
 const MenCategory = ({category}:{category:string}) => {
-  const {  data: menData, isPending:isPendingMen, isRefetching:isRefetchingMen  } = useGetMenCollectionBycategory(category)
-  const {  data: womenData, isPending:isPendingWomen, isRefetching:isRefetchingWomen  } = useGetWomenCollectionBycategory(category)
-  const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetKidsCollectionBycategory(category)
+  const { filters, setFilters } = useFilterContext()
+  const fetchParams = {
+    category: category,
+    filters: filters
+  }
+
+
+  const {  data: menData, isPending:isPendingMen, isRefetching:isRefetchingMen  } = useGetMenCollectionBycategory(fetchParams)
+  const {  data: womenData, isPending:isPendingWomen, isRefetching:isRefetchingWomen  } = useGetWomenCollectionBycategory(fetchParams)
+  const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetKidsCollectionBycategory(fetchParams)
   const location = useLocation()
   const currentCategory:any = extractCategoryFromUrl(location.pathname)
   const isWomenCategory = currentCategory.startsWith("women")
@@ -31,15 +40,16 @@ const MenCategory = ({category}:{category:string}) => {
     isRefetching = isRefetchingMen
 
   }
+
   
 
   return (
     <>
-    {isPending? <Loader/> : (
+     
     <div className='container  pb-6 pt-2'>
-      <ProductGrid  data={data} isRefetching={isRefetching} />
+      <ProductGrid  data={data} isRefetching={isPending} />
     </div>
-    )}
+    
     </>
   )
 }

@@ -2,7 +2,7 @@
 import { ID, Query } from "appwrite"
 
 import { account, appwriteConfig,  databases,  } from "./config";
-
+import { Filters } from "@/types";
 
 export async function saveUserToDB(user: {
   accountId?: string;
@@ -67,8 +67,27 @@ export async function getCurrentUser() {
 
 // Fetch Products
 
-export async function getMenCollection(category: string) {
-  const queries: any[] = [Query.equal("category", category)];
+export async function getMenCollection(fetchParams: { category: string; filters?: Filters }) {
+  const queries: any[] = [Query.equal("category", fetchParams.category), Query.limit(6)];
+  console.log(fetchParams)
+
+  if (fetchParams?.filters?.bestFor){
+    queries.push(Query.equal("bestFor", fetchParams.filters?.bestFor))
+  }
+
+  if (fetchParams?.filters?.currentSort === "expensive"){
+    queries.push(Query.orderDesc("price"))
+  } else if (fetchParams?.filters?.currentSort === "cheap"){
+    queries.push(Query.orderAsc("price"))
+  }else if (fetchParams?.filters?.currentSort === "newest"){
+    queries.push(Query.orderAsc("$createdAt"))
+  }else if (fetchParams?.filters?.currentSort === "oldest"){
+    queries.push(Query.orderDesc("$createdAt"))
+  }
+  
+  
+
+
 
   try {
     const menProducts = await databases.listDocuments(
@@ -84,8 +103,24 @@ export async function getMenCollection(category: string) {
 }
 
 
-export async function getWomenCollection(category: string) {
-  const queries: any[] = [Query.equal("category", category)];
+export async function getWomenCollection(fetchParams: { category: string; filters?: Filters}) {
+  const queries: any[] = [Query.equal("category", fetchParams.category), Query.limit(6)];
+  console.log(fetchParams)
+
+  if (fetchParams?.filters?.bestFor){
+    queries.push(Query.equal("bestFor", fetchParams.filters?.bestFor))
+  }
+
+  if (fetchParams?.filters?.currentSort === "expensive"){
+    queries.push(Query.orderDesc("price"))
+  } else if (fetchParams?.filters?.currentSort === "cheap"){
+    queries.push(Query.orderAsc("price"))
+  }else if (fetchParams?.filters?.currentSort === "newest"){
+    queries.push(Query.orderAsc("$createdAt"))
+  }else if (fetchParams?.filters?.currentSort === "oldest"){
+    queries.push(Query.orderDesc("$createdAt"))
+  }
+  
 
   try {
     const womenProducts = await databases.listDocuments(
@@ -100,8 +135,24 @@ export async function getWomenCollection(category: string) {
   }
 }
 
-export async function getKidsCollection(category: string) {
-  const queries: any[] = [Query.equal("category", category)];
+export async function getKidsCollection(fetchParams: { category: string; filters?: Filters}) {
+  const queries: any[] = [Query.equal("category", fetchParams.category), Query.limit(6)];
+  console.log(fetchParams)
+
+  if (fetchParams?.filters?.bestFor){
+    queries.push(Query.equal("bestFor", fetchParams.filters?.bestFor))
+  }
+
+  if (fetchParams?.filters?.currentSort === "expensive"){
+    queries.push(Query.orderDesc("price"))
+  } else if (fetchParams?.filters?.currentSort === "cheap"){
+    queries.push(Query.orderAsc("price"))
+  }else if (fetchParams?.filters?.currentSort === "newest"){
+    queries.push(Query.orderAsc("$createdAt"))
+  }else if (fetchParams?.filters?.currentSort === "oldest"){
+    queries.push(Query.orderDesc("$createdAt"))
+  }
+  
 
   try {
     const kidsProducts = await databases.listDocuments(

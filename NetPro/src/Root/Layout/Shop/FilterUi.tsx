@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import { useLocation,  } from "react-router-dom";
 import {  extractCategoryFromUrl } from "@/utils";
 import {
@@ -13,9 +12,11 @@ const FilterUi = () => {
   const location = useLocation();
   const currentCategory = extractCategoryFromUrl(location.pathname);
   const { filters, setFilters } = useFilterContext();
+  const isWomenCategory = currentCategory.startsWith("women")
 
-  
 
+ 
+ 
   
 
   const getCategoryBestFor = (categoryBestFor: any) => {
@@ -27,7 +28,7 @@ const FilterUi = () => {
               ? "bg-gray-800 h-[24px] w-[24px] border-[1.5px] items-center rounded-[4px] justify-center border-gray-700 border-opacity-80 "
               : "h-[24px] w-[24px] border-[1.5px] items-center rounded-[4px] justify-center border-gray-700 border-opacity-80 transition hover:bg-gray-100 cursor-pointer "
           }
-          onClick={() =>  setFilters((prevFilters) => ({ ...prevFilters, bestFor:category.bestFor }))}
+          onClick={() =>  setFilters((prevFilters:any) => ({ ...prevFilters, bestFor:category.bestFor }))}
         ></div>
         <h1 className="capitalize my-auto font-medium">{category.label}</h1>
       </div>
@@ -38,11 +39,11 @@ const FilterUi = () => {
       <div key={index} className="flex gap-2 ">
         <div
           className={
-            sort.label === filters.currentSort
+            sort.key === filters.currentSort
               ? "bg-gray-800 h-[24px] w-[24px] border-[1.5px] items-center rounded-[4px] justify-center border-gray-700 border-opacity-80 "
               : "h-[24px] w-[24px] border-[1.5px] items-center rounded-[4px] justify-center border-gray-700 border-opacity-80 transition hover:bg-gray-100 cursor-pointer "
           }
-          onClick={() => setFilters((prevFilters) => ({ ...prevFilters, currentSort: sort.label }))}
+          onClick={() => setFilters((prevFilters:any) => ({ ...prevFilters, currentSort: sort.key }))}
         ></div>
         <h1 className="capitalize my-auto font-medium ">{sort.label}</h1>
       </div>
@@ -52,9 +53,12 @@ const FilterUi = () => {
   const getCategorySizes = (categorySizes: any) => {
     return categorySizes.map((number: any, index: number) => (
       <div
-        onClick={() => setFilters((prevFilters) => ({ ...prevFilters, currentSize: number }))}
+        onClick={filters.currentSize?.includes(number)? () => {} :() => setFilters((prevFilters:any) => ({
+          ...prevFilters,
+          currentSize: [...prevFilters.currentSize, number], // Push new value to array
+        }))}
         className={
-          number === filters.currentSize
+          filters.currentSize?.includes(number)
             ? "flex flex-col  font-medium  border-[1.5px] items-center rounded-sm justify-center border-gray-700 border-opacity-80  w-1/5 h-[40px] m-1 bg-gray-800"
             : "flex flex-col  font-medium  border-[1.5px] items-center rounded-sm justify-center border-gray-700 border-opacity-80   w-1/5 m-1  h-[40px] cursor-pointer hover:bg-gray-100 transition  "
         }
@@ -62,7 +66,7 @@ const FilterUi = () => {
       >
         <p
           className={
-            number === filters.currentSize
+            filters.currentSize?.includes(number)
               ? "text-[12px]  bg-transparent text-white"
               : "text-[12px] bg-transparent "
           }
@@ -73,6 +77,15 @@ const FilterUi = () => {
       </div>
     ));
   };
+  const handleRemoveSize = (sizeToRemove: string) => {
+    setFilters((prevFilters: any) => ({
+      ...prevFilters,
+      currentSize: prevFilters.currentSize.filter((size: string) => size !== sizeToRemove),
+    }));
+  };
+
+
+
 
   return (
     <div className="overflow-scroll custom-scrollbar px-6 lg:px-0 w-full">
@@ -83,11 +96,18 @@ const FilterUi = () => {
       </div>
 
       <div className="flex flex-col my-6 text-[18px] font-semibold">
-        <h1>FILTER BY:</h1>
+        <div className="flex w-full justify-between ">
+        <h1 className="mt-auto">FILTER BY:</h1>
+        {<p className="text-[14px] font-medium mt-auto transition hover:underline cursor-pointer" onClick={() => setFilters({
+      bestFor: null,
+      currentSize: [],
+      currentSort:null
+    })}>Clear All</p>}
+        </div>
         <div className="flex flex-wrap gap-2 mt-4">
           {filters.bestFor && (
             <div
-              onClick={() => setFilters((prevFilters) => ({...prevFilters, bestFor:null }) )}
+              onClick={() => setFilters((prevFilters:any) => ({...prevFilters, bestFor:null }) )}
               className="  bg-gray-700 text-[14px]  flex justify-end pl-2 pr-2 py-1 rounded-[4px] hover:opacity-70 transition cursor-pointer "
             >
               <h1 className="text-white bg-transparent capitalize my-auto">
@@ -97,17 +117,19 @@ const FilterUi = () => {
             </div>
           )}
 
-          {filters.currentSize && (
-            <div
-              onClick={() =>  setFilters((prevFilters) => ({...prevFilters, currentSize:null }) )}
-              className="  bg-gray-700 text-[14px]  rounded-[4px] flex justify-end pl-2 pr-2 py-1  hover:opacity-70 transition cursor-pointer "
+           {filters.currentSize?.map((size) => {
+            return (
+              <div
+              onClick={() => handleRemoveSize(size)}
+              className="  bg-gray-700 text-[14px]  flex justify-end pl-2 pr-2 py-1 rounded-[4px] hover:opacity-70 transition cursor-pointer "
             >
               <h1 className="text-white bg-transparent capitalize my-auto">
-                {filters.currentSize}{" "}
+              {size}
               </h1>
               <p className="ml-4 bg-transparent text-white my-auto">x</p>
             </div>
-          )}
+            )
+           })}
         </div>
         <hr className="my-2" />
       </div>

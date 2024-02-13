@@ -31,3 +31,8 @@ export type CustomHookResult = {
     relatedProducts: any | null;
   }
 
+  export type Filters = {
+    currentSize: string[] | null;
+    bestFor: string[] | null;
+    currentSort: string | null;
+  }

@@ -20,7 +20,7 @@ const ProductPage = () => {
   const [currentSize, setCurrentSize] = useState(0);
 
   const [isDisabled, setIsDisabled] = useState(true);
-
+  console.log(product)
   useEffect(() => {
     if (currentSize) {
       setIsDisabled(false);

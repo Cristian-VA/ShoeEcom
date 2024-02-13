@@ -308,18 +308,23 @@ export const sortBy = [
   {
    
     label: "Price (highest to lowest)",
+    key: "expensive"
+    
   },
   {
     
     label: "Price (lowest to highest)",
+    key: "cheap"
   },
   {
   
     label: "newest to oldest",
+    key: "newest"
   },
   {
    
     label: "Oldest to Newest",
+    key: "oldest"
   },
 ];
 

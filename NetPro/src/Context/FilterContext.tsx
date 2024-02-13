@@ -1,10 +1,6 @@
 import React, { createContext, useContext, useState, Dispatch, SetStateAction } from 'react';
+import { Filters } from '@/types';
 
-type Filters = {
-  currentSize: string | null;
-  bestFor: string | null;
-  currentSort: string | null;
-}
 
 interface FilterContextType {
   filters: Filters;
@@ -23,7 +19,7 @@ export const useFilterContext = () => {
 
 export const FilterProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const [filters, setFilters] = useState<Filters>({
-    currentSize: null,
+    currentSize: [],
     bestFor: null,
     currentSort: null,
   });

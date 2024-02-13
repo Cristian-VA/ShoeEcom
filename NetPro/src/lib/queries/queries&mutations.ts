@@ -1,6 +1,6 @@
 
 
-import { INewUser } from "@/types"
+import { Filters } from "@/types"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts } from "../appwrite/api"
 
@@ -27,28 +27,28 @@ export const useSignOutAccountMutation = () => {
 
 
 
-export const useGetMenCollectionBycategory = (category:string) =>{
+export const useGetMenCollectionBycategory = (fetchParams: { category: any; filters?: Filters }) =>{
     return useQuery({
-    queryKey:[QUERY_KEYS.GET_MEN_COLLECTION, category], 
-    queryFn: () => getMenCollection(category),  
-    enabled: !!category,
+    queryKey:[QUERY_KEYS.GET_MEN_COLLECTION, fetchParams], 
+    queryFn: () => getMenCollection(fetchParams),  
+    enabled: !!fetchParams,
     
     })
 }
-export const useGetWomenCollectionBycategory = (category:string) =>{
+export const useGetWomenCollectionBycategory = (fetchParams: { category: any; filters?: Filters }) =>{
     return useQuery({
-    queryKey:[QUERY_KEYS.GET_WOMEN_COLLECTION, category], 
-    queryFn: () => getWomenCollection(category),  
-    enabled: !!category,
+    queryKey:[QUERY_KEYS.GET_WOMEN_COLLECTION, fetchParams], 
+    queryFn: () => getWomenCollection(fetchParams),  
+    enabled: !!fetchParams,
     
     })
 }
 
-export const useGetKidsCollectionBycategory = (category:string) =>{
+export const useGetKidsCollectionBycategory = (fetchParams: { category: any; filters?: Filters }) =>{
     return useQuery({
-    queryKey:[QUERY_KEYS.GET_KIDS_COLLECTION, category], 
-    queryFn: () => getKidsCollection(category),  
-    enabled: !!category,
+    queryKey:[QUERY_KEYS.GET_KIDS_COLLECTION, fetchParams], 
+    queryFn: () => getKidsCollection(fetchParams),  
+    enabled: !!fetchParams,
     
     })
 }

@@ -58,7 +58,7 @@ const Topbar = () => {
         </Button>
         <AnimatePresence>
           {open && (
-            <div className="w-screen h-screen fixed top-0 left-0 bg-gray-800 z-50 bg-opacity-55  ">
+            <div className={"w-screen h-screen fixed top-0 left-0 bg-gray-800 z-50 bg-opacity-55  "}>
               <motion.div
                 className="w-[60%]  sm:[50%]   right-0 ml-auto  h-screen bg-transparent   flex flex-col items-start custom-scrollbar"
                 initial={{ x: "100%" }}

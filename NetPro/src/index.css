@@ -63,3 +63,14 @@ body{
     /* gray rectangle that covers whole element */
     linear-gradient(gray 100%, transparent 0);
 }
+
+.slide-in {
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(0);
+}
+
+/* Slide out animation */
+.slide-out {
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(-100%);
+}

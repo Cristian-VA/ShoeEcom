@@ -4,9 +4,7 @@ import { useLocation, Link } from "react-router-dom";
 import { convertToTitleCase, extractCategoryFromUrl } from "@/utils";
 import {
   categoryLinksMap,
-  categorySizeMap,
-  categoryBestForMap,
-  sortBy
+
 } from "@/constants";
 
 const SideBar: React.FC = () => {

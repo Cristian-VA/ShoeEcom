@@ -46,7 +46,7 @@ const MenCategory = ({category}:{category:string}) => {
   return (
     <>
      
-    <div className='container  pb-6 pt-2'>
+    <div className='container  pb-6 pt-2 border-2 '>
       <ProductGrid  data={data} isRefetching={isPending} />
     </div>
     

@@ -13,6 +13,7 @@ const FilterUi = () => {
   const currentCategory = extractCategoryFromUrl(location.pathname);
   const { filters, setFilters } = useFilterContext();
   const isWomenCategory = currentCategory.startsWith("women")
+  console.log(filters)
 
 
  

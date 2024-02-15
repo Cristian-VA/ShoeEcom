@@ -66,46 +66,54 @@ export async function getCurrentUser() {
 }
 
 // Fetch Products
-
 export async function getMenCollection(fetchParams: { category: string; filters?: Filters }) {
-  const queries: any[] = [Query.equal("category", fetchParams.category), Query.limit(6)];
-  console.log(fetchParams)
+  const commonQueries: any[] = [Query.limit(6), Query.equal("category", fetchParams.category)];
 
-  if (fetchParams?.filters?.bestFor){
-    queries.push(Query.equal("bestFor", fetchParams.filters?.bestFor))
+  if (fetchParams?.filters?.bestFor) {
+    commonQueries.push(Query.equal("bestFor", fetchParams.filters.bestFor));
   }
 
-  if (fetchParams?.filters?.currentSort === "expensive"){
-    queries.push(Query.orderDesc("price"))
-  } else if (fetchParams?.filters?.currentSort === "cheap"){
-    queries.push(Query.orderAsc("price"))
-  }else if (fetchParams?.filters?.currentSort === "newest"){
-    queries.push(Query.orderAsc("$createdAt"))
-  }else if (fetchParams?.filters?.currentSort === "oldest"){
-    queries.push(Query.orderDesc("$createdAt"))
+  if (fetchParams?.filters?.currentSort === "expensive") {
+    commonQueries.push(Query.orderDesc("price"));
+  } else if (fetchParams?.filters?.currentSort === "cheap") {
+    commonQueries.push(Query.orderAsc("price"));
+  } else if (fetchParams?.filters?.currentSort === "newest") {
+    commonQueries.push(Query.orderAsc("$createdAt"));
+  } else if (fetchParams?.filters?.currentSort === "oldest") {
+    commonQueries.push(Query.orderDesc("$createdAt"));
   }
-  
-  
-
-
 
   try {
-    const menProducts = await databases.listDocuments(
+    const Page1 = await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.menCollectionId,
-      queries
+      [...commonQueries, Query.offset(0)]
     );
 
-    return menProducts;
+    const lastId = Page1.documents[Page1.documents.length - 1].$id;
+    const Page2 = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.menCollectionId,
+      [...commonQueries, Query.cursorAfter(lastId)]
+    );
+
+    // Check if Page2 is empty
+    if (Page2?.length === 0) {
+      return { Page1 };
+    } else {
+      return { Page1, Page2 };
+    }
   } catch (error) {
     console.log(error);
   }
 }
 
 
+
+
 export async function getWomenCollection(fetchParams: { category: string; filters?: Filters}) {
-  const queries: any[] = [Query.equal("category", fetchParams.category), Query.limit(6)];
-  console.log(fetchParams)
+  const queries: any[] = [Query.equal("category", fetchParams.category), Query.limit(6),
+  Query.offset(0) ];
 
   if (fetchParams?.filters?.bestFor){
     queries.push(Query.equal("bestFor", fetchParams.filters?.bestFor))
@@ -136,7 +144,8 @@ export async function getWomenCollection(fetchParams: { category: string; filter
 }
 
 export async function getKidsCollection(fetchParams: { category: string; filters?: Filters}) {
-  const queries: any[] = [Query.equal("category", fetchParams.category), Query.limit(6)];
+  const queries: any[] = [Query.equal("category", fetchParams.category), Query.limit(6),
+  Query.offset(0) ];
   console.log(fetchParams)
 
   if (fetchParams?.filters?.bestFor){

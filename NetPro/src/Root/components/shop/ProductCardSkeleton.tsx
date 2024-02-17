@@ -8,6 +8,7 @@ const ProductCardSkeleton = () => {
     <Skeleton className='absolute inset-0 w-full h-full' />
   </div>
   <Skeleton className='md:h-[32px] h-[20px] md:w-[160px] w-[90px] bg-gray-100' />
+  <Skeleton className=' h-[45px] md:w-full hidden md:block bg-gray-100' />
 </div>
   )
 }

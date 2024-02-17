@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 
@@ -12,9 +12,16 @@ const pages = data?.Page2?.documents?.length > 0 ? Object.keys(data) : ["Page1"]
 console.log(data?.Page2)
 
 
+
 if (currentPage === 2){
   pageData = data?.Page2
 }
+
+useEffect(() => {
+  setcurrentPage(1)
+  
+}, [data])
+
  
   return (
     <>
@@ -31,14 +38,14 @@ if (currentPage === 2){
       </div>
     ) :(
       <div className="w-full flex flex-col gap-6 md:gap-10">
-    <div className="flex flex-wrap   ">
+    <div className="flex flex-wrap min-h-[700px] md:min-h-[950px]   ">
       
       {pageData?.documents?.map((product: any, index: number) => (
         // Added a unique key for each link
        <ProductCard product={product} key={index} simple={false} />
       ))}
     </div>
-  <div className=" border-2 w-full flex justify-center py-6 items-end ">
+  <div className="  w-full flex justify-center py-6 items-end ">
   {pages.map((page,index) => (
   <div key={page} onClick={() => setcurrentPage(index+1)} 
   className={

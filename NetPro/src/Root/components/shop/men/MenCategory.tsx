@@ -1,5 +1,4 @@
 import { useGetMenCollectionBycategory, useGetKidsCollectionBycategory, useGetWomenCollectionBycategory } from '@/lib/queries/queries&mutations'
-import Loader from '@/Root/components/Loader'
 import ProductGrid from '@/Root/components/shop/ProductGrid'
 import { useLocation } from 'react-router-dom'
 import { extractCategoryFromUrl } from '@/utils'
@@ -8,7 +7,7 @@ import { useFilterContext } from '@/Context/FilterContext'
 
 
 const MenCategory = ({category}:{category:string}) => {
-  const { filters, setFilters } = useFilterContext()
+  const { filters  } = useFilterContext()
   const fetchParams = {
     category: category,
     filters: filters
@@ -46,7 +45,7 @@ const MenCategory = ({category}:{category:string}) => {
   return (
     <>
      
-    <div className='container  pb-6 pt-2 border-2 '>
+    <div className='container  pb-6 pt-2 '>
       <ProductGrid  data={data} isRefetching={isPending} />
     </div>
     

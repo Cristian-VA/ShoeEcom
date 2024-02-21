@@ -6,14 +6,28 @@ import MobileNav from "./Navigation/MobileNav";
 import { AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/Auth/components/utils/AuthContext";
-
+import useCart from "@/lib/zustand/cart";
+import { Cart } from "../Pages";
+import PopUpSideBar from "./Shop/PopUpSideBar";
+import { aggregateCartItems } from "@/utils";
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
+  const [isOpenCart, setOpenCart] = useState(false);
+
   const {user} = useAuth()
+  const cart = useCart((state:any) => state.cart)
+ 
+  const aggregatedCart = aggregateCartItems(cart);
+  console.log(aggregatedCart);
 
 
   const toggleOpen = () => {
     setOpen((prevValue) => !prevValue);
+  };
+
+  const toggleOpenCart = () => {
+    setOpenCart((prevValue) => !prevValue);
+   
   };
 
   return (
@@ -61,17 +75,17 @@ const Header = () => {
               />
             </Link>)}
           
-            <div className="relative h-[30px] w-8  flex my-auto  ">
+            <div className="relative h-[30px] w-8  flex my-auto cursor-pointer " onClick={toggleOpenCart}>
               <img
                 src="/assets/icons/bag.svg"
                 className="w-[26px] h-[26px] relative items-end my-auto"
                 alt="cart"
               />
-              <div className="absolute top-0 right-0 bg-gray-500 bg-opacity-90  mb-4 w-[17px] h-[17px] flex justify-center items-center border-[1.5px] rounded-full border-white">
+              { aggregatedCart.length > 0 && <div className="absolute top-0 right-0 bg-gray-500 bg-opacity-90  mb-4 w-[17px] h-[17px] flex justify-center items-center border-[1.5px] rounded-full border-white">
                 <p className="text-[10px] text-white bg-transparent font-semibold ">
-                  0
+                  {aggregatedCart.length}
                 </p>
-              </div>
+              </div>}
             </div>
           </div>
         </div>
@@ -80,6 +94,12 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && <MobileNav toggleIsOpen={toggleOpen} />}
       </AnimatePresence>
+
+      <PopUpSideBar open={isOpenCart} setOpen={setOpenCart}>
+       <Cart/>
+        </PopUpSideBar>
+
+      
     </>
   );
 };

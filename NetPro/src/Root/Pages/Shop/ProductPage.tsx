@@ -8,19 +8,20 @@ import DetailsAccordeon from "@/Root/components/shop/DetailsAccordeon";
 import { Link } from "react-router-dom";
 import { extractCategoryFromProductPage } from "@/utils";
 import { useDynamicProductFetching } from "@/utils";
+import useCart from "@/lib/zustand/cart";
 
 const ProductPage = () => {
   const { id, category } = useParams();
   const location = useLocation()
   const currentCategory:any = extractCategoryFromProductPage(location.pathname)
-  
+  const addToCart = useCart((state:any) => state.addToCart)
   const { product, isLoading, isFetched, relatedProducts } = useDynamicProductFetching(id || "", category || "");
   const [currentImage, setCurrentImage] = useState(0);
   const [currentColor, setCurrentColor] = useState(0);
   const [currentSize, setCurrentSize] = useState(0);
 
   const [isDisabled, setIsDisabled] = useState(true);
-  console.log(product)
+
   useEffect(() => {
     if (currentSize) {
       setIsDisabled(false);
@@ -124,7 +125,7 @@ const ProductPage = () => {
     return categorySizes.map((number:any, index:number) =>{ 
       const isAvailable = product?.availableSizes.includes(number);
      
-    console.log(isAvailable)
+   
      
       return (
       <div
@@ -150,6 +151,19 @@ const ProductPage = () => {
     </div>
   )});
   };
+
+  const handleAddtoCart = () =>{
+    const newItem = {
+      productName: product?.productName,
+      image: product?.imagesColor1[1],
+      price: product?.price,
+      size: currentSize,
+      color: product?.colors[currentColor]
+      
+    }
+    addToCart({newItem})
+   
+  }
 
   
 
@@ -255,7 +269,7 @@ const ProductPage = () => {
           </div>
 
           <div className=" flex flex-col gap-2 ">
-            <Button disabled={isDisabled} className="btn-black w-full">
+            <Button disabled={isDisabled} onClick={handleAddtoCart} className="btn-black w-full">
               {isDisabled ? "PLEASE SELECT A SIZE" : "ADD TO CART"}
             </Button>
             <p className="text-center text-medium text-[14px]">

@@ -55,4 +55,28 @@ export const useDynamicProductFetching = (id: string | null, category: string | 
     return { product, isLoading: isLoadingProduct, isFetched: isFetchedProduct, relatedProducts };
   };
 
+  interface CartItem {
+    productName: string;
+    image: string;
+    price: number | null;
+    size: string;
+    color: string;
+}
+
+interface AggregatedCartItem extends CartItem {
+    quantity: number;
+}
+
+export const aggregateCartItems = (cart: CartItem[]): AggregatedCartItem[] => {
+    const aggregatedCart: { [key: string]: AggregatedCartItem } = {};
+    cart.forEach((product) => {
+        const key = `${product.productName}-${product.size}-${product.color}`;
+        if (aggregatedCart[key]) {
+            aggregatedCart[key].quantity++;
+        } else {
+            aggregatedCart[key] = { ...product, quantity: 1 };
+        }
+    });
+    return Object.values(aggregatedCart);
+};
   

@@ -155,7 +155,7 @@ const ProductPage = () => {
   const handleAddtoCart = () =>{
     const newItem = {
       productName: product?.productName,
-      image: product?.imagesColor1[1],
+      image: image,
       price: product?.price,
       size: currentSize,
       color: product?.colors[currentColor]

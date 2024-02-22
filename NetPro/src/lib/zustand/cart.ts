@@ -24,14 +24,14 @@ const useCart= create((set, get) => ({
         })
     },
     removeFromCart: (params:any) => {
-        const {itemIndex} = params
-        set((state:any) =>{
-            const newCart = state.cart.filter(( elementIndex:any) => {
-                elementIndex !== itemIndex
+        const { index } = params
+        set((state:any) => {
+            const newCart = state.cart.filter((element:any, elementIndex:any) => {
+                return elementIndex !== index
             })
             return {
                 ...state,
-                cart:newCart
+                cart: newCart
             }
         })
     },

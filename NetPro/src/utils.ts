@@ -79,4 +79,20 @@ export const aggregateCartItems = (cart: CartItem[]): AggregatedCartItem[] => {
     });
     return Object.values(aggregatedCart);
 };
+
+export const calculateTotalPrice = (products:any[]) => {
+    // Use reduce to iterate over the array and sum up the prices
+    const totalPrice = products.reduce((accumulator, currentProduct) => {
+      // Ensure that price is a number before adding it to the accumulator
+      if (typeof currentProduct.price === 'number') {
+        return accumulator + currentProduct.price;
+      }
+      // If price is not a number, return the accumulator as is
+      return accumulator;
+    }, 0); // Initialize accumulator with 0
+  
+    return totalPrice;
+  };
+  
+
   

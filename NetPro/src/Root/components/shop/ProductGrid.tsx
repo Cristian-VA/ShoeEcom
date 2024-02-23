@@ -37,8 +37,8 @@ useEffect(() => {
 
       </div>
     ) :(
-      <div className="w-full flex flex-col gap-6 md:gap-10">
-    <div className="flex flex-wrap min-h-[700px] md:min-h-[950px]   ">
+      <div className="w-full flex flex-col gap-6 md:gap-10 min-h-[700px] md:min-h-[950px] justify-between">
+    <div className="flex flex-wrap  items-start justify-start  ">
       
       {pageData?.documents?.map((product: any, index: number) => (
         // Added a unique key for each link

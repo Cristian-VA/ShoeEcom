@@ -210,7 +210,7 @@ const ProductPage = () => {
           </h1>
           <div className="flex gap-6">
             <p className="text-[20px]">${product?.price}</p>
-            {product?.price >= 70 && (
+            {product?.price >= 100 && (
               <p className="bg-gray-100 my-auto font-medium px-2 italic">
                 {" "}
                 Free Shipping
@@ -273,7 +273,7 @@ const ProductPage = () => {
               {isDisabled ? "PLEASE SELECT A SIZE" : "ADD TO CART"}
             </Button>
             <p className="text-center text-medium text-[14px]">
-              Free shipping on orders over $70. Returns are free of charge.
+              Free shipping on orders over $100. Returns are free of charge.
             </p>
           </div>
 

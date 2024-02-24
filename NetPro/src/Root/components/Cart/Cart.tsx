@@ -1,15 +1,15 @@
 import useCart from "@/lib/zustand/cart"
 import { aggregateCartItems, calculateTotalPrice } from "@/utils"
 import { Button } from "@/components/ui/button"
-import ProductCardCart from "../components/Cart/ProductCardCart"
+import ProductCardCart from "./ProductCardCart"
 import { Link } from "react-router-dom"
 const Cart = () => {
   const cart = useCart((state:any) => state.cart)
   
 const aggregatedCart = aggregateCartItems(cart)
-console.log(cart);
+
 const subtotal = calculateTotalPrice(cart)
-console.log(subtotal)
+
   
   return (
    <div className="w-full min-h-screen py-3">
@@ -51,7 +51,7 @@ console.log(subtotal)
 
     <div className=" flex justify-between  py-3 border-gray-500 border-opacity-55 text-[14px] font-medium md:text-[16px]">
       <p>Shipping</p>
-      <p className="pr-3">{subtotal >= 75? "FREE": `$${subtotal*0.06}`}</p>
+      <p className="pr-3">{subtotal >= 100? "FREE": `$${subtotal*0.08}`}</p>
 
     </div>
     <Button className="btn-black w-full uppercase">Proceed to checkout</Button>

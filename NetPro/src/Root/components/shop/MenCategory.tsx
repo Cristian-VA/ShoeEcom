@@ -14,9 +14,9 @@ const MenCategory = ({category}:{category:string}) => {
   }
 
 
-  const {  data: menData, isPending:isPendingMen, isRefetching:isRefetchingMen  } = useGetMenCollectionBycategory(fetchParams)
-  const {  data: womenData, isPending:isPendingWomen, isRefetching:isRefetchingWomen  } = useGetWomenCollectionBycategory(fetchParams)
-  const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetKidsCollectionBycategory(fetchParams)
+
+
+
   const location = useLocation()
   const currentCategory:any = extractCategoryFromUrl(location.pathname)
   const isWomenCategory = currentCategory.startsWith("women")
@@ -26,18 +26,20 @@ const MenCategory = ({category}:{category:string}) => {
   let isRefetching = null
 
   if (isWomenCategory) {
-    data = womenData
-    isPending = isPendingWomen
-    isRefetching = isRefetchingWomen
+    const {  data: womenData, isPending:isPendingWomen, isRefetching:isRefetchingWomen  } = useGetWomenCollectionBycategory(fetchParams);
+    data = womenData;
+    isPending = isPendingWomen;
+    isRefetching = isRefetchingWomen;
   } else if (isKidsCategory) {
-    data = kidsData
-    isPending = isPendinKids
-    isRefetching = isRefetchingKids
+    const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetKidsCollectionBycategory(fetchParams);
+    data = kidsData;
+    isPending = isPendinKids;
+    isRefetching = isRefetchingKids;
   } else {
-    data = menData
-    isPending = isPendingMen
-    isRefetching = isRefetchingMen
-
+    const {  data: menData, isPending:isPendingMen, isRefetching:isRefetchingMen  } = useGetMenCollectionBycategory(fetchParams);
+    data = menData;
+    isPending = isPendingMen;
+    isRefetching = isRefetchingMen;
   }
 
   

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useLocation,  } from "react-router-dom";
 import {  extractCategoryFromUrl } from "@/utils";
 import {
@@ -7,16 +6,31 @@ import {
   sortBy,
 } from "@/constants";
 import { useFilterContext } from "@/Context/FilterContext";
+import { useEffect, useState } from "react";
+
 
 const FilterUi = () => {
   const location = useLocation();
   const currentCategory = extractCategoryFromUrl(location.pathname);
   const { filters, setFilters } = useFilterContext();
-  const isWomenCategory = currentCategory.startsWith("women")
-  console.log(filters)
+  const [prevCategory, setPrevCategory] = useState('')
 
 
- 
+  
+
+
+  useEffect(() => {
+    if (currentCategory !== prevCategory) {
+      console.log('Current Category:', currentCategory);
+      setFilters({
+        bestFor:null,
+        currentSize: [],
+        currentSort: null,
+      })
+      setPrevCategory(currentCategory);
+    }
+  }, [currentCategory, prevCategory]);
+
  
   
 

@@ -1,6 +1,8 @@
 import {create} from "zustand"
+import { persist } from 'zustand/middleware'
 
-const useCart= create((set, get) => ({
+const useCart= create(
+    persist((set:any) => ({
     cart: [],
     product: {},
     setProduct: (params:any) => {
@@ -46,6 +48,8 @@ const useCart= create((set, get) => ({
         })
     }
 
+}), {
+    name: "cart store"
 }))
 
 

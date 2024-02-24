@@ -9,7 +9,7 @@ const [currentPage, setcurrentPage] = useState(1)
 
 let pageData = data?.Page1
 const pages = data?.Page2?.documents?.length > 0 ? Object.keys(data) : ["Page1"];
-console.log(data?.Page2)
+
 
 
 
@@ -41,7 +41,7 @@ useEffect(() => {
     <div className="flex flex-wrap  items-start justify-start  ">
       
       {pageData?.documents?.map((product: any, index: number) => (
-        // Added a unique key for each link
+        
        <ProductCard product={product} key={index} simple={false} />
       ))}
     </div>
@@ -66,10 +66,4 @@ useEffect(() => {
 export default ProductGrid;
 
 
-//{pages.map((page,index) => (
-//  <div key={page} onClick={() => setcurrentPage(index+1)}
-//  className="flex flex-col  font-medium  border-[1.5px] items-center rounded-sm justify-center border-gray-700 border-opacity-80  w-[40px] h-[40px] m-1 transition hover:bg-gray-100"
-//  >
-//    <h1 className="bg-transparent">{index + 1}</h1>
-//  </div>
-//))}
+

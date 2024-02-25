@@ -3,6 +3,9 @@ import {motion} from "framer-motion"
 import MenAccordion from './MobileAccordion/MenAccordion';
 import WomenAccordion from "./MobileAccordion/WomenAccordion";
 import KidsAccordion from "./MobileAccordion/KidsAccordion";
+
+
+
 const MobileNav = ({toggleIsOpen}:{toggleIsOpen:() => void}) => {
   return (
     

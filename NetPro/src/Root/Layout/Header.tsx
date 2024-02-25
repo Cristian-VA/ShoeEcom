@@ -12,23 +12,21 @@ import PopUpSideBar from "./Shop/PopUpSideBar";
 import { aggregateCartItems } from "@/utils";
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
-  const [isOpenCart, setOpenCart] = useState(false);
+
 
   const {user} = useAuth()
   const cart = useCart((state:any) => state.cart)
+  
+    const isOpenCart = useCart((state:any) => state.open)
+    const toggleOpenCart = useCart((state:any) => state.toggleIsOpen)
  
   const aggregatedCart = aggregateCartItems(cart);
-  console.log(aggregatedCart);
 
 
   const toggleOpen = () => {
     setOpen((prevValue) => !prevValue);
   };
 
-  const toggleOpenCart = () => {
-    setOpenCart((prevValue) => !prevValue);
-   
-  };
 
   return (
     <>
@@ -60,7 +58,7 @@ const Header = () => {
             />
           </Link>
 
-          <div className="flex gap-4 md:w-[200px] justify-end">
+          <div className="flex gap-4 md:w-[200px] justify-end" >
                
              
             {user?  (
@@ -95,7 +93,7 @@ const Header = () => {
         {isOpen && <MobileNav toggleIsOpen={toggleOpen} />}
       </AnimatePresence>
 
-      <PopUpSideBar open={isOpenCart} setOpen={setOpenCart}>
+      <PopUpSideBar open={isOpenCart} setOpen={toggleOpenCart}>
        <Cart/>
         </PopUpSideBar>
 

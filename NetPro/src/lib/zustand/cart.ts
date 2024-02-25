@@ -4,16 +4,10 @@ import { persist } from 'zustand/middleware'
 const useCart= create(
     persist((set:any) => ({
     cart: [],
-    product: {},
-    setProduct: (params:any) => {
-        const {newProduct} = params
-        set((state:any) => {
-            return {
-                ...state,
-                product: newProduct
-            }
-
-        })
+    open: false,
+    toggleIsOpen: () => {
+        set((state:any) =>
+        ({ open: !state.open }))
     },
     addToCart: (params:any) => {
         const {newItem} = params

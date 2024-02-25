@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { extractCategoryFromProductPage } from "@/utils";
 import { useDynamicProductFetching } from "@/utils";
 import useCart from "@/lib/zustand/cart";
-
+import PopUpModal from "@/Root/Layout/Shop/PopUpModal";
 const ProductPage = () => {
   const { id, category } = useParams();
   const location = useLocation()
@@ -19,8 +19,11 @@ const ProductPage = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [currentColor, setCurrentColor] = useState(0);
   const [currentSize, setCurrentSize] = useState(0);
+  const [openModal, setOpenModal] = useState(false)
 
   const [isDisabled, setIsDisabled] = useState(true);
+
+  const toggleOpenCart = useCart((state:any) => state.toggleIsOpen)
 
   useEffect(() => {
     if (currentSize) {
@@ -162,6 +165,7 @@ const ProductPage = () => {
       
     }
     addToCart({newItem})
+    setOpenModal(true)
    
   }
 
@@ -306,6 +310,13 @@ const ProductPage = () => {
           )}
         </div>
       </div>
+
+
+      <PopUpModal open={openModal} setOpen={setOpenModal}>sad
+      </PopUpModal>
+
+     
+
 
       
 

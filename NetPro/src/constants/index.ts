@@ -26,16 +26,16 @@ export const MenShoesLinks = [
   export const MenAccesoriesLinks = [
    
     {
-      route: "collections/men-belts",
-      label: "Belts",
+      route: "collections/men-socks",
+      label: "Socks",
     },
     {
-      route: "/collections/men-briefcases",
-      label: "Briefcases",
+      route: "/collections/men-backpacks",
+      label: "Backpacks",
     },
     {
-      route: "/collections/men-wallets",
-      label: "Wallets",
+      route: "/collections/men-water-bottles",
+      label: "Water Bottles",
     },
     {
       route: "/collections/men-accesories",
@@ -135,6 +135,9 @@ export const MenShoesLinks = [
 
   export const helpInfo = ["+1 (555) 123-4567", "+1 (555) 987-6543 (Text-Only)", "support@quillstride.com", "Returns/Exchanges", "FAQ/Contact Us"];
 
+  export const socksSizes = [ "(W5-7)" , "(W8-10/M8)", "(W11/M9-12)" , "(M13-14)"]
+
+
   export const shopInfo = [
    
     {
@@ -180,9 +183,9 @@ export const categoryLinksMap: Record<string, any[]> = {
   "men-slip-ons": MenShoesLinks,
   "men": MenShoesLinks,
   "men-accesories": MenAccesoriesLinks,
-  "men-belts": MenAccesoriesLinks,
-  "men-briefcases": MenAccesoriesLinks,
-  "men-wallets": MenAccesoriesLinks,
+  "men-socks": MenAccesoriesLinks,
+  "men-backpacks": MenAccesoriesLinks,
+  "men-water-bottles": MenAccesoriesLinks,
   "women": WomenShoesLinks,
   "women-sneakers": WomenShoesLinks,
   "women-active": WomenShoesLinks,
@@ -205,9 +208,9 @@ export const categorySizeMap: Record<string, any[]> = {
   "men-slip-ons": menShoeSizes,
   "men": menShoeSizes,
   "men-accesories": menShoeSizes,
-  "men-belts": menShoeSizes,
-  "men-briefcases": menShoeSizes,
-  "men-wallets": menShoeSizes,
+  "men-socks": socksSizes,
+  "men-backpacks": menShoeSizes,
+  "men-water-bottles": menShoeSizes,
   "women": womenShoeSizes,
   "women-sneakers": womenShoeSizes,
   "women-active": womenShoeSizes,
@@ -335,9 +338,9 @@ export const categoryBestForMap: Record<string, any[]> = {
   "men-slip-ons": bestForSlipOns,
   "men": menShoeSizes,
   "men-accesories": menShoeSizes,
-  "men-belts": menShoeSizes,
-  "men-briefcases": menShoeSizes,
-  "men-wallets": menShoeSizes,
+  "men-socks": menShoeSizes,
+  "men-backpacks": menShoeSizes,
+  "men-water-bottles": menShoeSizes,
   "women": bestForSneakers,
   "women-sneakers": bestForSneakers,
   "women-active": bestForActive,

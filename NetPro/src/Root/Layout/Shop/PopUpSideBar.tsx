@@ -11,7 +11,7 @@ const PopUpSideBar = ({open, setOpen, children}:{open:boolean, setOpen:any, chil
           {open && (
             <div className={"w-screen min-h-screen fixed top-0 left-0 bg-gray-800 z-50 bg-opacity-55   "}>
               <motion.div
-                className="w-[80%] shadow-2xl  sm:w-[50%] md:w-[30%]  right-0 ml-auto  h-screen bg-transparent   flex flex-col items-start custom-scrollbar"
+                className="w-[80%] shadow-2xl  sm:w-[50%] md:w-[30%] bg-white  right-0 ml-auto  h-screen bg-transparent   flex flex-col items-start custom-scrollbar"
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}

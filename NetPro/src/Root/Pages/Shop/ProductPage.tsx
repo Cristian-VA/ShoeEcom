@@ -10,6 +10,7 @@ import { extractCategoryFromProductPage } from "@/utils";
 import { useDynamicProductFetching } from "@/utils";
 import useCart from "@/lib/zustand/cart";
 import PopUpModal from "@/Root/Layout/Shop/PopUpModal";
+import CheckOut from "@/Root/components/shop/CheckOut";
 const ProductPage = () => {
   const { id, category } = useParams();
   const location = useLocation()
@@ -23,7 +24,7 @@ const ProductPage = () => {
 
   const [isDisabled, setIsDisabled] = useState(true);
 
-  const toggleOpenCart = useCart((state:any) => state.toggleIsOpen)
+ 
 
   useEffect(() => {
     if (currentSize) {
@@ -154,16 +155,16 @@ const ProductPage = () => {
     </div>
   )});
   };
-
+  const newItem = {
+    productName: product?.productName,
+    image: image,
+    price: product?.price,
+    size: currentSize,
+    color: product?.colors[currentColor]
+    
+  }
   const handleAddtoCart = () =>{
-    const newItem = {
-      productName: product?.productName,
-      image: image,
-      price: product?.price,
-      size: currentSize,
-      color: product?.colors[currentColor]
-      
-    }
+    
     addToCart({newItem})
     setOpenModal(true)
    
@@ -312,7 +313,8 @@ const ProductPage = () => {
       </div>
 
 
-      <PopUpModal open={openModal} setOpen={setOpenModal}>sad
+      <PopUpModal open={openModal}  setOpen={setOpenModal}>
+        <CheckOut product={newItem} setOpen={setOpenModal}/>
       </PopUpModal>
 
      

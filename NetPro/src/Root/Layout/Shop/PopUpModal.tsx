@@ -13,8 +13,8 @@ const PopUpModal = ({open, setOpen, children}:{open:boolean, setOpen:any, childr
           className="w-[800px] h-[600px] shadow-2xl m-2"
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
-          exit={{ y: "115%" }}
-          transition={{ duration: 0.3 }}
+          exit={{ y: "140%" }}
+          transition={{ duration: 0.4 }}
           
         >
           <Button onClick={() => setOpen(false)} variant="ghost" className=" w-full  border-opacity-55  border-b-[1.5px] border-gray-600 hover:bg-gray-100 bg-white transition  "> 

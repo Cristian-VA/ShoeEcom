@@ -90,7 +90,7 @@ export async function getMenCollection(fetchParams: { category: string; filters?
       [...commonQueries, Query.offset(0)]
     );
 
-    const lastId = Page1.documents[Page1.documents.length - 1].$id;
+    const lastId = Page1?.documents[Page1.documents.length - 1]?.$id;
     const Page2 = await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.menCollectionId,
@@ -197,6 +197,51 @@ export async function getKidsCollection(fetchParams: { category: string; filters
   }
 }
 
+export async function getSocksCollection(fetchParams: { category: string; filters?: Filters}) {
+  const commonQueries: any[] = [Query.limit(6)];
+
+  if (fetchParams?.filters?.bestFor) {
+    commonQueries.push(Query.equal("bestFor", fetchParams.filters.bestFor));
+  }
+
+  if (fetchParams?.filters?.currentSort === "expensive") {
+    commonQueries.push(Query.orderDesc("price"));
+  } else if (fetchParams?.filters?.currentSort === "cheap") {
+    commonQueries.push(Query.orderAsc("price"));
+  } else if (fetchParams?.filters?.currentSort === "newest") {
+    commonQueries.push(Query.orderAsc("$createdAt"));
+  } else if (fetchParams?.filters?.currentSort === "oldest") {
+    commonQueries.push(Query.orderDesc("$createdAt"));
+  }
+  
+
+  try {
+    const Page1 = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.socksCollectionId,
+      [...commonQueries, Query.offset(0)]
+    );
+
+    const lastId = Page1.documents[Page1.documents.length - 1].$id;
+    const Page2 = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.socksCollectionId,
+      [...commonQueries, Query.cursorAfter(lastId)]
+    );
+
+    // Check if Page2 is empty
+    if (Page2?.length === 0) {
+      return { Page1 };
+    } else {
+      return { Page1, Page2 };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
 
 //Fetch by Id
 
@@ -242,8 +287,21 @@ export async function getKidsProductById(productId: string) {
   }
 }
 
+export async function getSocksById(productId: string) {
+  try {
+    const product = await databases.getDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.socksCollectionId,
+      productId
+    );
 
-//Fetch related Products
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
 
 export async function getMenRelatedProducts(productId: string, category:string){
   const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2), Query.equal("category", [category])]

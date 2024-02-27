@@ -2,7 +2,7 @@
 
 import { Filters } from "@/types"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts } from "../appwrite/api"
+import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection } from "../appwrite/api"
 
 import { QUERY_KEYS } from "./Keys"
 
@@ -39,6 +39,15 @@ export const useGetWomenCollectionBycategory = (fetchParams: { category: any; fi
     return useQuery({
     queryKey:[QUERY_KEYS.GET_WOMEN_COLLECTION, fetchParams], 
     queryFn: () => getWomenCollection(fetchParams),  
+    enabled: !!fetchParams,
+    
+    })
+}
+
+export const useGetSocksCollection = (fetchParams: { category: any; filters?: Filters }) =>{
+    return useQuery({
+    queryKey:[QUERY_KEYS.GET_SOCKS_COLLECTION, fetchParams], 
+    queryFn: () => getSocksCollection(fetchParams),  
     enabled: !!fetchParams,
     
     })

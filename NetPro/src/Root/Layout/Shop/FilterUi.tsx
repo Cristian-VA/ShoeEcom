@@ -14,6 +14,7 @@ const FilterUi = () => {
   const currentCategory = extractCategoryFromUrl(location.pathname);
   const { filters, setFilters } = useFilterContext();
   const [prevCategory, setPrevCategory] = useState('')
+  const isSocksCategory = currentCategory.endsWith("socks")
 
 
   
@@ -74,8 +75,8 @@ const FilterUi = () => {
         }))}
         className={
           filters.currentSize?.includes(number)
-            ? "flex flex-col  font-medium  border-[1.5px] items-center rounded-sm justify-center border-gray-700 border-opacity-80  w-1/5 h-[40px] m-1 bg-gray-800"
-            : "flex flex-col  font-medium  border-[1.5px] items-center rounded-sm justify-center border-gray-700 border-opacity-80   w-1/5 m-1  h-[40px] cursor-pointer hover:bg-gray-100 transition  "
+            ? "flex flex-col  font-medium  border-[1.5px] items-center rounded-sm justify-center border-gray-700 border-opacity-80  min-w-[20%] h-[40px] m-1 px-1 bg-gray-800"
+            : "flex flex-col  font-medium  border-[1.5px] items-center rounded-sm justify-center border-gray-700 border-opacity-80  min-w-[20%] m-1 px-1  h-[40px] cursor-pointer hover:bg-gray-100 transition  "
         }
         key={index}
       >
@@ -151,7 +152,7 @@ const FilterUi = () => {
 
       <div className="flex flex-col mb-6 ">
         <h1 className="text-[18px] font-semibold">SIZES</h1>
-        <div className="flex  flex-wrap my-4   ">
+        <div className="flex  flex-wrap my-4    ">
           {currentCategory &&
             categorySizeMap[currentCategory] &&
             getCategorySizes(categorySizeMap[currentCategory])}
@@ -159,7 +160,7 @@ const FilterUi = () => {
         <hr className="my-2" />
       </div>
 
-      <div className="flex flex-col mb-7  ">
+     {!isSocksCategory && <div className="flex flex-col mb-7  ">
         <h1 className="text-[18px] font-semibold">BEST FOR</h1>
         <div className="flex  flex-col my-4 gap-2   ">
           {currentCategory &&
@@ -167,7 +168,7 @@ const FilterUi = () => {
             getCategoryBestFor(categoryBestForMap[currentCategory])}
         </div>
         <hr className="my-2" />
-      </div>
+      </div>}
     </div>
   );
 };

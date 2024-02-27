@@ -33,6 +33,6 @@ export type CustomHookResult = {
 
   export type Filters = {
     currentSize: string[] | null;
-    bestFor: string[] | null;
+    bestFor?: string[] | null;
     currentSort: string | null;
   }

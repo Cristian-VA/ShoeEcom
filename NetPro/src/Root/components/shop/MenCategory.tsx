@@ -1,4 +1,4 @@
-import { useGetMenCollectionBycategory, useGetKidsCollectionBycategory, useGetWomenCollectionBycategory } from '@/lib/queries/queries&mutations'
+import { useGetMenCollectionBycategory, useGetKidsCollectionBycategory, useGetWomenCollectionBycategory, useGetSocksCollection } from '@/lib/queries/queries&mutations'
 import ProductGrid from '@/Root/components/shop/ProductGrid'
 import { useLocation } from 'react-router-dom'
 import { extractCategoryFromUrl } from '@/utils'
@@ -13,6 +13,8 @@ const MenCategory = ({category}:{category:string}) => {
     filters: filters
   }
 
+  console.log(category)
+
 
 
 
@@ -20,10 +22,14 @@ const MenCategory = ({category}:{category:string}) => {
   const location = useLocation()
   const currentCategory:any = extractCategoryFromUrl(location.pathname)
   const isWomenCategory = currentCategory.startsWith("women")
+  const isMenCategory = currentCategory.startsWith("men")
   const isKidsCategory = currentCategory.startsWith("kids")
+  const isSocksCategory = currentCategory.endsWith("socks")
   let data = null
-  let isPending = null
+  let isPending = false
   let isRefetching = null
+  console.log(isSocksCategory)
+  
 
   if (isWomenCategory) {
     const {  data: womenData, isPending:isPendingWomen, isRefetching:isRefetchingWomen  } = useGetWomenCollectionBycategory(fetchParams);
@@ -35,12 +41,23 @@ const MenCategory = ({category}:{category:string}) => {
     data = kidsData;
     isPending = isPendinKids;
     isRefetching = isRefetchingKids;
-  } else {
+  } else if (isSocksCategory) {
+    const {  data: socksData, isPending:isPendingSocks, isRefetching:isRefetchingSocks  } = useGetSocksCollection(fetchParams);
+    data = socksData;
+    isPending = isPendingSocks;
+    isRefetching = isRefetchingSocks;
+    console.log("xd")
+  }
+  else if (isMenCategory) {
     const {  data: menData, isPending:isPendingMen, isRefetching:isRefetchingMen  } = useGetMenCollectionBycategory(fetchParams);
     data = menData;
     isPending = isPendingMen;
     isRefetching = isRefetchingMen;
+  } else {
+
   }
+  
+  
 
   
 

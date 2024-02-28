@@ -1,5 +1,5 @@
 import { CustomHookResult } from './types';
-import { useGetMenProductId, useGetWomenProductId, useGetKidsProductId, useGetMenrelatedProducts, useGetWomenrelatedProducts, useGetKidsrelatedProducts } from './lib/queries/queries&mutations';
+import { useGetMenProductId, useGetWomenProductId, useGetKidsProductId, useGetMenrelatedProducts, useGetWomenrelatedProducts, useGetKidsrelatedProducts, useGetSocksProductId, useGetSocksrelatedProducts } from './lib/queries/queries&mutations';
 
 
 export function convertToTitleCase(str: string): string {
@@ -38,7 +38,11 @@ export function extractCategoryFromProductPage(url:string) {
 export const useDynamicProductFetching = (id: string | null, category: string | null): CustomHookResult => {
     let productHook, relatedProductsHook;
   
-    if (category?.startsWith("women")) {
+    if (category?.endsWith("socks")){
+        productHook = useGetSocksProductId(id || "");
+      relatedProductsHook = useGetSocksrelatedProducts(id || "", category || "");
+     
+    } else if (category?.startsWith("women")) {
       productHook = useGetWomenProductId(id || "");
       relatedProductsHook = useGetWomenrelatedProducts(id || "", category || "");
     } else if (category?.startsWith("kids")) {

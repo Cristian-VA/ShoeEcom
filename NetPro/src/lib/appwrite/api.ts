@@ -344,3 +344,17 @@ export async function getKidsRelatedProducts(productId: string, category:string)
     console.log(error)
   }
 }
+
+export async function getSocksRelatedProducts(productId: string, category:string){
+  const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2), Query.equal("category", [category])]
+  try {
+    const relatedProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.socksCollectionId,
+      queries
+    )
+    return relatedProducts
+  } catch (error) {
+    console.log(error)
+  }
+}

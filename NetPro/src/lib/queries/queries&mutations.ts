@@ -2,7 +2,7 @@
 
 import { Filters } from "@/types"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection } from "../appwrite/api"
+import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts } from "../appwrite/api"
 
 import { QUERY_KEYS } from "./Keys"
 
@@ -88,6 +88,14 @@ export const useGetKidsProductId = (productId:string) =>{
     })
 }
 
+export const useGetSocksProductId = (productId:string) =>{
+    return useQuery({
+    queryKey:[QUERY_KEYS.GET_SOCKS_COLLECTION_PRODUCTID, productId], //when postIdchanges it triggers a refetch
+    queryFn: () => getSocksById(productId),  
+    enabled: !!productId      
+    })
+}
+
 // Related Products
 
 export const useGetMenrelatedProducts = (productId: string | undefined, category:string) => {
@@ -110,6 +118,14 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
     return useQuery({
       queryKey: [QUERY_KEYS.GET_KIDS_COLLECTION, productId],
       queryFn: () => getKidsRelatedProducts(productId ||  "", category),
+      enabled: !!productId,
+    });
+  };
+
+  export const useGetSocksrelatedProducts = (productId: string | undefined, category:string) => {
+    return useQuery({
+      queryKey: [QUERY_KEYS.GET_SOCKS_COLLECTION, productId],
+      queryFn: () => getSocksRelatedProducts(productId ||  "", category),
       enabled: !!productId,
     });
   };

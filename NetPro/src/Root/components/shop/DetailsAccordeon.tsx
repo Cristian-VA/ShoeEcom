@@ -21,7 +21,7 @@ const DetailsAccordeon = ({description, imgUrl, details}:{description:any[], img
 
             </div>
 
-            <img src={imgUrl} alt="product image"  className="xl:w-1/2 xl:block  object-cover w-full "/>
+            {imgUrl &&<img src={imgUrl} alt="product image"  className="xl:w-1/2 xl:block  object-cover w-full "/>}
       </div>
     </AccordionContent>
   </AccordionItem>

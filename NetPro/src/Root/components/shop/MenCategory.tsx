@@ -13,12 +13,6 @@ const MenCategory = ({category}:{category:string}) => {
     filters: filters
   }
 
-  console.log(category)
-
-
-
-
-
   const location = useLocation()
   const currentCategory:any = extractCategoryFromUrl(location.pathname)
   const isWomenCategory = currentCategory.startsWith("women")
@@ -28,25 +22,26 @@ const MenCategory = ({category}:{category:string}) => {
   let data = null
   let isPending = false
   let isRefetching = null
-  console.log(isSocksCategory)
+  
   
 
-  if (isWomenCategory) {
-    const {  data: womenData, isPending:isPendingWomen, isRefetching:isRefetchingWomen  } = useGetWomenCollectionBycategory(fetchParams);
-    data = womenData;
-    isPending = isPendingWomen;
-    isRefetching = isRefetchingWomen;
+  if (isSocksCategory) {
+    const {  data: socksData, isPending:isPendingSocks, isRefetching:isRefetchingSocks  } = useGetSocksCollection(fetchParams);
+    data = socksData;
+    isPending = isPendingSocks;
+    isRefetching = isRefetchingSocks;
   } else if (isKidsCategory) {
     const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetKidsCollectionBycategory(fetchParams);
     data = kidsData;
     isPending = isPendinKids;
     isRefetching = isRefetchingKids;
-  } else if (isSocksCategory) {
-    const {  data: socksData, isPending:isPendingSocks, isRefetching:isRefetchingSocks  } = useGetSocksCollection(fetchParams);
-    data = socksData;
-    isPending = isPendingSocks;
-    isRefetching = isRefetchingSocks;
-    console.log("xd")
+  } else if (isWomenCategory) {
+    const {  data: womenData, isPending:isPendingWomen, isRefetching:isRefetchingWomen  } = useGetWomenCollectionBycategory(fetchParams);
+    data = womenData;
+    isPending = isPendingWomen;
+    isRefetching = isRefetchingWomen;
+    
+ 
   }
   else if (isMenCategory) {
     const {  data: menData, isPending:isPendingMen, isRefetching:isRefetchingMen  } = useGetMenCollectionBycategory(fetchParams);

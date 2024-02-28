@@ -14,6 +14,7 @@ import { useState } from 'react'
 
 const ProductCard = ({product, simple=false,  }:{product:any, simple:boolean }) => {
   const [currentImage, setCurrentImage] = useState(0)
+  console.log(product)
   
   const mapImages= product?.imagesColor1?.map((image:string, index:number) => (
     <CarouselItem className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4" key={index}>

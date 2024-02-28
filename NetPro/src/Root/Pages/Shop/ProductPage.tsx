@@ -23,6 +23,7 @@ const ProductPage = () => {
   const [openModal, setOpenModal] = useState(false)
 
   const [isDisabled, setIsDisabled] = useState(true);
+  console.log(product)
 
  
 
@@ -136,9 +137,9 @@ const ProductPage = () => {
       onClick={isAvailable? () => setCurrentSize(number) : () => {}  }
       className={
         number === currentSize
-          ? "flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] bg-gray-800"
-          : isAvailable? "flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer hover:bg-gray-100 transition " :
-          "line-through flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] opacity-20 hover:bg-gray-100 transition" 
+          ? "flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 min-w-[40px] px-2 h-[40px] sm:min-w-[60px] sm:min-h-[60px] bg-gray-800"
+          : isAvailable? "flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 px-2 min-w-[40px] h-[40px] sm:min-w-[60px] sm:min-h-[60px] cursor-pointer hover:bg-gray-100 transition " :
+          "line-through flex flex-col  font-medium  border-2 items-center justify-center border-gray-700 border-opacity-55 px-2 min-w-[40px] h-[40px] sm:min-w-[60px] sm:h-[60px] opacity-20 hover:bg-gray-100 transition" 
       }
       key={index}
     >
@@ -244,6 +245,8 @@ const ProductPage = () => {
                         : index === 2
                         ? product?.imagesColor3[0]
                         : index === 3
+                        ? product?.imagesColor4[0]
+                        : ""
                         
                     }
                     alt={color}

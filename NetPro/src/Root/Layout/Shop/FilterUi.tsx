@@ -14,7 +14,7 @@ const FilterUi = () => {
   const currentCategory = extractCategoryFromUrl(location.pathname);
   const { filters, setFilters } = useFilterContext();
   const [prevCategory, setPrevCategory] = useState('')
-  const isSocksCategory = currentCategory.endsWith("socks")
+  
 
 
   
@@ -22,7 +22,7 @@ const FilterUi = () => {
 
   useEffect(() => {
     if (currentCategory !== prevCategory) {
-      console.log('Current Category:', currentCategory);
+      
       setFilters({
         bestFor:null,
         currentSize: [],
@@ -160,7 +160,7 @@ const FilterUi = () => {
         <hr className="my-2" />
       </div>
 
-     {!isSocksCategory && <div className="flex flex-col mb-7  ">
+       <div className="flex flex-col mb-7  ">
         <h1 className="text-[18px] font-semibold">BEST FOR</h1>
         <div className="flex  flex-col my-4 gap-2   ">
           {currentCategory &&
@@ -168,7 +168,7 @@ const FilterUi = () => {
             getCategoryBestFor(categoryBestForMap[currentCategory])}
         </div>
         <hr className="my-2" />
-      </div>}
+      </div>
     </div>
   );
 };

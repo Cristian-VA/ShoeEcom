@@ -79,16 +79,16 @@ export const MenShoesLinks = [
   export const WomenAccesoriesLinks = [
    
     {
-        route: "/collections/women-belts",
-        label: "Belts",
+        route: "/collections/women-socks",
+        label: "Socks",
       },
       {
         route: "/collections/women-bags",
         label: "Bags",
       },
       {
-        route: "/collections/women-wallets",
-        label: "Wallets",
+        route: "/collections/women-water-bottles",
+        label: "Water Bottles",
       },
       {
         route: "/collections/women-accesories",
@@ -218,7 +218,7 @@ export const categorySizeMap: Record<string, any[]> = {
   "women-hiking": womenShoeSizes,
   "women-flats": womenShoeSizes,
   "women-accesories": menShoeSizes,
-  "women-belts": menShoeSizes,
+  "women-socks": socksSizes,
   "women-bags": menShoeSizes,
   "women-wallets": menShoeSizes,
   "kids": kidsShoeSizes,
@@ -306,6 +306,26 @@ export const bestForHiking = [
   },
 ];
 
+export const bestForSocks = [
+   
+  {
+    bestFor: "casual",
+    label: "casual",
+  },
+  {
+    bestFor: "hiking",
+    label: "hiking",
+  },
+  {
+    bestFor: "running",
+    label: "running",
+  },
+  {
+    bestFor: "sports",
+    label: "sports",
+  },
+];
+
 export const sortBy = [
    
   {
@@ -338,7 +358,7 @@ export const categoryBestForMap: Record<string, any[]> = {
   "men-slip-ons": bestForSlipOns,
   "men": menShoeSizes,
   "men-accesories": menShoeSizes,
-  "men-socks": menShoeSizes,
+  "men-socks": bestForSocks,
   "men-backpacks": menShoeSizes,
   "men-water-bottles": menShoeSizes,
   "women": bestForSneakers,
@@ -348,7 +368,7 @@ export const categoryBestForMap: Record<string, any[]> = {
   "women-hiking": bestForHiking,
   "women-flats": bestForHiking,
   "women-accesories": menShoeSizes,
-  "women-belts": menShoeSizes,
+  "women-socks": bestForSocks,
   "women-bags": menShoeSizes,
   "women-wallets": menShoeSizes,
   "kids": bestForSneakers,

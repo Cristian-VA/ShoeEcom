@@ -11,11 +11,14 @@ const SideBar: React.FC = () => {
   const location = useLocation();
   const currentCategory = extractCategoryFromUrl(location.pathname);
 
-  
+  console.log(location)
+  console.log(categoryLinksMap)
   const getCategoryLinks = (categoryLinks: any[]) => {
-    return categoryLinks.map((link, index) => (
-      <li key={index} className="hover:underline">
-        <Link to={link.route}>{link.label}</Link>
+     
+    return categoryLinks.map((link, index) => 
+    (
+      <li key={index} >
+        <Link to={link.route} className={location.pathname === link.route? `font-semibold` : ""}>{link.label}</Link>
       </li>
     ));
   };

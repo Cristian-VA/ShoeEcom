@@ -11,8 +11,10 @@ import {
   WomenShoesLinks,
 } from "@/constants";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export function AdultNav({ category }: { category: string }) {
+   const location = useLocation()
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
@@ -30,12 +32,12 @@ export function AdultNav({ category }: { category: string }) {
                 {category === "men"
                   ? MenShoesLinks.map((link, index) => (
                       <li key={index} className="hover:underline">
-                        <Link to={link.route}>{link.label}</Link>
+                        <Link to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
                       </li>
                     ))
                   : WomenShoesLinks.map((link, index) => (
                       <li key={index} className="hover:underline">
-                        <Link to={link.route}>{link.label}</Link>
+                        <Link to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
                       </li>
                     ))}
               </ul>
@@ -58,12 +60,12 @@ export function AdultNav({ category }: { category: string }) {
                 {category === "men"
                   ? MenAccesoriesLinks.map((link, index) => (
                       <li key={index} className="hover:underline">
-                        <Link to={link.route}>{link.label}</Link>
+                        <Link to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
                       </li>
                     ))
                   : WomenAccesoriesLinks.map((link, index) => (
                       <li key={index} className="hover:underline">
-                        <Link to={link.route}>{link.label}</Link>
+                        <Link to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
                       </li>
                     ))}
               </ul>

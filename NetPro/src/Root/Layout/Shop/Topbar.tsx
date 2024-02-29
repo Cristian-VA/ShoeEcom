@@ -5,8 +5,6 @@ import { extractCategoryFromUrl } from "@/utils";
 import { categoryLinksMap } from "@/constants";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import { motion } from "framer-motion";
 import FilterUi from "./FilterUi";
 import PopUpSideBar from "./PopUpSideBar";
 const Topbar = () => {
@@ -17,7 +15,7 @@ const Topbar = () => {
   const getCategoryLinks = (categoryLinks: any[]) => {
     return categoryLinks.map((link, index) => (
       <li key={index} className="hover:underline bg-transparent">
-        <Link className="bg-transparent" to={link.route}>
+        <Link className={location.pathname === link.route? `font-semibold bg-transparent` : "bg-transparent"} to={link.route}>
           {link.label}
         </Link>
       </li>

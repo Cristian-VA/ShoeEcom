@@ -6,8 +6,10 @@ import {
 } from "@/components/ui/accordion";
 import { WomenShoesLinks, WomenAccesoriesLinks } from "@/constants";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const WomenAccordion = ({ toggleIsOpen }: { toggleIsOpen: () => void }) => {
+  const location = useLocation()
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
@@ -20,7 +22,7 @@ const WomenAccordion = ({ toggleIsOpen }: { toggleIsOpen: () => void }) => {
             <ul className="flex flex-col w-full gap-3 bg-gray-50">
               {WomenShoesLinks.map((link, index) => (
                 <li key={index} className="mobile-link" onClick={toggleIsOpen}>
-                  <Link to={link.route} className="bg-gray-50">
+                  <Link to={link.route} className={location.pathname === link.route? "font-semibold bg-gray-50" : "bg-gray-50"}>
                     {link.label}
                   </Link>
                 </li>

@@ -26,7 +26,7 @@ export const MenShoesLinks = [
   export const MenAccesoriesLinks = [
    
     {
-      route: "collections/men-socks",
+      route: "/collections/men-socks",
       label: "Socks",
     },
     {

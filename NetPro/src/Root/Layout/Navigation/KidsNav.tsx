@@ -6,7 +6,9 @@ import {
 } from "@/components/ui/hover-card"
  import { KidsLinks } from "@/constants"
  import { Link } from "react-router-dom"
+ import { useLocation } from "react-router-dom"
 export function KidsNav() {
+  const location = useLocation()
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
@@ -20,7 +22,7 @@ export function KidsNav() {
             <ul className="font-normal text-[14px] flex flex-col gap-2">
             {KidsLinks.map((link, index) => (
                 <li key={index}  >
-                  <Link to={link.route} className="hover:underline" >
+                  <Link to={link.route} className={location.pathname === link.route? "font-semibold " : ""} >
                     {link.label}
                   </Link>
                 </li>

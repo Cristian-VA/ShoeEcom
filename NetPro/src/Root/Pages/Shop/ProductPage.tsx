@@ -11,6 +11,7 @@ import { useDynamicProductFetching } from "@/utils";
 import useCart from "@/lib/zustand/cart";
 import PopUpModal from "@/Root/Layout/Shop/PopUpModal";
 import CheckOut from "@/Root/components/shop/CheckOut";
+import ProductSlider from "@/Root/components/shop/ProductSlider";
 const ProductPage = () => {
   const { id, category } = useParams();
   const location = useLocation()
@@ -21,6 +22,7 @@ const ProductPage = () => {
   const [currentColor, setCurrentColor] = useState(0);
   const [currentSize, setCurrentSize] = useState(0);
   const [openModal, setOpenModal] = useState(false)
+
 
   const [isDisabled, setIsDisabled] = useState(true);
   console.log(product)
@@ -199,10 +201,11 @@ const ProductPage = () => {
 
               />
               
-              
+            
             </div>
             
           </div>
+         
         </div>
 
         <div className="  ">
@@ -310,10 +313,16 @@ const ProductPage = () => {
                   product={relatedProducts?.documents[1]}
                 />
               </div>
+            
             </div>
           )}
+        
         </div>
       </div>
+      <div className="container">
+      <ProductSlider title="RECENTLY VIEWED PRODUCTS"/>
+      </div>
+
 
 
       <PopUpModal open={openModal}  setOpen={setOpenModal}>

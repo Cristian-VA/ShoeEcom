@@ -10,6 +10,7 @@ import {
 import { useState } from 'react'
 
 
+
  
 
 const ProductCard = ({product, simple=false,  }:{product:any, simple:boolean }) => {
@@ -28,7 +29,8 @@ const ProductCard = ({product, simple=false,  }:{product:any, simple:boolean }) 
 
   return (
    
-    <div className={simple? "flex flex-col w-1/2   ": '  flex flex-col w-1/2 lg:w-1/3 md:p-4 p-2  '}>
+    <div className={simple? "flex flex-col    ": '  flex flex-col w-1/2 lg:w-1/3 md:p-4 p-2 transition '}>
+      <div className='hover:border-[1px] border-gray-600 border-opacity-55 flex flex-col p-1 '>
     <Link to={`/collections/${product?.category}/${product?.$id}`}  >
 
           <div className=' relative'>
@@ -48,6 +50,7 @@ const ProductCard = ({product, simple=false,  }:{product:any, simple:boolean }) 
          <CarouselPrevious />
          <CarouselNext />
        </Carousel>}
+       </div>
       
        
        </div>

@@ -1,24 +1,31 @@
-import {create} from "zustand"
-import { persist } from 'zustand/middleware'
+import { create } from "zustand";
+import { persist } from 'zustand/middleware';
 
-const useSeenProducts= create(
-    persist((set:any) => ({
-    products: [],
-    addProduct: (params:any) => {
-        const {newItem} = params
-        set((state:any) =>{
-            const newCart = [...state.cart, newItem]
-            return {
-                ...state,
-                cart:newCart
-            }
-        })
-    },
-    
+const useSeenProducts = create(
+persist((set) => ({
+          products: [],
+          addProduct: (params:any) => {
+              const { product } = params;
+              set((state:any) => {
+                  if (state.products.some((p:any) => p.$id === product.$id)) {
+                      return state;
+                  }
+  
+                  let newProducts = [...state.products, product];
+                  if (newProducts.length > 9) {
+                      newProducts = newProducts.slice(1);
+                  }
+                  return {
+                      ...state,
+                      products: newProducts
+                  };
+              });   
+          }
+      }),{
+        name: "product store"
+    }))
+  
 
-}), {
-    name: "recently viewed products store"
-}))
+  
 
-
-export default useSeenProducts
+export default useSeenProducts;

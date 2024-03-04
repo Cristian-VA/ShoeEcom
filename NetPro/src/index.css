@@ -46,6 +46,23 @@ body{
   scrollbar-width: none; /* Hide the scrollbar on Firefox */
 }
 
+.custom-scrollbar1::-webkit-scrollbar {
+  width: 3px;
+  height: 6px;
+}
+
+.custom-scrollbar1::-webkit-scrollbar-track {
+  background: #09090a00;
+}
+
+.custom-scrollbar1::-webkit-scrollbar-thumb {
+  background: #1f2937;
+}
+
+.custom-scrollbar1::-webkit-scrollbar-thumb:hover {
+  background: #1f2937;
+}
+
 .minus-64px {
   width: calc(100% - 100px);
 }

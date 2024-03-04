@@ -12,6 +12,8 @@ import useCart from "@/lib/zustand/cart";
 import PopUpModal from "@/Root/Layout/Shop/PopUpModal";
 import CheckOut from "@/Root/components/shop/CheckOut";
 import ProductSlider from "@/Root/components/shop/ProductSlider";
+import useSeenProducts from "@/lib/zustand/seenProducts";
+
 const ProductPage = () => {
   const { id, category } = useParams();
   const location = useLocation()
@@ -22,12 +24,26 @@ const ProductPage = () => {
   const [currentColor, setCurrentColor] = useState(0);
   const [currentSize, setCurrentSize] = useState(0);
   const [openModal, setOpenModal] = useState(false)
+  const products = useSeenProducts((state:any) => state.products)
+  const addtolist = useSeenProducts((state:any) => state.addProduct)
+ 
+
+  useEffect(() => {
+    if (product){
+      addtolist({product})
+    }
+    
+  }, [product])
+
+ 
+  
+
 
 
   const [isDisabled, setIsDisabled] = useState(true);
-  console.log(product)
 
- 
+
+
 
   useEffect(() => {
     if (currentSize) {
@@ -173,6 +189,8 @@ const ProductPage = () => {
    
   }
 
+  const reversedproducts = products.reverse()
+
   
 
 
@@ -248,8 +266,7 @@ const ProductPage = () => {
                         : index === 2
                         ? product?.imagesColor3[0]
                         : index === 3
-                        ? product?.imagesColor4[0]
-                        : ""
+                       
                         
                     }
                     alt={color}
@@ -298,7 +315,7 @@ const ProductPage = () => {
           </div>
 
           {isFetched && (
-            <div className="flex flex-col my-6">
+            <div className="flex flex-col mt-6">
               <h1 className="uppercase md:text-[22px] font-semibold text-[18px] my-2">
                 {" "}
                 Related Products
@@ -320,7 +337,7 @@ const ProductPage = () => {
         </div>
       </div>
       <div className="container">
-      <ProductSlider title="RECENTLY VIEWED PRODUCTS"/>
+      <ProductSlider title="RECENTLY VIEWED PRODUCTS" products={products}/>
       </div>
 
 

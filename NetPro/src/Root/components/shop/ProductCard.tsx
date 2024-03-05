@@ -35,8 +35,8 @@ const ProductCard = ({product, simple=false,  }:{product:any, simple:boolean }) 
       <div className='hover:border-[1px] border-gray-600 border-opacity-55 flex flex-col p-1 cursor-pointer ' >
     <Link to={`/collections/${product?.category}/${product?.$id}`} >
 
-          <div className=' relative'>
-          <img src={product?.imagesColor1[currentImage] || ""} alt={product?.productName} className=' object-cover ' />
+          <div className=' relative overflow-hidden'>
+          <img src={product?.imagesColor1[currentImage] || ""} alt={product?.productName} className=' object-cover hover:scale-110  transition' />
           {!simple && product?.tag && <p className='absolute bottom-0 left-0 m-3 px-4 py-1 bg-white bg-opacity-40 font-medium italic'>{product.tag}</p>}
           </div>
           <div className={simple? 'flex justify-between': "flex flex-col"}>

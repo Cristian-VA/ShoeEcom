@@ -43,6 +43,74 @@ export const MenShoesLinks = [
     },
   ];
 
+  export type HomeCardProps = {
+    productName: string,
+    LinkMen?:string,
+    LinkWomen?:string,
+    tags:string,
+    imgUrl: string
+
+  }
+
+  export const Everyday1 = {
+    productName: "Samba OG",
+    LinkMen: "tst",
+    LinkWomen: "tst",
+    tags: "Active, Durable",
+    imgUrl: "/assets/Home/Everyday1.webp"
+  }
+
+  export const Everyday2 = {
+    productName: "Rivalry Low ",
+    LinkMen: "tst",
+    tags: "Casual, lightweight",
+    imgUrl: "/assets/Home/Everyday2.webp"
+  }
+
+  export const Everyday3 = {
+    productName: "HandBall Spezial ",
+    LinkMen: "tst",
+    LinkWomen: "tst",
+    tags: "Casual, Ultralight",
+    imgUrl: "/assets/Home/Everyday3.webp"
+  }
+
+  export const Active1 = {
+    productName: "Adistar 2.0 ",
+    LinkMen: "tst",
+    tags: "Active, Running",
+    imgUrl: "/assets/Home/Active1.webp"
+  }
+
+  export const Active2 = {
+    productName: "ULTRABOOST LIGHT 23",
+    LinkMen: "tst",
+    LinkWomen: "sd",
+    tags: "Active, Running",
+    imgUrl: "/assets/Home/Active2.jpg"
+  }
+  export const Traveling1 = {
+    productName: " Eastrail 2.0 ",
+    LinkMen: "tst",
+    LinkWomen: "sd",
+    tags: "Hiking, All Terrain",
+    imgUrl: "/assets/Home/Traveling1.webp"
+  }
+  export const Traveling2 = {
+    productName: "Rain RDY",
+    LinkMen: "tst",
+    LinkWomen: "sd",
+    tags: "Hiking, Warm",
+    imgUrl: "/assets/Home/Traveling2.webp"
+  }
+  export const Traveling3 = {
+    productName: "SWIFT R3 GORE-TEX3",
+    LinkMen: "tst",
+    LinkWomen: "sd",
+    tags: "Hiking, Lightweight and waterproof",
+    imgUrl: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c3834301e07340228fcbbf3a58988e02_9366/ZAPATILLAS_DE_SENDERISMO_TERREX_SWIFT_R3_GORE-TEX_Turquesa_IF2403_HM4.jpg"
+  }
+
   
 
 

@@ -3,7 +3,7 @@ import ProductCardCart from "../Cart/ProductCardCart";
 import { Button } from "@/components/ui/button";
 import useCart from "@/lib/zustand/cart";
 import { calculateTotalPrice, aggregateCartItems } from "@/utils";
-
+import { CompletionBar } from "../Cart/CompletionBar";
 
 const CheckOut = ({ product, setOpen }: { product: any, setOpen:any }) => {
     const cart = useCart((state:any) => state.cart)
@@ -11,6 +11,7 @@ const CheckOut = ({ product, setOpen }: { product: any, setOpen:any }) => {
     const toggleOpenCart = useCart((state:any) => state.toggleIsOpen)
     const subtotal = calculateTotalPrice(cart)
     const aggregatedCart = aggregateCartItems(cart)
+    const progressValue = subtotal >= 100? 100 : subtotal
 
     const closeModalAndOpenCart = () =>{
         setOpen(false)
@@ -37,7 +38,7 @@ const CheckOut = ({ product, setOpen }: { product: any, setOpen:any }) => {
             </div>
     
     <div className="w-full px-3  bg-opacity-70 my-2">
-      <div className={`h-[12px] ${subtotal >= 100? "bg-emerald-500": subtotal == 0? "bg-gray-200":"bg-sky-500"} bg-opacity-80 transition-colors`}></div>
+    <CompletionBar progress={progressValue}/>
       <h1 className="text-center my-2 font-medium text-[11px] md:text-[14px]">{subtotal >= 100? "Congratulations! You achieved standard Free Shiping":`$${100 - subtotal} Left for Free Shipping`}</h1>
 
     </div>

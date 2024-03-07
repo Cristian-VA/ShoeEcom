@@ -358,3 +358,32 @@ export async function getSocksRelatedProducts(productId: string, category:string
     console.log(error)
   }
 }
+
+export async function getMenFeaturedProducts(){
+  const queries:any[] = [ Query.equal("isFeatured", true)]
+  try {
+    const featuredProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.menCollectionId,
+      queries
+    )
+    return featuredProducts
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+export async function getWomenFeaturedProducts(){
+  const queries:any[] = [ Query.equal("isFeatured", true)]
+  try {
+    const featuredProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.womenCollectionId,
+      queries
+    )
+    return featuredProducts
+  } catch (error) {
+    console.log(error)
+  }
+}

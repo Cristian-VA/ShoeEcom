@@ -2,7 +2,7 @@
 
 import { Filters } from "@/types"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts } from "../appwrite/api"
+import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts, getMenFeaturedProducts, getWomenFeaturedProducts } from "../appwrite/api"
 
 import { QUERY_KEYS } from "./Keys"
 
@@ -130,3 +130,18 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
     });
   };
 
+  export const useGetFeaturedMenProducts = () => {
+    return useQuery({
+      queryKey: [QUERY_KEYS.GET_MEN_COLLECTION],
+      queryFn: () => getMenFeaturedProducts(),
+      
+    });
+  };
+
+  export const useGetFeaturedWomenProducts = () => {
+    return useQuery({
+      queryKey: [QUERY_KEYS.GET_WOMEN_COLLECTION],
+      queryFn: () => getWomenFeaturedProducts(),
+      
+    });
+  };

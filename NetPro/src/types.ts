@@ -36,3 +36,12 @@ export type CustomHookResult = {
     bestFor?: string[] | null;
     currentSort: string | null;
   }
+
+  export type HomeCardProps = {
+    productName: string,
+    LinkMen?:string,
+    LinkWomen?:string,
+    tags:string,
+    imgUrl: string
+
+  }

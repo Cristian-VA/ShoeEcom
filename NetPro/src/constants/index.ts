@@ -68,7 +68,7 @@ export const MenShoesLinks = [
   }
 
   export const Everyday3 = {
-    productName: "HandBall Spezial ",
+    productName: "Superstar ADV ",
     LinkMen: "tst",
     LinkWomen: "tst",
     tags: "Casual, Ultralight",

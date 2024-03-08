@@ -266,6 +266,9 @@ const ProductPage = () => {
                         : index === 2
                         ? product?.imagesColor3[0]
                         : index === 3
+                        ? product?.imagesColor4[0]:
+                        product?.imagesColor5
+
                        
                         
                     }

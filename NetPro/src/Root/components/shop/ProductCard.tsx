@@ -26,15 +26,17 @@ const ProductCard = ({ product, simple = false }: { product: any; simple: boolea
     <img
       key={index}
       src={
-        index === 0
-          ? product?.imagesColor1[0]
-          : index === 1
-          ? product?.imagesColor2[0]
+        index === 0? 
+        product?.imagesColor1[0]
+          : index === 1?
+           product?.imagesColor2[0]
           : index === 2
           ? product?.imagesColor3[0]
           : index === 3
-          ? product?.imagesColor4[0]:
-          product?.imagesColor5
+          ? product?.imagesColor4[0]
+          : index === 4?
+          product?.imagesColor5[0]:
+          ""
 
       }
       className={

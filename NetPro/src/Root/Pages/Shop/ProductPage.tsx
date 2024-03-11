@@ -189,7 +189,7 @@ const ProductPage = () => {
    
   }
 
-  const reversedproducts = products.reverse()
+  
 
   
 
@@ -266,8 +266,10 @@ const ProductPage = () => {
                         : index === 2
                         ? product?.imagesColor3[0]
                         : index === 3
-                        ? product?.imagesColor4[0]:
-                        product?.imagesColor5
+                        ? product?.imagesColor4[0]
+                        : index === 4
+                        ? product?.imagesColor5[0]:
+                        ""
 
                        
                         

@@ -12,9 +12,35 @@ import {
 } from "@/constants";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useGetWomenBestSellers, useGetMenBestSellers } from "@/lib/queries/queries&mutations";
 
 export function AdultNav({ category }: { category: string }) {
    const location = useLocation()
+   let data = null
+
+   if (category === "women"){
+    const {data:womenData} = useGetWomenBestSellers()
+    data = womenData
+   } else if (category === "men"){
+    const {data:menData} = useGetMenBestSellers()
+    data = menData
+   }
+   
+
+  
+
+   const bestSeller = data?.documents.map((product) => {
+    return (
+      <li>
+        <Link className={location.pathname === `/collections/${product?.category}/${product?.$id}`? "font-semibold bg-gray-50" : "bg-gray-50"} to={`/collections/${product?.category}/${product?.$id}`}>{product?.productName}</Link>
+      </li>
+    )
+  })
+
+   
+
+ 
+
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
@@ -46,11 +72,7 @@ export function AdultNav({ category }: { category: string }) {
             <div className="flex  flex-col">
               <h1 className="mb-4 text-[18px]">BESTSELLERS</h1>
               <ul className="font-normal text-[14px] flex flex-col gap-2">
-                <li>Product 1</li>
-                <li>Product 2</li>
-                <li>Product 3</li>
-                <li>Product 4</li>
-                <li>View All</li>
+               {bestSeller}
               </ul>
             </div>
 

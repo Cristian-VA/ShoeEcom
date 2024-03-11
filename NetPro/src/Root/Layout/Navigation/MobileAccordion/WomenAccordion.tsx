@@ -7,9 +7,22 @@ import {
 import { WomenShoesLinks, WomenAccesoriesLinks } from "@/constants";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useGetWomenBestSellers } from "@/lib/queries/queries&mutations";
 
 const WomenAccordion = ({ toggleIsOpen }: { toggleIsOpen: () => void }) => {
   const location = useLocation()
+
+  const {data} = useGetWomenBestSellers()
+ 
+
+  const bestSellers = data?.documents.map((product) => {
+    return (
+      <li className="bg-transparent">
+        <Link onClick={toggleIsOpen} className={location.pathname === `/collections/${product?.category}/${product?.$id}`? "font-semibold bg-transparent" : "bg-transparent"}  to={`/collections/${product?.category}/${product?.$id}`}>{product?.productName}</Link>
+      </li>
+    )
+  })
+
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
@@ -33,10 +46,7 @@ const WomenAccordion = ({ toggleIsOpen }: { toggleIsOpen: () => void }) => {
               BESTSELLERS
             </h1>
             <ul className="flex flex-col w-full gap-3 bg-gray-50">
-              <li className="bg-gray-50"> link 1</li>
-              <li className="bg-gray-50"> link 2</li>
-              <li className="bg-gray-50"> link 3</li>
-              <li className="bg-gray-50"> link 4</li>
+              {bestSellers}
             </ul>
 
             <h1 className="font-semibold text-[16px] bg-gray-50">ACCESORIES</h1>

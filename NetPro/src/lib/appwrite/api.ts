@@ -387,3 +387,32 @@ export async function getWomenFeaturedProducts(){
     console.log(error)
   }
 }
+
+
+export async function getWomenBestSellers(){
+  const queries:any[] = [ Query.equal("tag", "best-seller"), Query.limit(5)]
+  try {
+    const bestsellers = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.womenCollectionId,
+      queries
+    )
+    return bestsellers
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getMenBestSellers(){
+  const queries:any[] = [ Query.equal("tag", "best-seller"), Query.limit(5)]
+  try {
+    const bestsellers = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.menCollectionId,
+      queries
+    )
+    return bestsellers
+  } catch (error) {
+    console.log(error)
+  }
+}

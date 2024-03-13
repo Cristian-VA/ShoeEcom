@@ -1,8 +1,9 @@
 
+
 import { ID, Query } from "appwrite"
 
 import { account, appwriteConfig,  databases,  } from "./config";
-import { Filters } from "@/types";
+import { Filters, order } from "@/types";
 
 export async function saveUserToDB(user: {
   accountId?: string;
@@ -415,4 +416,37 @@ export async function getMenBestSellers(){
   } catch (error) {
     console.log(error)
   }
+}
+
+
+
+export async function createSingleOrder(order:order) {
+  try {
+    const newSingleOrder = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.ordersCollectionId,
+      ID.unique(),
+      {
+        productsName:order.productsName,
+        quantities: order.quantities,
+        subtotal: order.subtotal,
+        colors: order.colors,
+        size:order.size,
+        user:order.userId
+       
+      }
+    )
+
+    if (!newSingleOrder) {
+    
+      throw Error;
+    }
+
+    return newSingleOrder;
+    
+  } catch (error) {
+    console.log(error)
+  }
+  
+  
 }

@@ -29,10 +29,10 @@ export function AdultNav({ category }: { category: string }) {
 
   
 
-   const bestSeller = data?.documents.map((product) => {
+   const bestSeller = data?.documents.map((product, index) => {
     return (
-      <li>
-        <Link className={location.pathname === `/collections/${product?.category}/${product?.$id}`? "font-semibold bg-gray-50" : "bg-gray-50"} to={`/collections/${product?.category}/${product?.$id}`}>{product?.productName}</Link>
+      <li key={index}>
+        <Link  className={location.pathname === `/collections/${product?.category}/${product?.$id}`? "font-semibold bg-gray-50" : "bg-gray-50"} to={`/collections/${product?.category}/${product?.$id}`}>{product?.productName}</Link>
       </li>
     )
   })

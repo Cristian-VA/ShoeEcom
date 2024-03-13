@@ -10,7 +10,9 @@ export const appwriteConfig = {
     menCollectionId: import.meta.env.VITE_APPWRITE_MENCOLLECTION_ID,
     womenCollectionId: import.meta.env.VITE_APPWRITE_WOMENCOLLECTION_ID,
     kidsCollectionId:import.meta.env.VITE_APPWRITE_KIDSCOLLECTION_ID,
-    socksCollectionId:import.meta.env.VITE_APPWRITE_SOCKSCOLLECTION_ID
+    socksCollectionId:import.meta.env.VITE_APPWRITE_SOCKSCOLLECTION_ID,
+    ordersCollectionId:import.meta.env.VITE_APPWRITE_ORDERSCOLLECTION_ID,
+    singleOrdersCollectionId:import.meta.env.VITE_APPWRITE_SINGLEORDERCOLLECTION_ID
 }
 
 export const client = new Client()

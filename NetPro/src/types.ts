@@ -45,3 +45,13 @@ export type CustomHookResult = {
     imgUrl: string
 
   }
+
+  export type order = {
+    productsName: string[],
+    quantities: number[],
+    subtotal: number,
+    colors: string[],
+    size: string[],
+    userId: any
+
+  }

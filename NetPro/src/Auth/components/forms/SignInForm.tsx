@@ -24,7 +24,7 @@ const SignInForm = () => {
  
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignInSchema>) {
-   console.log(values)
+
    const email = values.email
     const password = values.password
     

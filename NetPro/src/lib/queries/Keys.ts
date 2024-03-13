@@ -9,5 +9,7 @@ export enum QUERY_KEYS{
     GET_KIDS_COLLECTION_PRODUCTID = "getKidsCollectionProductId",
     GET_SOCKS_COLLECTION = "getSocksCollection",
     GET_SOCKS_COLLECTION_PRODUCTID = "getSocksCollectionProductId",
+    GET_SINGLEORDER_COLLECTION = "getSingleOrderCollectionId",
+
    
 }

@@ -7,6 +7,8 @@ import { INewUser } from '@/types';
 import { ID } from 'appwrite';
 import { saveUserToDB } from '@/lib/appwrite/api';
 import { useNavigate } from 'react-router-dom';
+
+
 export const INITIAL_STATE = {
     user: null,
     loginUser: () => {},

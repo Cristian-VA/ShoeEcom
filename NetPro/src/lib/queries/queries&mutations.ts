@@ -1,8 +1,8 @@
 
 
-import { Filters } from "@/types"
-import { useMutation, useQuery } from "@tanstack/react-query"
-import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts, getMenFeaturedProducts, getWomenFeaturedProducts, getWomenBestSellers, getMenBestSellers } from "../appwrite/api"
+import { Filters, order } from "@/types"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts, getMenFeaturedProducts, getWomenFeaturedProducts, getWomenBestSellers, getMenBestSellers , createSingleOrder, getCurrentUser} from "../appwrite/api"
 
 import { QUERY_KEYS } from "./Keys"
 
@@ -23,6 +23,12 @@ export const useSignOutAccountMutation = () => {
     })
 }
 
+export const useGetCurrentUser = () => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+    queryFn: getCurrentUser,
+  });
+};
 
 
 
@@ -159,5 +165,17 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
       queryKey: [QUERY_KEYS.GET_MEN_COLLECTION],
       queryFn: () => getMenBestSellers(),
       
+    });
+  };
+
+  export const useCreateSingleOrder = () => {
+    const queryClient = useQueryClient();
+    return useMutation({
+      mutationFn: (order:order) => createSingleOrder(order),
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: [QUERY_KEYS.GET_SINGLEORDER_COLLECTION],
+        });
+      },
     });
   };

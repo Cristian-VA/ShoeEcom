@@ -4,13 +4,37 @@ import { Button } from "@/components/ui/button";
 import ProductCardCart from "./ProductCardCart";
 import { Link } from "react-router-dom";
 import { CompletionBar } from "./CompletionBar";
+import { useCreateSingleOrder, useGetCurrentUser } from "@/lib/queries/queries&mutations";
+import { useAuth } from "@/Auth/components/utils/AuthContext";
 const Cart = () => {
   const cart = useCart((state: any) => state.cart);
-
+  const {user} = useAuth()
+  const {data} = useGetCurrentUser()
   const aggregatedCart = aggregateCartItems(cart);
-  
+  console.log(aggregatedCart)
+  const { mutate: createSingleOrder, isLoading: isLoadingCreate } = useCreateSingleOrder();
+  const productNamesArray = aggregatedCart.map(product => product.productName);
+  const productSizeArray = aggregatedCart.map(product => product.size);
+  const productColorsArray = aggregatedCart.map(product => product.color);
+  const productImageArray = aggregatedCart.map(product => product.image);
+  const productQuantityArray = aggregatedCart.map(product => product.quantity);
+ 
+console.log(data?.$id)
 
   const subtotal = calculateTotalPrice(cart);
+  const order = {
+    productsName: productNamesArray,
+    quantities: productQuantityArray,
+    subtotal: subtotal,
+    colors: productColorsArray,
+    size: productSizeArray,
+    userId:data?.$id
+  
+
+  }
+
+
+  
   const progressValue = subtotal >= 100? 100 : subtotal
 
   return (
@@ -42,7 +66,7 @@ const Cart = () => {
         <>
           <div className="overflow-y-scroll  h-[300px] px-3 border-b-[1.5px] border-gray-500 border-opacity-55 custom-scrollbar1">
             {aggregatedCart.map((newItem, index) => (
-              <ProductCardCart index={index} newItem={newItem} />
+              <ProductCardCart key={index} index={index} newItem={newItem} />
             ))}
           </div>
           <div className="px-3 ">
@@ -57,7 +81,14 @@ const Cart = () => {
                 {subtotal >= 100 ? "FREE" : `$${subtotal * 0.08}`}
               </p>
             </div>
-            <Button className="btn-black w-full uppercase">
+            <Button className="btn-black w-full uppercase"  onClick={() => {
+  if (data?.$id) {
+    createSingleOrder(order);
+  } else {
+    // Handle the case where data.$id is undefined
+    console.error('Data ID is undefined');
+  }
+}}>
               Proceed to checkout
             </Button>
 

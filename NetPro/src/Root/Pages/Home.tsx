@@ -10,6 +10,7 @@ import ProductSlider from "../components/shop/ProductSlider";
 const Home = () => {
   const {data:menProducts} = useGetFeaturedMenProducts()
   const {data:womenProducts} = useGetFeaturedWomenProducts()
+  console.log(womenProducts?.documents)
 
 
   return (

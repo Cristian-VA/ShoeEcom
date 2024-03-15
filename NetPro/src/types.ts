@@ -52,6 +52,9 @@ export type CustomHookResult = {
     subtotal: number,
     colors: string[],
     size: string[],
-    userId: any
+    userId: any,
+    images:string[]
 
   }
+
+

@@ -2,7 +2,7 @@
 
 import { Filters, order } from "@/types"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts, getMenFeaturedProducts, getWomenFeaturedProducts, getWomenBestSellers, getMenBestSellers , createSingleOrder, getCurrentUser} from "../appwrite/api"
+import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts, getMenFeaturedProducts, getWomenFeaturedProducts, getWomenBestSellers, getMenBestSellers , createSingleOrder, getCurrentUser, getOrdersByUserId} from "../appwrite/api"
 
 import { QUERY_KEYS } from "./Keys"
 
@@ -138,7 +138,7 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
 
   export const useGetFeaturedMenProducts = () => {
     return useQuery({
-      queryKey: [QUERY_KEYS.GET_MEN_COLLECTION],
+      queryKey: [QUERY_KEYS.GET_FEATURED_MEN],
       queryFn: () => getMenFeaturedProducts(),
       
     });
@@ -154,7 +154,7 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
 
   export const useGetWomenBestSellers = () => {
     return useQuery({
-      queryKey: [QUERY_KEYS.GET_WOMEN_COLLECTION],
+      queryKey: [QUERY_KEYS.GET_FEATURED_WOMEN],
       queryFn: () => getWomenBestSellers(),
       
     });
@@ -177,5 +177,13 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
           queryKey: [QUERY_KEYS.GET_SINGLEORDER_COLLECTION],
         });
       },
+    });
+  };
+
+  export const useGetOrdersById = (userId:string) => {
+    return useQuery({
+      queryKey: [QUERY_KEYS.GET_ORDERS_BY_ID],
+      queryFn: () => getOrdersByUserId(userId),
+      
     });
   };

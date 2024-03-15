@@ -5,21 +5,21 @@ import ProductCardCart from "./ProductCardCart";
 import { Link } from "react-router-dom";
 import { CompletionBar } from "./CompletionBar";
 import { useCreateSingleOrder, useGetCurrentUser } from "@/lib/queries/queries&mutations";
-import { useAuth } from "@/Auth/components/utils/AuthContext";
+
 const Cart = () => {
   const cart = useCart((state: any) => state.cart);
-  const {user} = useAuth()
+
   const {data} = useGetCurrentUser()
   const aggregatedCart = aggregateCartItems(cart);
   console.log(aggregatedCart)
-  const { mutate: createSingleOrder, isLoading: isLoadingCreate } = useCreateSingleOrder();
+  const { mutate: createSingleOrder, isPending: isLoadingCreate } = useCreateSingleOrder();
   const productNamesArray = aggregatedCart.map(product => product.productName);
   const productSizeArray = aggregatedCart.map(product => product.size);
   const productColorsArray = aggregatedCart.map(product => product.color);
   const productImageArray = aggregatedCart.map(product => product.image);
   const productQuantityArray = aggregatedCart.map(product => product.quantity);
  
-console.log(data?.$id)
+console.log(productImageArray)
 
   const subtotal = calculateTotalPrice(cart);
   const order = {
@@ -28,9 +28,19 @@ console.log(data?.$id)
     subtotal: subtotal,
     colors: productColorsArray,
     size: productSizeArray,
+    images:productImageArray,
     userId:data?.$id
   
 
+  }
+
+  const onSubmitOrder = () => {
+    if (data?.$id) {
+      createSingleOrder(order);
+    } else {
+      // Handle the case where data.$id is undefined
+      console.error('Data ID is undefined');
+    }
   }
 
 
@@ -38,9 +48,10 @@ console.log(data?.$id)
   const progressValue = subtotal >= 100? 100 : subtotal
 
   return (
-    <div className="w-full min-h-screen py-3">
+    <div className={cart.length > 0 ? "w-full h-full py-3 flex flex-col justify-between  " :"w-full h-full py-3 flex flex-col n  "}>
       
-      <div className="relative h-[40px] w-[36px]  flex my-auto cursor-pointer mx-auto ">
+      <div>
+      <div className="relative h-[40px] w-[36px]  flex my-auto cursor-pointer mx-auto  ">
         <img
           src="/assets/icons/bag.svg"
           className="w-[32px] h-[32px] relative items-end my-auto"
@@ -51,6 +62,7 @@ console.log(data?.$id)
             {aggregatedCart.length}
           </p>
         </div>
+       
       </div>
 
       <div className="w-full px-3  bg-opacity-70 my-2">
@@ -61,15 +73,16 @@ console.log(data?.$id)
             : `$${100 - subtotal} Left for Free Shipping`}
         </h1>
       </div>
+      </div>
 
       {cart.length > 0 ? (
         <>
-          <div className="overflow-y-scroll  h-[300px] px-3 border-b-[1.5px] border-gray-500 border-opacity-55 custom-scrollbar1">
+          <div className="overflow-y-scroll  max-h-[300px] lg:max-h-[400px] h-full   px-3 border-b-[1.5px] border-t-[1.5px] border-gray-500 border-opacity-55 custom-scrollbar1">
             {aggregatedCart.map((newItem, index) => (
               <ProductCardCart key={index} index={index} newItem={newItem} />
             ))}
           </div>
-          <div className="px-3 ">
+          <div className="px-3   ">
             <div className=" flex justify-between  py-3 border-gray-500 border-opacity-55 text-[14px] font-medium md:text-[16px]">
               <p>SubTotal</p>
               <p className="pr-3">${subtotal}</p>
@@ -81,22 +94,18 @@ console.log(data?.$id)
                 {subtotal >= 100 ? "FREE" : `$${subtotal * 0.08}`}
               </p>
             </div>
-            <Button className="btn-black w-full uppercase"  onClick={() => {
-  if (data?.$id) {
-    createSingleOrder(order);
-  } else {
-    // Handle the case where data.$id is undefined
-    console.error('Data ID is undefined');
-  }
-}}>
-              Proceed to checkout
-            </Button>
+            
 
 
           </div>
+          <div className="flex justify-center">
+          <Button className="btn-black w-full uppercase mx-3"  onClick={onSubmitOrder}>
+              Proceed to checkout
+            </Button>
+            </div>
         </>
       ) : (
-        <div className="flex flex-col  px-3 w-full">
+        <div className="flex flex-col  px-3 w-full ">
           <h1 className="text-center font-semibold my-4 md:text-[20px]">
             {" "}
             Your Cart is Empty

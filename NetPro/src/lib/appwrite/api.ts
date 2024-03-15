@@ -376,7 +376,7 @@ export async function getMenFeaturedProducts(){
 
 
 export async function getWomenFeaturedProducts(){
-  const queries:any[] = [ Query.equal("isFeatured", true)]
+  const queries:any[] = [ Query.equal("isFeatured", true), Query.limit(10)]
   try {
     const featuredProducts = await databases.listDocuments(
       appwriteConfig.databaseId,
@@ -432,7 +432,8 @@ export async function createSingleOrder(order:order) {
         subtotal: order.subtotal,
         colors: order.colors,
         size:order.size,
-        user:order.userId
+        user:order.userId,
+        images:order.images
        
       }
     )
@@ -449,4 +450,20 @@ export async function createSingleOrder(order:order) {
   }
   
   
+}
+
+
+
+export async function getOrdersByUserId(userId:string){
+  const queries:any[] = [ Query.equal("user", userId)]
+  try {
+    const orders = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.ordersCollectionId,
+      queries
+    )
+    return orders
+  } catch (error) {
+    console.log(error)
+  }
 }

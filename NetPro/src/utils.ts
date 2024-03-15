@@ -1,4 +1,4 @@
-import { CustomHookResult } from './types';
+import { CustomHookResult} from './types';
 import { useGetMenProductId, useGetWomenProductId, useGetKidsProductId, useGetMenrelatedProducts, useGetWomenrelatedProducts, useGetKidsrelatedProducts, useGetSocksProductId, useGetSocksrelatedProducts } from './lib/queries/queries&mutations';
 
 
@@ -97,6 +97,11 @@ export const calculateTotalPrice = (products:any[]) => {
   
     return totalPrice;
   };
+
+
+
+
+
   
 
   

@@ -8,7 +8,7 @@ const PopUpModal = ({open, setOpen, children}:{open:boolean, setOpen:any, childr
   return (
     <AnimatePresence>
     {open && (
-      <div className={"w-screen min-h-screen h-full fixed top-0 bg-gray-800 z-50 bg-opacity-55 flex justify-center items-center   "}>
+      <div className={"w-screen border-6  min-h-screen h-full fixed left-0 top-0 bg-gray-800 z-50 bg-opacity-55 flex justify-center items-center   "}>
         <motion.div
           className="w-[800px] h-[600px] shadow-2xl m-2"
           initial={{ y: "100%" }}

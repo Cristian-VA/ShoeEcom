@@ -174,7 +174,7 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
       mutationFn: (order:order) => createSingleOrder(order),
       onSuccess: () => {
         queryClient.invalidateQueries({
-          queryKey: [QUERY_KEYS.GET_SINGLEORDER_COLLECTION],
+          queryKey: [QUERY_KEYS.GET_ORDERS_BY_ID],
         });
       },
     });

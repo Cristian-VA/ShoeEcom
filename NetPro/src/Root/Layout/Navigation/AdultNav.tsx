@@ -13,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useGetWomenBestSellers, useGetMenBestSellers } from "@/lib/queries/queries&mutations";
-
+import { scrollToTop } from "@/utils";
 export function AdultNav({ category }: { category: string }) {
    const location = useLocation()
    let data = null
@@ -31,8 +31,8 @@ export function AdultNav({ category }: { category: string }) {
 
    const bestSeller = data?.documents.map((product, index) => {
     return (
-      <li key={index}>
-        <Link  className={location.pathname === `/collections/${product?.category}/${product?.$id}`? "font-semibold bg-gray-50" : "bg-gray-50"} to={`/collections/${product?.category}/${product?.$id}`}>{product?.productName}</Link>
+      <li key={index} className="bg-transparent">
+        <Link onClick={scrollToTop} className={location.pathname === `/collections/${product?.category}/${product?.$id}`? "font-semibold " : ""} to={`/collections/${product?.category}/${product?.$id}`}>{product?.productName}</Link>
       </li>
     )
   })
@@ -58,12 +58,12 @@ export function AdultNav({ category }: { category: string }) {
                 {category === "men"
                   ? MenShoesLinks.map((link, index) => (
                       <li key={index} className="hover:underline">
-                        <Link to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
+                        <Link onClick={scrollToTop} to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
                       </li>
                     ))
                   : WomenShoesLinks.map((link, index) => (
                       <li key={index} className="hover:underline">
-                        <Link to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
+                        <Link onClick={scrollToTop} to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
                       </li>
                     ))}
               </ul>
@@ -82,12 +82,12 @@ export function AdultNav({ category }: { category: string }) {
                 {category === "men"
                   ? MenAccesoriesLinks.map((link, index) => (
                       <li key={index} className="hover:underline">
-                        <Link to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
+                        <Link onClick={scrollToTop} to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
                       </li>
                     ))
                   : WomenAccesoriesLinks.map((link, index) => (
                       <li key={index} className="hover:underline">
-                        <Link to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
+                        <Link onClick={scrollToTop}  to={link.route} className={location.pathname === link.route? "font-semibold " : ""}>{link.label}</Link>
                       </li>
                     ))}
               </ul>

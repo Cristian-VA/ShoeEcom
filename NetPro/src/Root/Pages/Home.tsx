@@ -12,21 +12,45 @@ const Home = () => {
   const {data:womenProducts} = useGetFeaturedWomenProducts()
   console.log(womenProducts?.documents)
 
+  
+  function scrollToSliderMen() {
+    const sliderSection = document.getElementById("men-featured");
+    const offsetHeight = 70;
+    if (sliderSection) {
+      const sliderTopPosition = sliderSection.getBoundingClientRect().top;
+      window.scrollTo({
+        top: sliderTopPosition - offsetHeight, // Subtract the specified offset from the scroll position
+        behavior: 'smooth',
+      });
+    }
+  }
+
+  function scrollToSliderWomen() {
+    const sliderSection = document.getElementById("women-featured");
+    const offsetHeight = 70;
+    if (sliderSection) {
+      const sliderTopPosition = sliderSection.getBoundingClientRect().top;
+      window.scrollTo({
+        top: sliderTopPosition - offsetHeight, // Subtract the specified offset from the scroll position
+        behavior: 'smooth',
+      });
+    }
+  }
 
   return (
     
     
     <div className="  w-full  mx-auto">
       <div className=" px-5 md:px-10 max-w-[1440px] w-full mx-auto">
-      <Homebanner/>
+      <Homebanner scrollToTargetMen={scrollToSliderMen} scrollToTargetWomen={scrollToSliderWomen} />
       </div>
       <HomeTabs/>
-      <Homebanner2 Banner={Banner1}/>
-      <div className=" px-5 md:px-10 max-w-[1440px] w-full mx-auto pb-6">
+      <Homebanner2  Banner={Banner1}/>
+      <div id="men-featured" className=" px-5 md:px-10 max-w-[1440px] w-full mx-auto pb-6">
       <ProductSlider products={menProducts?.documents} title="Featured Men Products"/>
       </div>
       <Homebanner2 Banner={Banner2}/>
-      <div className=" px-5 md:px-10 max-w-[1440px] w-full mx-auto pb-6">
+      <div id="women-featured" className=" px-5 md:px-10 max-w-[1440px] w-full mx-auto pb-6">
       <ProductSlider products={womenProducts?.documents} title="Featured Women Products"/>
       </div>
       <Contact/>

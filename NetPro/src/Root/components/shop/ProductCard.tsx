@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-
+import { scrollToTop } from '@/utils';
 const ProductCard = ({ product, simple = false }: { product: any; simple: boolean }) => {
   const [currentColor, setCurrentColor] = useState(0)
 
@@ -57,7 +57,7 @@ const ProductCard = ({ product, simple = false }: { product: any; simple: boolea
         onMouseEnter={() => setShowMapImages(true)}
         onMouseLeave={() => setShowMapImages(false)}
       >
-        <Link to={`/collections/${product?.category}/${product?.$id}`}>
+        <Link to={`/collections/${product?.category}/${product?.$id}`} onClick={scrollToTop}>
           <div className="relative overflow-hidden">
             <img src={image || ''} alt={product?.productName} className="object-cover hover:scale-110 transition" />
             {!simple && product?.tag && (

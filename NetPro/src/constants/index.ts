@@ -54,59 +54,58 @@ export const MenShoesLinks = [
 
   export const Everyday1 = {
     productName: "Samba OG",
-    LinkMen: "tst",
-    LinkWomen: "tst",
+    LinkMen: "/collections/men-sneakers/65beec26508a7d1378a8",
+    LinkWomen: "/collections/women-sneakers/65e92d12b4f698f9b420",
     tags: "Active, Durable",
     imgUrl: "/assets/Home/Everyday1.webp"
   }
 
   export const Everyday2 = {
     productName: "Rivalry Low ",
-    LinkMen: "tst",
+    LinkMen: "/collections/men-sneakers/65c454d883cce0dedb56",
     tags: "Casual, lightweight",
     imgUrl: "/assets/Home/Everyday2.webp"
   }
 
   export const Everyday3 = {
     productName: "Superstar ADV ",
-    LinkMen: "tst",
-    LinkWomen: "tst",
+    LinkMen: "/collections/men-sneakers/65beeda608a608413349",
+    LinkWomen: "/collections/women-sneakers/65ea093f33f3e8a7847f",
     tags: "Casual, Ultralight",
     imgUrl: "/assets/Home/Everyday3.webp"
   }
 
   export const Active1 = {
     productName: "Adistar 2.0 ",
-    LinkMen: "tst",
+    LinkMen: "/collections/men-active/65c006a30656ab0625a0",
     tags: "Active, Running",
     imgUrl: "/assets/Home/Active1.webp"
   }
 
   export const Active2 = {
     productName: "ULTRABOOST LIGHT 23",
-    LinkMen: "tst",
-    LinkWomen: "sd",
+    LinkMen: "/collections/men-active/65eb643b482e0e367484",
+    LinkWomen: "/collections/women-active/65ed1d7c5fcbbdd9bc76",
     tags: "Active, Running",
     imgUrl: "/assets/Home/Active2.jpg"
   }
   export const Traveling1 = {
     productName: " Eastrail 2.0 ",
-    LinkMen: "tst",
-    LinkWomen: "sd",
+    LinkMen: "/collections/men-hiking/65c0271b4d728cf0a275",
+    LinkWomen: "/collections/women-hiking/65f8b70f6956173f5ff5",
     tags: "Hiking, All Terrain",
     imgUrl: "/assets/Home/Traveling1.webp"
   }
   export const Traveling2 = {
     productName: "Rain RDY",
-    LinkMen: "tst",
-    LinkWomen: "sd",
+    LinkMen: "/collections/men-hiking/65c0204e80a2bd33ebe6",
+   
     tags: "Hiking, Warm",
     imgUrl: "/assets/Home/Traveling2.webp"
   }
   export const Traveling3 = {
     productName: "SWIFT R3 GORE-TEX3",
-    LinkMen: "tst",
-    LinkWomen: "sd",
+    LinkMen: "/collections/men-hiking/65c0231f856a83907013",
     tags: "Hiking, Lightweight and waterproof",
     imgUrl: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c3834301e07340228fcbbf3a58988e02_9366/ZAPATILLAS_DE_SENDERISMO_TERREX_SWIFT_R3_GORE-TEX_Turquesa_IF2403_HM4.jpg"
   }

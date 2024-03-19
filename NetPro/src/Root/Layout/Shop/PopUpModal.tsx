@@ -10,7 +10,8 @@ const PopUpModal = ({open, setOpen, children}:{open:boolean, setOpen:any, childr
     {open && (
       <div className={"w-screen border-6  min-h-screen h-full fixed left-0 top-0 bg-gray-800 z-50 bg-opacity-55 flex justify-center items-center   "}>
         <motion.div
-          className="w-[800px] h-[600px] shadow-2xl m-2"
+          className="w-[800px] xl
+          :max-h-[600px] max-h-[500px] h-full shadow-2xl m-2"
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
           exit={{ y: "140%" }}

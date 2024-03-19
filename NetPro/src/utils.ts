@@ -98,6 +98,12 @@ export const calculateTotalPrice = (products:any[]) => {
     return totalPrice;
   };
 
+  export function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      
+    });
+  }
 
 
 

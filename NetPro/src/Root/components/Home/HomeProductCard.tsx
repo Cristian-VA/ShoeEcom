@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HomeCardProps } from '@/types';
+import { scrollToTop } from '@/utils';
 
 const HomeProductCard = ({HomeCardProps}:{HomeCardProps:HomeCardProps}) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -10,10 +11,10 @@ const HomeProductCard = ({HomeCardProps}:{HomeCardProps:HomeCardProps}) => {
       <div className='w-full h-[400px] shadow-sm relative overflow-hidden' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <img src={HomeCardProps.imgUrl} alt={HomeCardProps.productName} className={`object-cover w-full h-full ${isHovered ? 'scale-110' : ''} transition-transform duration-300`} />
         <div className={`absolute top-0 left-0 w-full h-full bg-opacity-40 bg-gray-800 flex flex-col items-center justify-center opacity-0 ${isHovered ? 'opacity-100' : ''} transition-opacity duration-300`}>
-          {HomeCardProps.LinkMen &&<Link to={HomeCardProps.LinkMen || "/"} className='btn-inverted my-3 w-[70%] max-h-[50px] border-none flex items-center justify-center'> 
+          {HomeCardProps.LinkMen &&<Link onClick={scrollToTop} to={HomeCardProps.LinkMen || "/"} className='btn-inverted my-3 w-[70%] max-h-[50px] border-none flex items-center justify-center'> 
             SHOP MEN
           </Link>}
-          {HomeCardProps.LinkWomen &&<Link to={HomeCardProps.LinkWomen || "/"} className='btn-inverted my-3 w-[70%] max-h-[50px] border-none flex items-center justify-center'> 
+          {HomeCardProps.LinkWomen &&<Link onClick={scrollToTop} to={HomeCardProps.LinkWomen || "/"} className='btn-inverted my-3 w-[70%] max-h-[50px] border-none flex items-center justify-center'> 
             SHOP WOMEN
           </Link>}
         </div>

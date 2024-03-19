@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-
+import { Link } from "react-router-dom";
+import { scrollToTop } from "@/utils";
 type BannerType = {
   BannerImg: string;
   MobileImg: string;
@@ -24,14 +25,14 @@ const Homebanner2 = ({ Banner }: { Banner: BannerType }) => {
           {Banner.message}
         </p>
         <div className=" flex gap-8">
-          <Button className="btn-black ">
+          <Link to={"/collections/men-sneakers"} className="btn-black " onClick={scrollToTop}>
             {" "}
             SHOP MEN
-          </Button>
-          <Button className="btn-black ">
+          </Link>
+          <Link to={"/collections/women-sneakers"} className="btn-black " onClick={scrollToTop}>
             {" "}
             SHOP WOMEN
-          </Button>
+          </Link>
         </div>
       </div>
     </div>

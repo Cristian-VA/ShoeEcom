@@ -12,7 +12,7 @@ const ProductSlider = ({ title, products }: { title: string; products: any }) =>
       <h1 className="uppercase md:text-[26px] font-semibold text-[18px] my-2">
         {title} ({products?.length})
       </h1>
-      <div className="overflow-x-auto   flex w-full custom-scrollbar1 gap-4 whitespace-nowrap pb-2">
+      <div className="overflow-x-auto   flex w-full custom-scrollbar1 whitespace-nowrap pb-2">
         {mapProducts}
       </div>
     </div>

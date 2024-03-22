@@ -325,7 +325,7 @@ const ProductPage = () => {
                 {" "}
                 Related Products
               </h1>
-              <div className="flex gap-4  max-w-[600px]   ">
+              <div className="flex   max-w-[600px]   ">
                 <ProductCard
                   simple={true}
                   product={relatedProducts?.documents[0]}

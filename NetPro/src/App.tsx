@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import PrivateRoutes from "./Auth/components/utils/PrivateRoutes";
 import RootLayout from "./Root/Pages/RootLayout";
 import { FilterProvider } from "./Context/FilterContext";
+import NewArrivalsMen from "./Root/Pages/NewArrivalsMen";
 function App() {
   return (
     <FilterProvider>
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
+          < Route path="/new-arrivals/men" element={<NewArrivalsMen/>}/>
           <Route path="/account/login" element={<LogInSignUp/>}/>
 
           <Route element={<PrivateRoutes/>}>
@@ -29,6 +31,8 @@ function App() {
           <Route path="/collections/:category/:id" element={<ProductPage/>}/>
 
         </Route>
+       
+
       </Routes>
       <Toaster />
       

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { scrollToTop } from '@/utils';
-const ProductCard = ({ product, simple = false }: { product: any; simple: boolean }) => {
+const ProductCard = ({ product, simple = false, fourInline = false }: { product: any; simple?: boolean, fourInline?:boolean }) => {
   const [currentColor, setCurrentColor] = useState(0)
 
   useEffect(() => {
@@ -51,9 +51,9 @@ const ProductCard = ({ product, simple = false }: { product: any; simple: boolea
   const [showMapImages, setShowMapImages] = useState(false)
 
   return (
-    <div className={simple ? 'flex flex-col' : 'flex flex-col w-1/2 lg:w-1/3 md:p-4 p-2 transition'}>
+    <div className={simple ? 'flex flex-col' : `flex flex-col w-1/2 lg:w-1/3 ${fourInline && "xl:w-1/4 md:w-1/3 "} transition`}>
       <div
-        className="hover:border-[1px] border-gray-600 border-opacity-55 flex flex-col p-1 cursor-pointer"
+        className="hover:border-[1px] border-gray-600 border-opacity-55 flex flex-col p-2 cursor-pointer"
         onMouseEnter={() => setShowMapImages(true)}
         onMouseLeave={() => setShowMapImages(false)}
       >

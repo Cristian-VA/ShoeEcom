@@ -467,3 +467,17 @@ export async function getOrdersByUserId(userId:string){
     console.log(error)
   }
 }
+
+export async function getWomenNewArrivals(){
+  const queries:any[] = [ Query.equal("isNew", true)]
+  try {
+    const newProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.menCollectionId,
+      queries
+    )
+    return newProducts
+  } catch (error) {
+    console.log(error)
+  }
+}

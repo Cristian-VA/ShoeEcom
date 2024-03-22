@@ -1,9 +1,9 @@
 
 import { Skeleton } from '@/components/ui/skeleton'
 
-const ProductCardSkeleton = () => {
+const ProductCardSkeleton = ({fourInline = false}:{fourInline?:boolean}) => {
   return (
-    <div className='flex flex-col w-1/2 lg:w-1/3 md:p-4 p-2 gap-2'>
+    <div className={`flex flex-col w-1/2 lg:w-1/3 md:p-4 p-2 gap-2 ${fourInline && "xl:w-1/4 md:w-1/3 "}`}>
   <div className='bg-gray-100 w-full' style={{ paddingBottom: '100%' }}>
     <Skeleton className='absolute inset-0 w-full h-full' />
   </div>

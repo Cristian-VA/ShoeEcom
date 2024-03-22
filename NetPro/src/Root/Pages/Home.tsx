@@ -31,7 +31,7 @@ const Home = () => {
     if (sliderSection) {
       const sliderTopPosition = sliderSection.getBoundingClientRect().top;
       window.scrollTo({
-        top: sliderTopPosition - offsetHeight, // Subtract the specified offset from the scroll position
+        top: sliderTopPosition - offsetHeight,
         behavior: 'smooth',
       });
     }

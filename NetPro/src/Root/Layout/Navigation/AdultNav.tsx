@@ -98,31 +98,40 @@ export function AdultNav({ category }: { category: string }) {
 
               {category === "men" && (
                 <div className="flex flex-col gap-4">
+                  <Link to={"/new-arrivals/men"}>
                   <img
                     src="/assets/Navigation/NewArrivalsMen.png"
                     alt="new arrivals men"
-                    className="object-cover w-[250px]"
+                    className="object-cover w-[250px] transition hover:opacity-90"
                   />
+                  </Link>
+                  <Link to={"/collections/men-slip-ons"}>
+                 
                   <img
                     src="/assets/Navigation/MenSlipper.png"
                     alt="men slipper collection"
-                    className="object-cover w-[250px]"
+                    className="object-cover w-[250px]  transition hover:opacity-90"
                   />
+                  </Link>
                 </div>
               )}
 
               {category === "women" && (
                 <div className="flex flex-col gap-4">
+                   <Link to={"/new-arrivals/women"}>
                   <img
                     src="/assets/Navigation/NewArrivalsWomen.png"
                     alt="new arrivals men"
-                    className="object-cover w-[250px]"
+                    className="object-cover w-[250px] transition hover:opacity-90"
                   />
+                  </Link>
+                  <Link to={"/collections/women-slip-ons"}>
                   <img
                     src="/assets/Navigation/WomenSlipper.png"
                     alt="men slipper collection"
-                    className="object-cover w-[250px]"
+                    className="object-cover w-[250px] transition hover:opacity-90"
                   />
+                  </Link>
                 </div>
               )}
             </div>

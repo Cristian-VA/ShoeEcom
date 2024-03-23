@@ -10,18 +10,28 @@ import { useLocation } from "react-router-dom";
 import { useGetWomenBestSellers } from "@/lib/queries/queries&mutations";
 import { scrollToTop } from "@/utils";
 const WomenAccordion = ({ toggleIsOpen }: { toggleIsOpen: () => void }) => {
-  const location = useLocation()
+  const location = useLocation();
 
-  const {data} = useGetWomenBestSellers()
- 
+  const { data } = useGetWomenBestSellers();
 
   const bestSellers = data?.documents.map((product) => {
     return (
       <li className="bg-transparent">
-        <Link onClick={toggleIsOpen} className={location.pathname === `/collections/${product?.category}/${product?.$id}`? "font-semibold bg-transparent" : "bg-transparent"}  to={`/collections/${product?.category}/${product?.$id}`}>{product?.productName}</Link>
+        <Link
+          onClick={toggleIsOpen}
+          className={
+            location.pathname ===
+            `/collections/${product?.category}/${product?.$id}`
+              ? "font-semibold bg-transparent"
+              : "bg-transparent"
+          }
+          to={`/collections/${product?.category}/${product?.$id}`}
+        >
+          {product?.productName}
+        </Link>
       </li>
-    )
-  })
+    );
+  });
 
   return (
     <Accordion type="single" collapsible>
@@ -35,7 +45,15 @@ const WomenAccordion = ({ toggleIsOpen }: { toggleIsOpen: () => void }) => {
             <ul className="flex flex-col w-full gap-3 bg-gray-50">
               {WomenShoesLinks.map((link, index) => (
                 <li key={index} className="mobile-link" onClick={toggleIsOpen}>
-                  <Link onClick={scrollToTop} to={link.route} className={location.pathname === link.route? "font-semibold bg-gray-50" : "bg-gray-50"}>
+                  <Link
+                    onClick={scrollToTop}
+                    to={link.route}
+                    className={
+                      location.pathname === link.route
+                        ? "font-semibold bg-gray-50"
+                        : "bg-gray-50"
+                    }
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -53,7 +71,11 @@ const WomenAccordion = ({ toggleIsOpen }: { toggleIsOpen: () => void }) => {
             <ul className="flex flex-col w-full gap-3 bg-gray-50">
               {WomenAccesoriesLinks.map((link, index) => (
                 <li key={index} className="mobile-link" onClick={toggleIsOpen}>
-                  <Link onClick={scrollToTop} to={link.route} className="bg-gray-50">
+                  <Link
+                    onClick={scrollToTop}
+                    to={link.route}
+                    className="bg-gray-50"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -62,10 +84,12 @@ const WomenAccordion = ({ toggleIsOpen }: { toggleIsOpen: () => void }) => {
 
             <h1 className="font-semibold text-[16px] bg-gray-50">FEATURED</h1>
             <ul className="flex flex-col w-full gap-3 bg-gray-50">
-              <li className="bg-gray-50"> NEW ARRIVALS</li>
-              <li className="bg-gray-50">
-                {" "}
-                BRAND NEW SLIPPER SEASON COLLECTION
+            <li className="bg-gray-50" onClick={scrollToTop}>
+                <Link to={"/new-arrivals/women"}>NEW ARRIVALS</Link>
+              </li>
+              <li className="bg-gray-50" onClick={scrollToTop}>
+                
+                <Link to={"/collections/women-slip-ons"}>BRAND NEW SLIPPER SEASON COLLECTION</Link>
               </li>
             </ul>
           </div>

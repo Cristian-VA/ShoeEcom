@@ -2,7 +2,7 @@
 
 import { Filters, order } from "@/types"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts, getMenFeaturedProducts, getWomenFeaturedProducts, getWomenBestSellers, getMenBestSellers , createSingleOrder, getCurrentUser, getOrdersByUserId, getWomenNewArrivals} from "../appwrite/api"
+import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts, getMenFeaturedProducts, getWomenFeaturedProducts, getWomenBestSellers, getMenBestSellers , createSingleOrder, getCurrentUser, getOrdersByUserId, getWomenNewArrivals, getMenNewArrivals} from "../appwrite/api"
 
 import { QUERY_KEYS } from "./Keys"
 
@@ -192,5 +192,12 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
     return useQuery({
       queryKey: [QUERY_KEYS.GET_WOMEN_COLLECTION],
       queryFn: getWomenNewArrivals,
+    });
+  };
+
+  export const useGetMenNewArrivals = () => {
+    return useQuery({
+      queryKey: [QUERY_KEYS.GET_MEN_COLLECTION],
+      queryFn: getMenNewArrivals,
     });
   };

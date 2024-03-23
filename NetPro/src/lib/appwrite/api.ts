@@ -473,6 +473,21 @@ export async function getWomenNewArrivals(){
   try {
     const newProducts = await databases.listDocuments(
       appwriteConfig.databaseId,
+      appwriteConfig.womenCollectionId,
+      queries
+    )
+    return newProducts
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+export async function getMenNewArrivals(){
+  const queries:any[] = [ Query.equal("isNew", true)]
+  try {
+    const newProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
       appwriteConfig.menCollectionId,
       queries
     )

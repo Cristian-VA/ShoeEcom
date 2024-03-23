@@ -1,13 +1,14 @@
 
-import { useGetMenNewArrivals } from '@/lib/queries/queries&mutations'
+import { useGetWomenNewArrivals } from '@/lib/queries/queries&mutations'
 import ProductGrid from '../components/shop/ProductGrid'
-const NewArrivalsMen = () => {
-  const {data, isRefetching} = useGetMenNewArrivals()
-  console.log(data)
+
+const NewArrivalsWomen = () => {
+  const {data, isRefetching} = useGetWomenNewArrivals()
+  
   return (
     <>
     <div className='relative flex'>
-    <img src="/assets/NewArrivals/Banner.png" alt="Image banner for men new products" className='w-full object-cover'/>
+    <img src="/assets/NewArrivals/Banner2.png" alt="Image banner for women new products" className='w-full object-cover' />
     <div className='flex flex-col bg-white bg-opacity-40 absolute sm:bottom-[40%] bottom-[10%]  border-gray-700 border-2 xl:p-4  border-opacity-25 ml-[12px] text-center  bg-transparent'>
      <h1 className='bg-transparent drop-shadow-sm    text-[16px] sm:text-[26px]  md:text-[30px] lg:text-[36px] font-bold '>New Arrivals</h1>
      <p className='bg-transparent drop-shadow-md   max-w-[320px] mx-auto font-semibold  tracking-wider  text-[12px] sm:text-[16px]'>Exclusive styles and unique color editions available exclusively here (while supplies last).</p>
@@ -28,4 +29,4 @@ const NewArrivalsMen = () => {
   )
 }
 
-export default NewArrivalsMen
+export default NewArrivalsWomen

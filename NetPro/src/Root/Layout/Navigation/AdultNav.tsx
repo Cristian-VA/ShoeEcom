@@ -10,6 +10,7 @@ import {
   WomenAccesoriesLinks,
   WomenShoesLinks,
 } from "@/constants";
+
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useGetWomenBestSellers, useGetMenBestSellers } from "@/lib/queries/queries&mutations";
@@ -98,14 +99,14 @@ export function AdultNav({ category }: { category: string }) {
 
               {category === "men" && (
                 <div className="flex flex-col gap-4">
-                  <Link to={"/new-arrivals/men"}>
+                  <Link to={"/new-arrivals/men"} onClick={scrollToTop}>
                   <img
                     src="/assets/Navigation/NewArrivalsMen.png"
                     alt="new arrivals men"
                     className="object-cover w-[250px] transition hover:opacity-90"
                   />
                   </Link>
-                  <Link to={"/collections/men-slip-ons"}>
+                  <Link to={"/collections/men-slip-ons"} onClick={scrollToTop}>
                  
                   <img
                     src="/assets/Navigation/MenSlipper.png"
@@ -118,14 +119,14 @@ export function AdultNav({ category }: { category: string }) {
 
               {category === "women" && (
                 <div className="flex flex-col gap-4">
-                   <Link to={"/new-arrivals/women"}>
+                   <Link to={"/new-arrivals/women"} onClick={scrollToTop}>
                   <img
                     src="/assets/Navigation/NewArrivalsWomen.png"
                     alt="new arrivals men"
                     className="object-cover w-[250px] transition hover:opacity-90"
                   />
                   </Link>
-                  <Link to={"/collections/women-slip-ons"}>
+                  <Link to={"/collections/women-slip-ons"}onClick={scrollToTop}>
                   <img
                     src="/assets/Navigation/WomenSlipper.png"
                     alt="men slipper collection"

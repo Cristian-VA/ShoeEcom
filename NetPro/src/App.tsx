@@ -8,6 +8,7 @@ import PrivateRoutes from "./Auth/components/utils/PrivateRoutes";
 import RootLayout from "./Root/Pages/RootLayout";
 import { FilterProvider } from "./Context/FilterContext";
 import NewArrivalsMen from "./Root/Pages/NewArrivalsMen";
+import NewArrivalsWomen from "./Root/Pages/NewArrivalsWomen";
 function App() {
   return (
     <FilterProvider>
@@ -17,6 +18,7 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           < Route path="/new-arrivals/men" element={<NewArrivalsMen/>}/>
+          < Route path="/new-arrivals/women" element={<NewArrivalsWomen/>}/>
           <Route path="/account/login" element={<LogInSignUp/>}/>
 
           <Route element={<PrivateRoutes/>}>

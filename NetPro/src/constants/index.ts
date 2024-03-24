@@ -17,10 +17,7 @@ export const MenShoesLinks = [
       label: "Hiking",
     },
 
-    {
-        route: "/collections/men",
-        label: "View All",
-      },
+   
   ];
 
   export const MenAccesoriesLinks = [
@@ -37,10 +34,7 @@ export const MenShoesLinks = [
       route: "/collections/men-water-bottles",
       label: "Water Bottles",
     },
-    {
-      route: "/collections/men-accesories",
-      label: "View All",
-    },
+   
   ];
 
   export type HomeCardProps = {
@@ -137,10 +131,7 @@ export const MenShoesLinks = [
         label: "Flats",
       },
 
-    {
-        route: "/collections/women",
-        label: "View All",
-      },
+    
   ];
 
   export const WomenAccesoriesLinks = [
@@ -157,10 +148,7 @@ export const MenShoesLinks = [
         route: "/collections/women-water-bottles",
         label: "Water Bottles",
       },
-      {
-        route: "/collections/women-accesories",
-        label: "View All",
-      },
+      
   ];
 
   export const KidsLinks = [
@@ -173,10 +161,7 @@ export const MenShoesLinks = [
         route: "/collections/kids-slip-ons",
         label: "Slip Ons",
       },
-      {
-        route: "/collections/kids",
-        label: "View All",
-      },
+     
   ];
 
 

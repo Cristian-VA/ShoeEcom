@@ -1,9 +1,11 @@
 
 import { useGetMenNewArrivals } from '@/lib/queries/queries&mutations'
 import ProductGrid from '../components/shop/ProductGrid'
+import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 const NewArrivalsMen = () => {
   const {data, isRefetching} = useGetMenNewArrivals()
-  console.log(data)
+  const { pathname } = useLocation();
   return (
     <>
     <div className='relative flex'>
@@ -16,8 +18,28 @@ const NewArrivalsMen = () => {
     </div>
     <div className='container flex flex-col gap-6 my-6 md:my-12 md:gap-12'>
       <div className='flex flex-col gap-4 md:gap-6'>
-        <h1 className='font-bold text-[32px]'>Footwear</h1>
-        <p className='font-medium max-w-[620px]'>From timeless sneakers to athletic running shoes and cozy loafers, we have the perfect pair for every occasion in your wardrobe.</p>
+      <div className="flex justify-between w-full">
+            <h1 className="font-bold text-[32px]">Footwear</h1>
+            <div className=" flex    font-medium border-opacity-10">
+              <Link
+                to={"/new-arrivals/men"}
+                className={`px-4 py-2 border-gray-700 border-2 flex items-center justify-between ${
+                  pathname === "/new-arrivals/men" && "text-white bg-gray-700"
+                } `}
+              >
+                <p className="text-inherit bg-inherit">Men</p>
+              </Link>
+              <Link
+                to={"/new-arrivals/women"}
+                className={`px-4 py-2 border-gray-700 border-2 flex items-center  ${
+                  pathname === "/new-arrivals/women" && "text-white bg-gray-700"
+                } `}
+              >
+                <p className="text-inherit bg-inherit">Women</p>
+              </Link>
+            </div>
+          </div>
+        <p className='font-medium max-w-[620px] md:text-[18px]'>From timeless sneakers to athletic running shoes and cozy loafers, we have the perfect pair for every occasion in your wardrobe.</p>
 
       </div>
     <ProductGrid data={data} isRefetching={isRefetching} noPag={true}/>

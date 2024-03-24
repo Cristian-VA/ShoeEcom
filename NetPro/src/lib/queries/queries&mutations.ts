@@ -190,14 +190,14 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
 
   export const useGetWomenNewArrivals = () => {
     return useQuery({
-      queryKey: [QUERY_KEYS.GET_WOMEN_COLLECTION],
+      queryKey: [QUERY_KEYS.GET_WOMENNEW_COLLECTION],
       queryFn: getWomenNewArrivals,
     });
   };
 
   export const useGetMenNewArrivals = () => {
     return useQuery({
-      queryKey: [QUERY_KEYS.GET_MEN_COLLECTION],
+      queryKey: [QUERY_KEYS.GET_MENNEW_COLLECTION],
       queryFn: getMenNewArrivals,
     });
   };

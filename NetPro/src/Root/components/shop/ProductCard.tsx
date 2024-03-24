@@ -83,7 +83,7 @@ const ProductCard = ({ product, simple = false, fourInline = false }: { product:
           </div>
         </Link>
         {!simple && (
-          <div className={`flex gap-2 overflow-x-scroll pb-2 custom-scrollbar ${showMapImages ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`flex gap-2 overflow-x-scroll pb-2 custom-scrollbar  ${showMapImages ? 'opacity-100' : 'opacity-0'}`}>
             {mapColors}
           </div>
         )}

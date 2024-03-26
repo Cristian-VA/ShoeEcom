@@ -1,4 +1,4 @@
-import { useGetMenCollectionBycategory, useGetKidsCollectionBycategory, useGetWomenCollectionBycategory, useGetSocksCollection } from '@/lib/queries/queries&mutations'
+import { useGetMenCollectionBycategory, useGetKidsCollectionBycategory, useGetWomenCollectionBycategory, useGetSocksCollection, useGetAccesoryCollectionBycategory } from '@/lib/queries/queries&mutations'
 import ProductGrid from '@/Root/components/shop/ProductGrid'
 import { useLocation } from 'react-router-dom'
 import { extractCategoryFromUrl } from '@/utils'
@@ -19,6 +19,9 @@ const MenCategory = ({category}:{category:string}) => {
   const isMenCategory = currentCategory.startsWith("men")
   const isKidsCategory = currentCategory.startsWith("kids")
   const isSocksCategory = currentCategory.endsWith("socks")
+  const isWaterBottleCategory = currentCategory.endsWith("bottles")
+  const isWomenBags = currentCategory.startsWith("women-bags")
+  const isMenBackpacks = currentCategory.startsWith("men-backpacks")
   let data = null
   let isPending = false
   let isRefetching = null
@@ -30,6 +33,30 @@ const MenCategory = ({category}:{category:string}) => {
     data = socksData;
     isPending = isPendingSocks;
     isRefetching = isRefetchingSocks;
+  } else if (isWaterBottleCategory) {
+    const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetAccesoryCollectionBycategory(fetchParams);
+    data = kidsData;
+    isPending = isPendinKids;
+    isRefetching = isRefetchingKids;
+    console.log("water")
+  
+    
+  } else if (isWomenBags) {
+    const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetAccesoryCollectionBycategory(fetchParams);
+    data = kidsData;
+    isPending = isPendinKids;
+    isRefetching = isRefetchingKids;
+    console.log("woman-bags")
+  
+    
+  }else if (isMenBackpacks) {
+    const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetAccesoryCollectionBycategory(fetchParams);
+    data = kidsData;
+    isPending = isPendinKids;
+    isRefetching = isRefetchingKids;
+    console.log("men-backpacks")
+  
+    
   } else if (isKidsCategory) {
     const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetKidsCollectionBycategory(fetchParams);
     data = kidsData;

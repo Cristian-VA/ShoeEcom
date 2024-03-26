@@ -1,5 +1,5 @@
 import { CustomHookResult} from './types';
-import { useGetMenProductId, useGetWomenProductId, useGetKidsProductId, useGetMenrelatedProducts, useGetWomenrelatedProducts, useGetKidsrelatedProducts, useGetSocksProductId, useGetSocksrelatedProducts } from './lib/queries/queries&mutations';
+import { useGetMenProductId, useGetWomenProductId, useGetKidsProductId, useGetMenrelatedProducts, useGetWomenrelatedProducts, useGetKidsrelatedProducts, useGetSocksProductId, useGetSocksrelatedProducts, useGetAccesoriesProductId, useGetAccesoriesrelatedProducts} from './lib/queries/queries&mutations';
 
 
 export function convertToTitleCase(str: string): string {
@@ -42,7 +42,10 @@ export const useDynamicProductFetching = (id: string | null, category: string | 
         productHook = useGetSocksProductId(id || "");
       relatedProductsHook = useGetSocksrelatedProducts(id || "", category || "");
      
-    } else if (category?.startsWith("women")) {
+    } else if (category?.startsWith("water") ||category?.startsWith("women-bags") || category?.startsWith("men-backpacks") ) {
+      productHook = useGetAccesoriesProductId(id || "");
+      relatedProductsHook = useGetAccesoriesrelatedProducts(id || "", category || "");
+    }  else if (category?.startsWith("women")) {
       productHook = useGetWomenProductId(id || "");
       relatedProductsHook = useGetWomenrelatedProducts(id || "", category || "");
     } else if (category?.startsWith("kids")) {

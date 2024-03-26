@@ -2,7 +2,7 @@
 
 import { Filters, order } from "@/types"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts, getMenFeaturedProducts, getWomenFeaturedProducts, getWomenBestSellers, getMenBestSellers , createSingleOrder, getCurrentUser, getOrdersByUserId, getWomenNewArrivals, getMenNewArrivals} from "../appwrite/api"
+import {  signInAccount, signOutAccount, getMenCollection, getMenProductById, getMenRelatedProducts, getWomenCollection, getKidsCollection, getWomenProductById, getKidsProductById, getWomenRelatedProducts,getKidsRelatedProducts, getSocksCollection, getSocksById, getSocksRelatedProducts, getMenFeaturedProducts, getWomenFeaturedProducts, getWomenBestSellers, getMenBestSellers , createSingleOrder, getCurrentUser, getOrdersByUserId, getWomenNewArrivals, getMenNewArrivals,getAccesoryCollection, getAccesoriesById, getAccesoriesRelatedProducts} from "../appwrite/api"
 
 import { QUERY_KEYS } from "./Keys"
 
@@ -40,6 +40,15 @@ export const useGetMenCollectionBycategory = (fetchParams: { category: any; filt
     enabled: !!fetchParams,
     
     })
+}
+
+export const useGetAccesoryCollectionBycategory = (fetchParams: { category: any; filters?: Filters }) =>{
+  return useQuery({
+  queryKey:[QUERY_KEYS.GET_ACCESORIES_COLLECTION, fetchParams], 
+  queryFn: () => getAccesoryCollection(fetchParams),  
+  enabled: !!fetchParams,
+  
+  })
 }
 export const useGetWomenCollectionBycategory = (fetchParams: { category: any; filters?: Filters }) =>{
     return useQuery({
@@ -102,6 +111,14 @@ export const useGetSocksProductId = (productId:string) =>{
     })
 }
 
+export const useGetAccesoriesProductId = (productId:string) =>{
+  return useQuery({
+  queryKey:[QUERY_KEYS.GET_ACCESORIES_COLLECTION_PRODUCTID, productId], //when postIdchanges it triggers a refetch
+  queryFn: () => getAccesoriesById(productId),  
+  enabled: !!productId      
+  })
+}
+
 // Related Products
 
 export const useGetMenrelatedProducts = (productId: string | undefined, category:string) => {
@@ -127,6 +144,15 @@ export const useGetMenrelatedProducts = (productId: string | undefined, category
       enabled: !!productId,
     });
   };
+
+  export const useGetAccesoriesrelatedProducts = (productId: string | undefined, category:string) => {
+    return useQuery({
+      queryKey: [QUERY_KEYS.GET_ACCESORIES_COLLECTION, productId],
+      queryFn: () => getAccesoriesRelatedProducts(productId ||  "", category),
+      enabled: !!productId,
+    });
+  };
+
 
   export const useGetSocksrelatedProducts = (productId: string | undefined, category:string) => {
     return useQuery({

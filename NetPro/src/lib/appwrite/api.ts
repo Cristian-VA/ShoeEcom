@@ -241,6 +241,48 @@ export async function getSocksCollection(fetchParams: { category: string; filter
   }
 }
 
+export async function getAccesoryCollection(fetchParams: { category: string; filters?: Filters }) {
+  const commonQueries: any[] = [Query.limit(6), Query.equal("category", fetchParams.category)];
+
+  if (fetchParams?.filters?.bestFor) {
+    commonQueries.push(Query.equal("bestFor", fetchParams.filters.bestFor));
+  }
+
+  if (fetchParams?.filters?.currentSort === "expensive") {
+    commonQueries.push(Query.orderDesc("price"));
+  } else if (fetchParams?.filters?.currentSort === "cheap") {
+    commonQueries.push(Query.orderAsc("price"));
+  } else if (fetchParams?.filters?.currentSort === "newest") {
+    commonQueries.push(Query.orderAsc("$createdAt"));
+  } else if (fetchParams?.filters?.currentSort === "oldest") {
+    commonQueries.push(Query.orderDesc("$createdAt"));
+  }
+
+  try {
+    const Page1 = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.accesoriesCollectionId,
+      [...commonQueries, Query.offset(0)]
+    );
+
+    const lastId = Page1?.documents[Page1.documents.length - 1]?.$id;
+    const Page2 = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.accesoriesCollectionId,
+      [...commonQueries, Query.cursorAfter(lastId)]
+    );
+
+    // Check if Page2 is empty
+    if (Page2?.length === 0) {
+      return { Page1 };
+    } else {
+      return { Page1, Page2 };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 
 
@@ -302,6 +344,20 @@ export async function getSocksById(productId: string) {
   }
 }
 
+export async function getAccesoriesById(productId: string) {
+  try {
+    const product = await databases.getDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.accesoriesCollectionId,
+      productId
+    );
+
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 
 export async function getMenRelatedProducts(productId: string, category:string){
@@ -345,6 +401,21 @@ export async function getKidsRelatedProducts(productId: string, category:string)
     console.log(error)
   }
 }
+
+export async function getAccesoriesRelatedProducts(productId: string, category:string){
+  const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2), Query.equal("category", [category])]
+  try {
+    const relatedProducts = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.accesoriesCollectionId,
+      queries
+    )
+    return relatedProducts
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 
 export async function getSocksRelatedProducts(productId: string, category:string){
   const queries:any[] = [Query.notEqual("$id", [productId]), Query.limit(2), Query.equal("category", [category])]

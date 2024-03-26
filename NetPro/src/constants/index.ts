@@ -31,7 +31,7 @@ export const MenShoesLinks = [
       label: "Backpacks",
     },
     {
-      route: "/collections/men-water-bottles",
+      route: "/collections/water-bottles",
       label: "Water Bottles",
     },
    
@@ -145,7 +145,7 @@ export const MenShoesLinks = [
         label: "Bags",
       },
       {
-        route: "/collections/women-water-bottles",
+        route: "/collections/water-bottles",
         label: "Water Bottles",
       },
       
@@ -188,6 +188,8 @@ export const MenShoesLinks = [
   export const helpInfo = ["+1 (555) 123-4567", "+1 (555) 987-6543 (Text-Only)", "support@quillstride.com", "Returns/Exchanges", "FAQ/Contact Us"];
 
   export const socksSizes = [ "(W5-7)" , "(W8-10/M8)", "(W11/M9-12)" , "(M13-14)"]
+
+  export const accesoriesSizes = [ "Standard"]
 
 
   export const shopInfo = [
@@ -237,7 +239,7 @@ export const categoryLinksMap: Record<string, any[]> = {
   "men-accesories": MenAccesoriesLinks,
   "men-socks": MenAccesoriesLinks,
   "men-backpacks": MenAccesoriesLinks,
-  "men-water-bottles": MenAccesoriesLinks,
+  "water-bottles": MenAccesoriesLinks,
   "women": WomenShoesLinks,
   "women-sneakers": WomenShoesLinks,
   "women-active": WomenShoesLinks,
@@ -259,19 +261,19 @@ export const categorySizeMap: Record<string, any[]> = {
   "men-hiking": menShoeSizes,
   "men-slip-ons": menShoeSizes,
   "men": menShoeSizes,
-  "men-accesories": menShoeSizes,
+  "men-accesories": accesoriesSizes,
   "men-socks": socksSizes,
-  "men-backpacks": menShoeSizes,
-  "men-water-bottles": menShoeSizes,
+  "men-backpacks": accesoriesSizes,
+  "water-bottles": accesoriesSizes,
   "women": womenShoeSizes,
   "women-sneakers": womenShoeSizes,
   "women-active": womenShoeSizes,
   "women-slip-ons": womenShoeSizes,
   "women-hiking": womenShoeSizes,
   "women-flats": womenShoeSizes,
-  "women-accesories": menShoeSizes,
+  "women-accesories": accesoriesSizes,
   "women-socks": socksSizes,
-  "women-bags": menShoeSizes,
+  "women-bags": accesoriesSizes,
   "women-wallets": menShoeSizes,
   "kids": kidsShoeSizes,
   "kids-sneakers": kidsShoeSizes,
@@ -412,7 +414,7 @@ export const categoryBestForMap: Record<string, any[]> = {
   "men-accesories": menShoeSizes,
   "men-socks": bestForSocks,
   "men-backpacks": menShoeSizes,
-  "men-water-bottles": menShoeSizes,
+  "water-bottles": menShoeSizes,
   "women": bestForSneakers,
   "women-sneakers": bestForSneakers,
   "women-active": bestForActive,

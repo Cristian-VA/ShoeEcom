@@ -14,8 +14,9 @@ const FilterUi = () => {
   const currentCategory = extractCategoryFromUrl(location.pathname);
   const { filters, setFilters } = useFilterContext();
   const [prevCategory, setPrevCategory] = useState('')
-  
-
+  const isWomenBags = currentCategory.startsWith("women-bags")
+  const isMenBackpacks = currentCategory.startsWith("men-backpacks")
+  const isWaterBottleCategory = currentCategory.endsWith("bottles")
 
   
 
@@ -160,15 +161,17 @@ const FilterUi = () => {
         <hr className="my-2" />
       </div>
 
-       <div className="flex flex-col mb-7  ">
-        <h1 className="text-[18px] font-semibold">BEST FOR</h1>
-        <div className="flex  flex-col my-4 gap-2   ">
-          {currentCategory &&
-            categoryBestForMap[currentCategory] &&
-            getCategoryBestFor(categoryBestForMap[currentCategory])}
-        </div>
-        <hr className="my-2" />
-      </div>
+      {!isMenBackpacks && !isWomenBags && !isWaterBottleCategory && (
+  <div className="flex flex-col mb-7">
+    <h1 className="text-[18px] font-semibold">BEST FOR</h1>
+    <div className="flex flex-col my-4 gap-2">
+      {currentCategory &&
+        categoryBestForMap[currentCategory] &&
+        getCategoryBestFor(categoryBestForMap[currentCategory])}
+    </div>
+    <hr className="my-2" />
+  </div>
+)}
     </div>
   );
 };

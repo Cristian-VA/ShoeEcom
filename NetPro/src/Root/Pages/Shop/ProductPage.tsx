@@ -26,7 +26,7 @@ const ProductPage = () => {
   const [openModal, setOpenModal] = useState(false)
   const products = useSeenProducts((state:any) => state.products)
   const addtolist = useSeenProducts((state:any) => state.addProduct)
- 
+
 
   useEffect(() => {
     if (product){
@@ -299,6 +299,7 @@ const ProductPage = () => {
             <div className="flex gap-2 flex-wrap   ">
             {currentCategory && categorySizeMap[currentCategory] && getCategorySizes(categorySizeMap[currentCategory])}
             </div>
+            {!product?.availableSizes?.length && <p className="text-gray-600 text-opacity-80 mt-2 mb-0"> Product currently out of stock.</p>}
           </div>
 
           <div className=" flex flex-col gap-2 ">

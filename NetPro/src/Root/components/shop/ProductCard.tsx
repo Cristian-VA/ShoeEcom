@@ -51,20 +51,26 @@ const ProductCard = ({ product, simple = false, fourInline = false }: { product:
   const [showMapImages, setShowMapImages] = useState(false)
 
   return (
-    <div className={simple ? 'flex flex-col' : `flex flex-col w-1/2 lg:w-1/3 ${fourInline && "xl:w-1/4 md:w-1/3 "} transition`}>
+    <div className={simple ? 'flex flex-col ' : `flex flex-col w-1/2 lg:w-1/3 ${fourInline && "xl:w-1/4 md:w-1/3 "} transition `}>
       <div
         className="hover:border-[1px] border-gray-600 border-opacity-55 flex flex-col p-2 cursor-pointer"
         onMouseEnter={() => setShowMapImages(true)}
         onMouseLeave={() => setShowMapImages(false)}
       >
+       
         <Link to={`/collections/${product?.category}/${product?.$id}`} onClick={scrollToTop}>
           <div className="relative overflow-hidden">
-            <img src={image || ''} alt={product?.productName} className="object-cover hover:scale-110 transition" />
+          {!product?.availableSizes?.length && !showMapImages && (
+        <div className='absolute right-0 top-0 px-2 py-2 bg-white border-gray-700 border-2 m-1 md:m-2'>
+          <h1 className='bg-white font-medium '> OUT OF STOCK</h1>
+        </div>)}
+            <img src={image || ''} alt={product?.productName} className={`object-cover hover:scale-110 transition ${!product?.availableSizes?.length && ""}`} />
             {!simple && product?.tag && (
               <p className="absolute text-[10px] sm:text-[14px] capitalize bottom-0 left-0  m-1 sm:m-2 md:m-3 px-2 sm:px-3 py-[1px] sm:py-[2px] bg-white bg-opacity-40 font-medium italic">
                 {product.tag}
               </p>
             )}
+            
           </div>
           <div className={simple ? '  flex justify-between w-full' : ' flex flex-col'}>
           { !simple && <h1 className="font-semibold mt-2 w-full">{product?.productName}</h1>}

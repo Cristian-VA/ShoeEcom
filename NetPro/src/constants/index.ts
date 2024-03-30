@@ -238,6 +238,7 @@ export const categoryLinksMap: Record<string, any[]> = {
   "men": MenShoesLinks,
   "men-accesories": MenAccesoriesLinks,
   "men-socks": MenAccesoriesLinks,
+  "women-socks": WomenAccesoriesLinks,
   "men-backpacks": MenAccesoriesLinks,
   "water-bottles": MenAccesoriesLinks,
   "women": WomenShoesLinks,
@@ -274,8 +275,6 @@ export const categorySizeMap: Record<string, any[]> = {
   "women-accesories": accesoriesSizes,
   "women-socks": socksSizes,
   "women-bags": accesoriesSizes,
-  "women-wallets": menShoeSizes,
-  "kids": kidsShoeSizes,
   "kids-sneakers": kidsShoeSizes,
   "kids-slip-ons": kidsShoeSizes
 };

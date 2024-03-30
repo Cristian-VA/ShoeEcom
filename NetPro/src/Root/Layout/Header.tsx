@@ -36,7 +36,6 @@ const Header = () => {
             <AdultNav category="men" />
             <AdultNav category="women" />
             <KidsNav />
-            <p className=" px-3 py-1 my-auto"> SALE </p>
           </div>
 
           <div className="md:hidden block">

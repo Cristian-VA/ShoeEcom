@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import Loader from '@/Root/components/Loader'
+import  { useEffect } from 'react'
+
 import SignInForm from '../components/forms/SignInForm'
 import SignUpForm from '../components/forms/SignUpForm'
 import { useAuth } from '../components/utils/AuthContext'

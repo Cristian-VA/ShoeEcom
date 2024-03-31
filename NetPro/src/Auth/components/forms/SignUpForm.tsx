@@ -11,7 +11,7 @@ const SignUpForm = () => {
 
   const {registerUser} = useAuth()
 
-  // 1. Define your form.
+
   const form = useForm<z.infer<typeof SignUpSchema>>({
     resolver: zodResolver(SignUpSchema),
     defaultValues: {
@@ -22,7 +22,7 @@ const SignUpForm = () => {
     },
   })
  
-  // 2. Define a submit handler.
+  
   async function onSubmit(values: z.infer<typeof SignUpSchema>) {
    console.log(values)
 
@@ -58,7 +58,7 @@ const SignUpForm = () => {
           
         
 
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full mt-4 bg-inherit  mb-auto mt-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full bg-inherit  mb-auto mt-4">
              <FormField
               control={form.control}
                 name="name"

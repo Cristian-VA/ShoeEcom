@@ -1,4 +1,4 @@
-import { CustomHookResult} from './types';
+import { CustomHookResult, CartItem, AggregatedCartItem } from './types';
 import { useGetMenProductId, useGetWomenProductId, useGetKidsProductId, useGetMenrelatedProducts, useGetWomenrelatedProducts, useGetKidsrelatedProducts, useGetSocksProductId, useGetSocksrelatedProducts, useGetAccesoriesProductId, useGetAccesoriesrelatedProducts} from './lib/queries/queries&mutations';
 
 
@@ -61,18 +61,6 @@ export const useDynamicProductFetching = (id: string | null, category: string | 
   
     return { product, isLoading: isLoadingProduct, isFetched: isFetchedProduct, relatedProducts };
   };
-
-  interface CartItem {
-    productName: string;
-    image: string;
-    price: number | null;
-    size: string;
-    color: string;
-}
-
-interface AggregatedCartItem extends CartItem {
-    quantity: number;
-}
 
 export const aggregateCartItems = (cart: CartItem[]): AggregatedCartItem[] => {
     const aggregatedCart: { [key: string]: AggregatedCartItem } = {};

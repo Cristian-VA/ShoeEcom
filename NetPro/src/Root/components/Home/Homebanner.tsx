@@ -1,5 +1,4 @@
-import { Button } from '@/components/ui/button'
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 import { scrollToTop } from '@/utils'
 const Homebanner = ({scrollToTargetMen,scrollToTargetWomen}:{scrollToTargetMen:any,scrollToTargetWomen:any}) => {

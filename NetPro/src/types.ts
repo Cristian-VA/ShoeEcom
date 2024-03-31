@@ -58,3 +58,15 @@ export type CustomHookResult = {
   }
 
 
+
+  export interface CartItem {
+    productName: string;
+    image: string;
+    price: number | null;
+    size: string;
+    color: string;
+}
+
+export interface AggregatedCartItem extends CartItem {
+    quantity: number;
+}

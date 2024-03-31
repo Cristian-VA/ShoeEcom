@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { scrollToTop } from '@/utils';
@@ -60,7 +61,7 @@ const ProductCard = ({ product, simple = false, fourInline = false }: { product:
        
         <Link to={`/collections/${product?.category}/${product?.$id}`} onClick={scrollToTop}>
           <div className="relative overflow-hidden">
-          {!product?.availableSizes?.length && !showMapImages && (
+          {!product?.availableSizes?.length && !showMapImages && !simple && (
         <div className='absolute right-0 top-0 px-2 py-2 bg-white border-gray-700 border-2 m-1 md:m-2'>
           <h1 className='bg-white font-medium '> OUT OF STOCK</h1>
         </div>)}

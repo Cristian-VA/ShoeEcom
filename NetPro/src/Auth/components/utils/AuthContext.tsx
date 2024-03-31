@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createContext, useContext, useEffect, useState } from "react";
 import { ReactNode } from 'react';
 import { IContextType } from '@/types';

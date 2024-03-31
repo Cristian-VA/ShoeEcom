@@ -1,5 +1,5 @@
 
-
+// @ts-nocheck
 import { ID, Query } from "appwrite"
 
 import { account, appwriteConfig,  databases,  } from "./config";

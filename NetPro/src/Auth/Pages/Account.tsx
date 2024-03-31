@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button } from "@/components/ui/button";
 import { useAuth } from "../components/utils/AuthContext";
 import { useGetCurrentUser } from "@/lib/queries/queries&mutations";

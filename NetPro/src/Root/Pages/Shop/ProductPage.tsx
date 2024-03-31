@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { extractCategoryFromProductPage } from "@/utils";
 import { useDynamicProductFetching } from "@/utils";
 import useCart from "@/lib/zustand/cart";
-import PopUpModal from "@/Root/Layout/Shop/PopUpModal";
+import PopUpModal from "@/Root/components/PopUpModal";
 import CheckOut from "@/Root/components/shop/CheckOut";
 import ProductSlider from "@/Root/components/shop/ProductSlider";
 import useSeenProducts from "@/lib/zustand/seenProducts";

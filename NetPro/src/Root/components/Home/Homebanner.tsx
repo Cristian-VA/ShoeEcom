@@ -22,7 +22,7 @@ const Homebanner = ({scrollToTargetMen,scrollToTargetWomen}:{scrollToTargetMen:a
                   <h1 className="font-bold mb-2 leading-snug"> FEATURED</h1>
                   <p onClick={scrollToTargetMen} className="text-[16px] lg:text-[18px] hover:underline cursor-pointer"> Men's Shoes</p>
                   <p onClick={scrollToTargetWomen} className="text-[16px] lg:text-[18px] hover:underline cursor-pointer"> Women's Shoes</p>
-                  <p className="text-[16px] lg:text-[18px] hover:underline cursor-pointer"> New Arrivals</p>
+                  <Link to={"/new-arrivals/men"} className="text-[16px] lg:text-[18px] hover:underline cursor-pointer"> New Arrivals</Link>
               </div>
 
               <div className="absolute right-0 bottom-0 p-5 lg:p-6 bg-transparent text-right">

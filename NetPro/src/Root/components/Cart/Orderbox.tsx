@@ -1,5 +1,5 @@
 import { convertTimestampToDate } from "@/lib/utils";
-import PopUpModal from "@/Root/Layout/Shop/PopUpModal";
+import PopUpModal from "@/Root/components/PopUpModal";
 import { useState } from "react";
 type OrderProps = {
   images?: string[]; // Make these properties optional with '?'

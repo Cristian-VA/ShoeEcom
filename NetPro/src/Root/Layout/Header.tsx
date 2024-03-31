@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "@/Auth/components/utils/AuthContext";
 import useCart from "@/lib/zustand/cart";
 import { Cart } from "../Pages";
-import PopUpSideBar from "./Shop/PopUpSideBar";
+import PopUpSideBar from "../components/PopUpSideBar";
 import { aggregateCartItems } from "@/utils";
 const Header = () => {
   const [isOpen, setOpen] = useState(false);

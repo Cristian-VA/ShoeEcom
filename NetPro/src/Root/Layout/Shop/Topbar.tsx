@@ -5,8 +5,8 @@ import { extractCategoryFromUrl } from "@/utils";
 import { categoryLinksMap } from "@/constants";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import FilterUi from "./FilterUi";
-import PopUpSideBar from "./PopUpSideBar";
+import FilterUi from "../../components/shop/FilterUi";
+import PopUpSideBar from "../../components/PopUpSideBar";
 const Topbar = () => {
   const location = useLocation();
   const currentCategory = extractCategoryFromUrl(location.pathname);

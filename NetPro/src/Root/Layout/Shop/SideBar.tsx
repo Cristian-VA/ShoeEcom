@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FilterUi from "../../components/shop/FilterUi";
 import { useLocation, Link } from "react-router-dom";
 import { convertToTitleCase, extractCategoryFromUrl } from "@/utils";

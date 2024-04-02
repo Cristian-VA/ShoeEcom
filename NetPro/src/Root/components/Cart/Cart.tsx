@@ -12,7 +12,7 @@ const Cart = () => {
   const {data} = useGetCurrentUser()
   const aggregatedCart = aggregateCartItems(cart);
   console.log(aggregatedCart)
-  const { mutate: createSingleOrder, isPending: isLoadingCreate } = useCreateSingleOrder();
+  const { mutate: createSingleOrder, } = useCreateSingleOrder();
   const productNamesArray = aggregatedCart.map(product => product.productName);
   const productSizeArray = aggregatedCart.map(product => product.size);
   const productColorsArray = aggregatedCart.map(product => product.color);

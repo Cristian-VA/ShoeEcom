@@ -24,57 +24,57 @@ const MenCategory = ({category}:{category:string}) => {
   const isMenBackpacks = currentCategory.startsWith("men-backpacks")
   let data = null
   let isPending = false
-  let isRefetching = null
+  
   
   
 
   if (isSocksCategory) {
-    const {  data: socksData, isPending:isPendingSocks, isRefetching:isRefetchingSocks  } = useGetSocksCollection(fetchParams);
+    const {  data: socksData, isPending:isPendingSocks  } = useGetSocksCollection(fetchParams);
     data = socksData;
     isPending = isPendingSocks;
-    isRefetching = isRefetchingSocks;
+   
   } else if (isWaterBottleCategory) {
-    const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetAccesoryCollectionBycategory(fetchParams);
+    const {  data: kidsData, isPending:isPendinKids } = useGetAccesoryCollectionBycategory(fetchParams);
     data = kidsData;
     isPending = isPendinKids;
-    isRefetching = isRefetchingKids;
-    console.log("water")
+    
+
   
     
   } else if (isWomenBags) {
-    const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetAccesoryCollectionBycategory(fetchParams);
+    const {  data: kidsData, isPending:isPendinKids } = useGetAccesoryCollectionBycategory(fetchParams);
     data = kidsData;
     isPending = isPendinKids;
-    isRefetching = isRefetchingKids;
-    console.log("woman-bags")
+   
+   
   
     
   }else if (isMenBackpacks) {
-    const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetAccesoryCollectionBycategory(fetchParams);
+    const {  data: kidsData, isPending:isPendinKids } = useGetAccesoryCollectionBycategory(fetchParams);
     data = kidsData;
     isPending = isPendinKids;
-    isRefetching = isRefetchingKids;
-    console.log("men-backpacks")
+
+
   
     
   } else if (isKidsCategory) {
-    const {  data: kidsData, isPending:isPendinKids, isRefetching:isRefetchingKids } = useGetKidsCollectionBycategory(fetchParams);
+    const {  data: kidsData, isPending:isPendinKids} = useGetKidsCollectionBycategory(fetchParams);
     data = kidsData;
     isPending = isPendinKids;
-    isRefetching = isRefetchingKids;
+  
   } else if (isWomenCategory) {
-    const {  data: womenData, isPending:isPendingWomen, isRefetching:isRefetchingWomen  } = useGetWomenCollectionBycategory(fetchParams);
+    const {  data: womenData, isPending:isPendingWomen,   } = useGetWomenCollectionBycategory(fetchParams);
     data = womenData;
     isPending = isPendingWomen;
-    isRefetching = isRefetchingWomen;
+    
     
  
   }
   else if (isMenCategory) {
-    const {  data: menData, isPending:isPendingMen, isRefetching:isRefetchingMen  } = useGetMenCollectionBycategory(fetchParams);
+    const {  data: menData, isPending:isPendingMen } = useGetMenCollectionBycategory(fetchParams);
     data = menData;
     isPending = isPendingMen;
-    isRefetching = isRefetchingMen;
+ 
   } else {
 
   }
